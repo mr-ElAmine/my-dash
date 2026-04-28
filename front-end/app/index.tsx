@@ -1,29 +1,42 @@
-import { View, Linking, Alert } from 'react-native';
-import { Button } from 'heroui-native';
+import { View } from "react-native";
+import { Button } from "heroui-native";
+import { usePdfDownload } from "../hooks/usePdfDownload";
+import { useStoragePermission } from "../hooks/useStoragePermission";
+import { fetchQuotePdf, fetchInvoicePdf } from "../api/pdf";
 
 export default function Index() {
-  const handleGeneratePdf = async () => {
-    // IP mise à jour automatiquement pour le test sur mobile
-    const computerIp = '10.57.33.254'; 
-    const url = `http://${computerIp}:3000/generate-pdf`;
-    
-    try {
-      const supported = await Linking.canOpenURL(url);
-      if (supported) {
-        await Linking.openURL(url);
-      } else {
-        Alert.alert("Erreur", "Impossible d'ouvrir l'URL du PDF");
-      }
-    } catch (error) {
-      console.error(error);
-      Alert.alert("Erreur", "Une erreur est survenue lors de la génération");
-    }
-  };
+  const { granted } = useStoragePermission();
+  const { download, loading } = usePdfDownload();
 
   return (
-    <View className="flex-1 items-center justify-center bg-background">
-      <Button color="primary" onPress={handleGeneratePdf}>
-        Clique ici
+    <View className="flex-1 items-center justify-center gap-4 bg-background">
+      <Button
+        color="primary"
+        isLoading={loading}
+        onPress={() =>
+          download({
+            fetchFn: fetchQuotePdf,
+            id: 1,
+            filename: "DEV-2026-001.pdf",
+            hasStoragePermission: granted,
+          })
+        }
+      >
+        Voir le devis #1
+      </Button>
+      <Button
+        color="secondary"
+        isLoading={loading}
+        onPress={() =>
+          download({
+            fetchFn: fetchInvoicePdf,
+            id: 1,
+            filename: "FAC-2026-001.pdf",
+            hasStoragePermission: granted,
+          })
+        }
+      >
+        Voir la facture #1
       </Button>
     </View>
   );
