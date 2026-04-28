@@ -5,23 +5,35 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "tsx watch index.ts",
+    "start": "tsx index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "packageManager": "pnpm@10.27.0",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "better-sqlite3",
+      "esbuild"
+    ]
+  },
   "dependencies": {
     "better-sqlite3": "^12.9.0",
+    "cors": "^2.8.6",
     "drizzle-orm": "^0.45.2",
     "express": "^5.2.1",
-    "pdfkit": "^0.18.0"
+    "pdfkit": "^0.18.0",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@types/better-sqlite3": "^7.6.13",
+    "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
     "@types/node": "^25.6.0",
     "@types/pdfkit": "^0.17.6",
+    "drizzle-kit": "^0.31.10",
     "ts-node": "^10.9.2",
     "tsx": "^4.21.0"
   }
