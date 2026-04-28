@@ -1,4 +1,5 @@
 import { sqliteTable, text, integer, real } from "drizzle-orm/sqlite-core";
+import { type InferSelectModel, type InferInsertModel } from "drizzle-orm";
 import { companies } from "./company";
 import { contacts } from "./contact";
 import { users } from "./user";
@@ -26,3 +27,6 @@ export const quotes = sqliteTable("quotes", {
   createdAt: text("created_at").notNull(),
   updatedAt: text("updated_at").notNull(),
 });
+
+export type Quote = InferSelectModel<typeof quotes>;
+export type NewQuote = InferInsertModel<typeof quotes>;

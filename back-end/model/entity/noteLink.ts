@@ -1,4 +1,5 @@
 import { sqliteTable, integer, text } from "drizzle-orm/sqlite-core";
+import { type InferSelectModel, type InferInsertModel } from "drizzle-orm";
 
 export const noteLinks = sqliteTable("note_links", {
   id: integer("id").primaryKey({ autoIncrement: true }),
@@ -11,3 +12,6 @@ export const noteLinks = sqliteTable("note_links", {
 
   targetId: integer("target_id").notNull(),
 });
+
+export type NoteLink = InferSelectModel<typeof noteLinks>;
+export type NewNoteLink = InferInsertModel<typeof noteLinks>;

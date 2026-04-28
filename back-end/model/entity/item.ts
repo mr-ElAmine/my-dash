@@ -1,4 +1,5 @@
 import { sqliteTable, text, integer, real } from "drizzle-orm/sqlite-core";
+import { type InferSelectModel, type InferInsertModel } from "drizzle-orm";
 
 export const items = sqliteTable("items", {
   id: integer("id").primaryKey({ autoIncrement: true }),
@@ -17,3 +18,6 @@ export const items = sqliteTable("items", {
 
   documentId: integer("document_id").notNull(),
 });
+
+export type Item = InferSelectModel<typeof items>;
+export type NewItem = InferInsertModel<typeof items>;

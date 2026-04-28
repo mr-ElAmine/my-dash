@@ -1,7 +1,7 @@
-import { companies, contacts, items } from "../model/entity";
+import { Company, Contact, Item } from "../model/entity";
 import { PdfCompany, PdfContact, PdfItem } from "../model/pdf-types";
 
-function mapCompany(row: typeof companies.$inferSelect): PdfCompany {
+function mapCompany(row: Company): PdfCompany {
   return {
     name: row.name,
     street: row.street ?? undefined,
@@ -11,7 +11,7 @@ function mapCompany(row: typeof companies.$inferSelect): PdfCompany {
   };
 }
 
-function mapContact(row: typeof contacts.$inferSelect): PdfContact {
+function mapContact(row: Contact): PdfContact {
   return {
     firstName: row.firstName,
     lastName: row.lastName,
@@ -21,7 +21,7 @@ function mapContact(row: typeof contacts.$inferSelect): PdfContact {
   };
 }
 
-function mapItem(row: typeof items.$inferSelect): PdfItem {
+function mapItem(row: Item): PdfItem {
   return {
     description: row.description,
     quantity: row.quantity,

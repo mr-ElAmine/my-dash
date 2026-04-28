@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
-import { eq, and } from "drizzle-orm";
-import { db } from "../../model/entity/db";
-import { quotes } from "../../model/entity/quote";
-import { invoices } from "../../model/entity/invoice";
-import { companies } from "../../model/entity/company";
-import { contacts } from "../../model/entity/contact";
-import { items } from "../../model/entity/item";
+import {
+  QuoteRepository,
+  InvoiceRepository,
+  CompanyRepository,
+  ContactRepository,
+  ItemRepository,
+} from "../../model/repositories";
 import { PdfService } from "../../services/pdfService";
 import { sendPdf, sendError } from "../../utils/response";
 import type { QuoteData, InvoiceData } from "../../model/pdf-types";
@@ -15,6 +15,11 @@ import { idParam } from "./schema";
 
 export class PdfController {
   private pdfService = new PdfService();
+  private quoteRepo = new QuoteRepository();
+  private invoiceRepo = new InvoiceRepository();
+  private companyRepo = new CompanyRepository();
+  private contactRepo = new ContactRepository();
+  private itemRepo = new ItemRepository();
 
   async generateQuote(req: Request, res: Response) {
     const parsed = idParam.safeParse(req.params);
@@ -22,28 +27,18 @@ export class PdfController {
 
     const { id } = parsed.data;
 
-    const quote = db.select().from(quotes).where(eq(quotes.id, id)).get();
+    const quote = await this.quoteRepo.findById(id);
     if (!quote || !quote.companyId)
       return sendError(res, "Devis introuvable", 404);
 
-    const company = db
-      .select()
-      .from(companies)
-      .where(eq(companies.id, quote.companyId))
-      .get();
+    const company = await this.companyRepo.findById(quote.companyId);
     if (!company) return sendError(res, "Entreprise introuvable", 404);
 
     const contact = quote.contactId
-      ? db.select().from(contacts).where(eq(contacts.id, quote.contactId)).get()
+      ? await this.contactRepo.findById(quote.contactId)
       : null;
 
-    const rows = db
-      .select()
-      .from(items)
-      .where(
-        and(eq(items.documentType, "quote"), eq(items.documentId, quote.id)),
-      )
-      .all();
+    const rows = await this.itemRepo.findByDocument("quote", quote.id);
 
     const data: QuoteData = {
       sender,
@@ -68,35 +63,18 @@ export class PdfController {
 
     const { id } = parsed.data;
 
-    const invoice = db.select().from(invoices).where(eq(invoices.id, id)).get();
+    const invoice = await this.invoiceRepo.findById(id);
     if (!invoice || !invoice.companyId)
       return sendError(res, "Facture introuvable", 404);
 
-    const company = db
-      .select()
-      .from(companies)
-      .where(eq(companies.id, invoice.companyId))
-      .get();
+    const company = await this.companyRepo.findById(invoice.companyId);
     if (!company) return sendError(res, "Entreprise introuvable", 404);
 
     const contact = invoice.contactId
-      ? db
-          .select()
-          .from(contacts)
-          .where(eq(contacts.id, invoice.contactId))
-          .get()
+      ? await this.contactRepo.findById(invoice.contactId)
       : null;
 
-    const rows = db
-      .select()
-      .from(items)
-      .where(
-        and(
-          eq(items.documentType, "invoice"),
-          eq(items.documentId, invoice.id),
-        ),
-      )
-      .all();
+    const rows = await this.itemRepo.findByDocument("invoice", invoice.id);
 
     const data: InvoiceData = {
       sender,
