@@ -1,6 +1,7 @@
 import { eq, and } from "drizzle-orm";
 import { db } from "../entity/db";
 import { items } from "../entity/item";
+import type { NewItem } from "../entity/item";
 
 export class ItemRepository {
   private db = db;
@@ -16,5 +17,9 @@ export class ItemRepository {
         ),
       )
       .all();
+  }
+
+  async createMany(data: NewItem[]) {
+    return this.db.insert(items).values(data).returning();
   }
 }

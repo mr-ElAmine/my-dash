@@ -14,12 +14,14 @@ import { sender } from "../../config";
 import { idParam } from "./schema";
 
 export class PdfController {
-  private pdfService = new PdfService();
-  private quoteRepo = new QuoteRepository();
-  private invoiceRepo = new InvoiceRepository();
-  private companyRepo = new CompanyRepository();
-  private contactRepo = new ContactRepository();
-  private itemRepo = new ItemRepository();
+  constructor(
+    private quoteRepo = new QuoteRepository(),
+    private invoiceRepo = new InvoiceRepository(),
+    private companyRepo = new CompanyRepository(),
+    private contactRepo = new ContactRepository(),
+    private itemRepo = new ItemRepository(),
+    private pdfService = new PdfService(),
+  ) {}
 
   async generateQuote(req: Request, res: Response) {
     const parsed = idParam.safeParse(req.params);

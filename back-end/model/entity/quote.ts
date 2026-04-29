@@ -1,5 +1,5 @@
 import { sqliteTable, text, integer, real } from "drizzle-orm/sqlite-core";
-import { type InferSelectModel, type InferInsertModel } from "drizzle-orm";
+import { type InferSelectModel, type InferInsertModel, relations } from "drizzle-orm";
 import { companies } from "./company";
 import { contacts } from "./contact";
 import { users } from "./user";
@@ -27,6 +27,17 @@ export const quotes = sqliteTable("quotes", {
   createdAt: text("created_at").notNull(),
   updatedAt: text("updated_at").notNull(),
 });
+
+export const quotesRelations = relations(quotes, ({ one }) => ({
+  company: one(companies, {
+    fields: [quotes.companyId],
+    references: [companies.id],
+  }),
+  contact: one(contacts, {
+    fields: [quotes.contactId],
+    references: [contacts.id],
+  }),
+}));
 
 export type Quote = InferSelectModel<typeof quotes>;
 export type NewQuote = InferInsertModel<typeof quotes>;
