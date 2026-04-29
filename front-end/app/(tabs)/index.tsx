@@ -1,8 +1,8 @@
 import { View } from "react-native";
 import { Button } from "heroui-native";
-import { usePdfDownload } from "../hooks/usePdfDownload";
-import { useStoragePermission } from "../hooks/useStoragePermission";
-import { fetchQuotePdf, fetchInvoicePdf } from "../api/pdf";
+import { usePdfDownload } from "../../hooks/usePdfDownload";
+import { useStoragePermission } from "../../hooks/useStoragePermission";
+import { fetchQuotePdf, fetchInvoicePdf } from "../../api/pdf";
 
 export default function Index() {
   const { granted } = useStoragePermission();
