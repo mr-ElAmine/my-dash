@@ -12,9 +12,11 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^15.0.3",
+    "@hookform/resolvers": "^5.2.2",
     "@react-navigation/bottom-tabs": "^7.4.0",
     "@react-navigation/elements": "^2.6.3",
     "@react-navigation/native": "^7.1.8",
+    "@tanstack/react-query": "^5.100.6",
     "axios": "^1.15.2",
     "expo": "~54.0.33",
     "expo-constants": "~18.0.13",
@@ -33,6 +35,7 @@
     "heroui-native": "^1.0.2",
     "react": "19.1.0",
     "react-dom": "19.1.0",
+    "react-hook-form": "^7.74.0",
     "react-native": "0.81.5",
     "react-native-gesture-handler": "~2.28.0",
     "react-native-reanimated": "~4.1.1",
@@ -43,7 +46,8 @@
     "tailwind-merge": "^3.5.0",
     "tailwind-variants": "^3.2.2",
     "tailwindcss": "^4.2.4",
-    "uniwind": "^1.6.3"
+    "uniwind": "^1.6.3",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@types/react": "~19.1.0",
