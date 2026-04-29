@@ -3,6 +3,7 @@ import {
   QuoteRepository,
   InvoiceRepository,
   ItemRepository,
+  ContactRepository,
 } from "../../model/repositories";
 import { sendSuccess, sendError } from "../../utils/response";
 import { idParam, createQuoteSchema } from "./schema";
@@ -12,6 +13,7 @@ export class QuoteController {
     private quoteRepo = new QuoteRepository(),
     private invoiceRepo = new InvoiceRepository(),
     private itemRepo = new ItemRepository(),
+    private contactRepo = new ContactRepository(),
   ) {}
 
   async list(_req: Request, res: Response) {
@@ -34,7 +36,10 @@ export class QuoteController {
     const parsed = createQuoteSchema.safeParse(req.body);
     if (!parsed.success) return sendError(res, "Données invalides", 400);
 
-    const { items, ...quoteData } = parsed.data;
+    const { items, contactId, ...rest } = parsed.data;
+    const contact = await this.contactRepo.findById(contactId);
+    if (!contact) return sendError(res, "Prospect introuvable", 404);
+
     const subtotalHt = items.reduce(
       (sum, i) => sum + i.quantity * i.unitPrice,
       0,
@@ -46,7 +51,9 @@ export class QuoteController {
     const now = new Date().toISOString();
 
     const quote = await this.quoteRepo.create({
-      ...quoteData,
+      ...rest,
+      contactId,
+      companyId: contact.companyId,
       subtotalHt,
       taxAmount,
       totalTtc: subtotalHt + taxAmount,

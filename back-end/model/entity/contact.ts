@@ -1,5 +1,5 @@
 import { sqliteTable, text, integer } from "drizzle-orm/sqlite-core";
-import { type InferSelectModel, type InferInsertModel } from "drizzle-orm";
+import { type InferSelectModel, type InferInsertModel, relations } from "drizzle-orm";
 import { companies } from "./company";
 
 export const contacts = sqliteTable("contacts", {
@@ -19,6 +19,13 @@ export const contacts = sqliteTable("contacts", {
   createdAt: text("created_at").notNull(),
   updatedAt: text("updated_at").notNull(),
 });
+
+export const contactsRelations = relations(contacts, ({ one }) => ({
+  company: one(companies, {
+    fields: [contacts.companyId],
+    references: [companies.id],
+  }),
+}));
 
 export type Contact = InferSelectModel<typeof contacts>;
 export type NewContact = InferInsertModel<typeof contacts>;

@@ -12,8 +12,7 @@ const itemInput = z.object({
 });
 
 export const createQuoteSchema = z.object({
-  companyId: z.number().int().positive(),
-  contactId: z.number().int().positive().optional(),
+  contactId: z.number().int().positive(),
   issueDate: z.string(),
   validUntil: z.string(),
   quoteNumber: z.string().optional(),
