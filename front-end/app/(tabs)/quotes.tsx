@@ -13,7 +13,7 @@ export default function QuotesScreen() {
   const router = useRouter();
   const { quotes, isLoading, isRefetching, refetch, error } = useGetQuotes();
   const { download, loading: downloadingId } = usePdfDownload();
-  const { hasPermission } = useStoragePermission();
+  const { granted: hasPermission } = useStoragePermission();
 
   const getStatusColor = (status: Quote['status']) => {
     switch (status) {

@@ -1,3 +1,4 @@
+import { desc } from "drizzle-orm";
 import { eq } from "drizzle-orm";
 import { db } from "../entity/db";
 import { quotes } from "../entity/quote";
@@ -20,6 +21,7 @@ export class QuoteRepository {
         company: { columns: { id: true, name: true } },
         contact: { columns: { id: true, firstName: true, lastName: true } },
       },
+      orderBy: desc(quotes.createdAt),
     });
   }
 
@@ -37,7 +39,10 @@ export class QuoteRepository {
     return this.db.insert(quotes).values(data).returning().get();
   }
 
-  async updateStatus(id: number, status: "draft" | "sent" | "accepted" | "refused" | "expired") {
+  async updateStatus(
+    id: number,
+    status: "draft" | "sent" | "accepted" | "refused" | "expired",
+  ) {
     return this.db
       .update(quotes)
       .set({ status, updatedAt: new Date().toISOString() })

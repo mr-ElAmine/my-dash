@@ -1,53 +1,53 @@
-import React from 'react';
-import { View, Text, ScrollView, StyleSheet } from 'react-native';
-import { Card, Chip, Surface, Button } from 'heroui-native';
-import { Ionicons } from '@expo/vector-icons';
+import React from "react";
+
+import { View, Text, ScrollView } from "react-native";
+
+import { Card, Chip, Surface } from "heroui-native";
+
+import { Ionicons } from "@expo/vector-icons";
 
 export default function Dashboard() {
-  // Données statiques pour le dashboard
   const stats = [
-    { 
-      label: 'Chiffre d\'Affaires', 
-      value: '12 450,00 €', 
-      icon: 'stats-chart-outline', 
-      color: '#3b82f6', 
-      trend: '+12%',
-      trendColor: '#10b981'
+    {
+      label: "Chiffre d'Affaires",
+      value: "12 450,00 €",
+      icon: "stats-chart-outline",
+      color: "#3b82f6",
+      trend: "+12%",
+      trendColor: "#10b981",
     },
-    { 
-      label: 'Devis Signés', 
-      value: '8', 
-      icon: 'checkmark-circle-outline', 
-      color: '#10b981',
-      trend: '+2',
-      trendColor: '#10b981'
+    {
+      label: "Devis Signés",
+      value: "8",
+      icon: "checkmark-circle-outline",
+      color: "#10b981",
+      trend: "+2",
+      trendColor: "#10b981",
     },
-    { 
-      label: 'Factures en attente', 
-      value: '3', 
-      icon: 'time-outline', 
-      color: '#f59e0b',
-      trend: '-1',
-      trendColor: '#ef4444'
+    {
+      label: "Factures en attente",
+      value: "3",
+      icon: "time-outline",
+      color: "#f59e0b",
+      trend: "-1",
+      trendColor: "#ef4444",
     },
   ];
 
   const recentActivity = [
-    { id: 1, title: 'Devis DEV-2026-004', client: 'Acme Corp', status: 'accepté', date: 'Aujourd\'hui', amount: '1 200 €' },
-    { id: 2, title: 'Facture FAC-2026-002', client: 'Stark Ind.', status: 'envoyée', date: 'Hier', amount: '3 500 €' },
-    { id: 3, title: 'Devis DEV-2026-005', client: 'Wayne Ent.', status: 'brouillon', date: '27 Avr.', amount: '850 €' },
+    { id: 1, title: "Devis DEV-2026-004", client: "Acme Corp", status: "accepté", date: "Aujourd'hui", amount: "1 200 €" },
+    { id: 2, title: "Facture FAC-2026-002", client: "Stark Ind.", status: "envoyée", date: "Hier", amount: "3 500 €" },
+    { id: 3, title: "Devis DEV-2026-005", client: "Wayne Ent.", status: "brouillon", date: "27 Avr.", amount: "850 €" },
   ];
 
   return (
     <ScrollView className="flex-1 bg-gray-50" contentContainerStyle={{ paddingBottom: 120 }}>
       <View className="p-6 pt-12">
-        {/* Header */}
         <View className="mb-8">
           <Text className="text-gray-500 font-medium">Bon retour, Marie !</Text>
           <Text className="text-3xl font-black text-gray-900">Dashboard</Text>
         </View>
 
-        {/* Stats Grid */}
         <View className="flex-row flex-wrap gap-4 mb-8">
           {stats.map((stat, index) => (
             <Surface key={index} className="bg-white p-5 rounded-3xl shadow-sm border border-gray-100 flex-1 min-w-[45%]">
@@ -64,7 +64,6 @@ export default function Dashboard() {
           ))}
         </View>
 
-        {/* Action Rapide */}
         <Surface className="bg-blue-600 p-6 rounded-3xl shadow-xl mb-8 flex-row items-center justify-between">
           <View className="flex-1">
             <Text className="text-blue-100 font-bold mb-1">Prêt pour une nouvelle vente ?</Text>
@@ -75,7 +74,6 @@ export default function Dashboard() {
           </View>
         </Surface>
 
-        {/* Activité Récente */}
         <View className="mb-4 flex-row justify-between items-end px-2">
           <Text className="text-xl font-black text-gray-900">Activité Récente</Text>
           <Text className="text-blue-600 font-bold">Voir tout</Text>
@@ -85,10 +83,10 @@ export default function Dashboard() {
           <Card key={activity.id} className="mb-4 border border-gray-100 shadow-sm">
             <Card.Body className="p-4 flex-row items-center gap-4">
               <View className="bg-gray-100 p-3 rounded-2xl">
-                <Ionicons 
-                  name={activity.title.includes('Devis') ? 'document-text' : 'receipt'} 
-                  size={24} 
-                  color="#4b5563" 
+                <Ionicons
+                  name={activity.title.includes("Devis") ? "document-text" : "receipt"}
+                  size={24}
+                  color="#4b5563"
                 />
               </View>
               <View className="flex-1">
@@ -98,10 +96,10 @@ export default function Dashboard() {
                 </View>
                 <View className="flex-row justify-between items-center">
                   <Text className="text-gray-500 text-sm">{activity.client} • {activity.date}</Text>
-                  <Chip 
-                    size="sm" 
-                    variant="flat" 
-                    color={activity.status === 'accepté' ? 'success' : activity.status === 'envoyée' ? 'primary' : 'default'}
+                  <Chip
+                    size="sm"
+                    variant="flat"
+                    color={activity.status === "accepté" ? "success" : activity.status === "envoyée" ? "primary" : "default"}
                   >
                     <Chip.Label className="capitalize">{activity.status}</Chip.Label>
                   </Chip>

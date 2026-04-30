@@ -1,23 +1,29 @@
-import React from 'react';
-import { View } from 'react-native';
-import { TextField, Input, Label, FieldError } from 'heroui-native';
-import { Control, Controller, FieldValues, Path } from 'react-hook-form';
+import React from "react";
 
-interface ControlledInputProps<T extends FieldValues> {
-  name: Path<T>;
-  control: Control<T>;
-  label: string;
-  placeholder?: string;
-  keyboardType?: 'default' | 'numeric' | 'email-address';
-}
+import { View } from "react-native";
 
-export function ControlledInput<T extends FieldValues>({
+import { TextField, Input, Label, FieldError } from "heroui-native";
+
+import type { Control, FieldValues, Path } from "react-hook-form";
+
+import { Controller } from "react-hook-form";
+
+export function ControlledInput<
+  TFieldValues extends FieldValues = FieldValues,
+  TTransformedValues extends FieldValues | undefined = undefined,
+>({
   name,
   control,
   label,
   placeholder,
-  keyboardType = 'default',
-}: ControlledInputProps<T>) {
+  keyboardType,
+}: {
+  name: Path<TFieldValues>;
+  control: Control<TFieldValues, any, TTransformedValues>;
+  label: string;
+  placeholder?: string;
+  keyboardType?: "default" | "numeric" | "email-address" | "decimal-pad";
+}) {
   return (
     <Controller
       control={control}
@@ -29,15 +35,8 @@ export function ControlledInput<T extends FieldValues>({
             <Input
               placeholder={placeholder}
               onBlur={onBlur}
-              onChangeText={(text) => {
-                if (keyboardType === 'numeric') {
-                  const num = parseFloat(text.replace(',', '.'));
-                  onChange(isNaN(num) ? 0 : num);
-                } else {
-                  onChange(text);
-                }
-              }}
-              value={value === undefined || value === null ? '' : String(value)}
+              onChangeText={onChange}
+              value={value == null ? "" : String(value)}
               keyboardType={keyboardType}
             />
             {error && <FieldError>{error.message}</FieldError>}

@@ -1,3 +1,4 @@
+import { desc } from "drizzle-orm";
 import { eq } from "drizzle-orm";
 import { db } from "../entity/db";
 import { invoices } from "../entity/invoice";
@@ -20,6 +21,7 @@ export class InvoiceRepository {
         company: { columns: { id: true, name: true } },
         contact: { columns: { id: true, firstName: true, lastName: true } },
       },
+      orderBy: desc(invoices.createdAt),
     });
   }
 

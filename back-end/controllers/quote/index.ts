@@ -36,7 +36,7 @@ export class QuoteController {
     const parsed = createQuoteSchema.safeParse(req.body);
     if (!parsed.success) return sendError(res, "Données invalides", 400);
 
-    const { items, contactId, ...rest } = parsed.data;
+    const { items, contactId, quoteNumber: inputQuoteNumber, ...rest } = parsed.data;
     const contact = await this.contactRepo.findById(contactId);
     if (!contact) return sendError(res, "Prospect introuvable", 404);
 
@@ -49,32 +49,50 @@ export class QuoteController {
       0,
     );
     const now = new Date().toISOString();
+    const quoteNumber = inputQuoteNumber ?? this.generateQuoteNumber();
 
-    const quote = await this.quoteRepo.create({
-      ...rest,
-      contactId,
-      companyId: contact.companyId,
-      subtotalHt,
-      taxAmount,
-      totalTtc: subtotalHt + taxAmount,
-      status: "draft",
-      createdAt: now,
-      updatedAt: now,
-    });
+    try {
+      const quote = await this.quoteRepo.create({
+        ...rest,
+        quoteNumber,
+        contactId,
+        companyId: contact.companyId,
+        subtotalHt,
+        taxAmount,
+        totalTtc: subtotalHt + taxAmount,
+        status: "draft",
+        createdAt: now,
+        updatedAt: now,
+      });
 
-    const createdItems = await this.itemRepo.createMany(
-      items.map((i) => ({
-        description: i.description,
-        quantity: i.quantity,
-        unitPrice: i.unitPrice,
-        taxRate: i.taxRate,
-        lineTotal: i.quantity * i.unitPrice,
-        documentType: "quote" as const,
-        documentId: quote.id,
-      })),
-    );
+      await this.itemRepo.createMany(
+        items.map((i) => ({
+          description: i.description,
+          quantity: i.quantity,
+          unitPrice: i.unitPrice,
+          taxRate: i.taxRate,
+          lineTotal: i.quantity * i.unitPrice,
+          documentType: "quote" as const,
+          documentId: quote.id,
+        })),
+      );
 
-    sendSuccess(res, { ...quote, items: createdItems }, 201);
+      const quoteWithRelations = await this.quoteRepo.findDetail(quote.id);
+      const createdItems = await this.itemRepo.findByDocument("quote", quote.id);
+
+      sendSuccess(res, { ...quoteWithRelations, items: createdItems }, 201);
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : String(err);
+      if (msg.includes("UNIQUE constraint failed")) {
+        return sendError(res, "Ce numéro de devis existe déjà", 409);
+      }
+      return sendError(res, "Erreur lors de la création", 500);
+    }
+  }
+
+  private generateQuoteNumber(): string {
+    const id = crypto.randomUUID().slice(0, 8).toUpperCase();
+    return `DEV-${id}`;
   }
 
   // ── Lifecycle ──
