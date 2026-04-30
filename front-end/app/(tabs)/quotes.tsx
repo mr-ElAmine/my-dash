@@ -11,6 +11,7 @@ import { Quote } from '../../api/quotes';
 
 export default function QuotesScreen() {
   const router = useRouter();
+  // on récupère les devis et l'etat de l'application
   const { quotes, isLoading, isRefetching, refetch, error } = useGetQuotes();
   const { download, loading: downloadingId } = usePdfDownload();
   const { granted: hasPermission } = useStoragePermission();
@@ -36,6 +37,7 @@ export default function QuotesScreen() {
     }
   };
 
+  //on definit la fonction qui va appeler le hook de téléchargement du pdf 
   const handleDownload = (quote: Quote) => {
     download({
       fetchFn: getQuotePdf,
@@ -45,6 +47,8 @@ export default function QuotesScreen() {
     });
   };
 
+
+  // on définit la fonction du rendu de la card 
   const renderQuote = ({ item }: { item: Quote }) => (
     <Card className="mb-4 mx-4 border border-gray-100 shadow-sm">
       <Card.Body className="p-4">
@@ -100,6 +104,8 @@ export default function QuotesScreen() {
     </Card>
   );
 
+  // Affichage d'un écran spinner si les données sont en chargement 
+
   if (isLoading && !isRefetching) {
     return (
       <View className="flex-1 justify-center items-center bg-gray-50">
@@ -109,6 +115,7 @@ export default function QuotesScreen() {
     );
   }
 
+  // si la récupération des données échoue on met un message d'erreur
   if (error) {
     return (
       <View className="flex-1 justify-center items-center bg-gray-50 px-10">
