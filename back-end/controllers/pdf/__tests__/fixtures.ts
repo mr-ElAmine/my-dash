@@ -1,3 +1,4 @@
+// données de test figées — reproductibles d'un run à l'autre
 export const fakeQuote = {
   id: 1,
   quoteNumber: "DEV-2026-001" as const,
@@ -14,6 +15,7 @@ export const fakeQuote = {
   updatedAt: "2026-04-01",
 };
 
+// contactId null volontaire — teste le cas où la facture n'a pas de contact
 export const fakeInvoice = {
   id: 1,
   invoiceNumber: "FAC-2026-001" as const,

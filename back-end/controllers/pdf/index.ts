@@ -15,6 +15,7 @@ import { sender } from "../../config";
 import { idParam } from "./schema";
 
 export class PdfController {
+  // valeurs par défaut pour pouvoir injecter des mocks dans les tests
   constructor(
     private quoteRepo = new QuoteRepository(),
     private invoiceRepo = new InvoiceRepository(),

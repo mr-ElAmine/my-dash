@@ -1,5 +1,6 @@
 import { vi, type Mock } from "vitest";
 
+// mock d'Express : on simule res.status().json() etc. en chaînant les appels
 export interface MockResponse {
   status: Mock<(code: number) => MockResponse>;
   json: Mock<(body: unknown) => MockResponse>;
@@ -23,6 +24,7 @@ export function createMockResponse(): MockResponse {
   return res;
 }
 
+// req.params est le seul champ dont on a besoin dans nos contrôleurs
 export function createMockRequest(params: Record<string, string> = {}) {
   return { params };
 }

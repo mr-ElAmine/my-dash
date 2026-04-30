@@ -11,6 +11,7 @@ export type MockedPdfService = {
 
 export function createPdfServiceMock(): MockedPdfService {
   return {
+    // on renvoie un faux buffer au lieu de vraiment générer un PDF — les tests doivent être rapides
     generateQuote: vi.fn().mockResolvedValue(Buffer.from("fake-quote-pdf")),
     generateInvoice: vi.fn().mockResolvedValue(Buffer.from("fake-invoice-pdf")),
   };
