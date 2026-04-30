@@ -8,7 +8,7 @@ import {
   Platform,
 } from "react-native";
 
-import { useForm, useFieldArray, useWatch } from "react-hook-form";
+import { useForm, useFieldArray, useWatch, Controller } from "react-hook-form";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -80,17 +80,37 @@ export function QuoteForm({
             </Text>
             <View className="flex-row gap-4">
               <View className="flex-1">
-                <ControlledInput
-                  name="issueDate"
+                <Controller
                   control={control}
-                  label="Date d'émission"
+                  name="issueDate"
+                  render={({
+                    field: { value, onChange },
+                    fieldState: { error },
+                  }) => (
+                    <DatePickerField
+                      label="Date d'émission"
+                      value={value}
+                      onChange={onChange}
+                      error={error?.message}
+                    />
+                  )}
                 />
               </View>
               <View className="flex-1">
-                <ControlledInput
-                  name="validUntil"
+                <Controller
                   control={control}
-                  label="Valide jusqu'au"
+                  name="validUntil"
+                  render={({
+                    field: { value, onChange },
+                    fieldState: { error },
+                  }) => (
+                    <DatePickerField
+                      label="Valide jusqu'au"
+                      value={value}
+                      onChange={onChange}
+                      error={error?.message}
+                    />
+                  )}
                 />
               </View>
             </View>
@@ -207,7 +227,7 @@ export function QuoteForm({
               <Text className="text-gray-400">TVA</Text>
               <Text className="text-white font-bold">{tax.toFixed(2)} €</Text>
             </View>
-            <View className="h-[1px] bg-gray-700 w-full mb-4" />
+            <View className="h-px bg-gray-700 w-full mb-4" />
             <View className="flex-row justify-between items-center">
               <Text className="text-white text-lg font-bold">Total TTC</Text>
               <Text className="text-blue-400 text-2xl font-black">
