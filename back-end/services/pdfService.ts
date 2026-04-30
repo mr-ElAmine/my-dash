@@ -37,8 +37,6 @@ export class PdfService {
     });
   }
 
-  // --- Generic builder ---
-
   private buildDocument(data: PdfConfig, meta: DocumentMeta): Promise<Buffer> {
     return new Promise((resolve, reject) => {
       const doc = new PDFDocument({ size: "A4", margin: 50 });
@@ -58,8 +56,6 @@ export class PdfService {
       doc.end();
     });
   }
-
-  // --- Sections ---
 
   private renderHeader(doc: PdfDoc, meta: DocumentMeta) {
     doc.fontSize(20).text(meta.title, { align: "right" });

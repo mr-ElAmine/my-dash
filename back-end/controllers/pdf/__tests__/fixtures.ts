@@ -1,7 +1,3 @@
-/*
-Simule des données de test de la base de données
-*/
-
 export const fakeQuote = {
   id: 1,
   quoteNumber: "DEV-2026-001" as const,

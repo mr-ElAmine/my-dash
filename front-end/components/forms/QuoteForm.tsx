@@ -25,6 +25,7 @@ import {
 import { calculateQuoteTotals } from "../../services/quoteCalculations";
 
 import { ControlledInput } from "./ControlledInput";
+import { DatePickerField } from "./DatePickerField";
 import { ProspectPicker } from "./ProspectPicker";
 
 export function QuoteForm({
@@ -198,7 +199,9 @@ export function QuoteForm({
           <Surface className="p-6 rounded-3xl bg-gray-900 shadow-xl mb-6">
             <View className="flex-row justify-between mb-2">
               <Text className="text-gray-400">Total HT</Text>
-              <Text className="text-white font-bold">{subtotal.toFixed(2)} €</Text>
+              <Text className="text-white font-bold">
+                {subtotal.toFixed(2)} €
+              </Text>
             </View>
             <View className="flex-row justify-between mb-4">
               <Text className="text-gray-400">TVA</Text>

@@ -14,8 +14,6 @@ const dateDaysAgo = (n: number) =>
 const dateDaysFromNow = (n: number) =>
   new Date(Date.now() + n * 24 * 60 * 60 * 1000).toISOString().split("T")[0];
 
-// ── Utilisateur ──
-
 const userId = Number(
   db
     .insert(users)
@@ -31,8 +29,6 @@ const userId = Number(
     })
     .run().lastInsertRowid,
 );
-
-// ── Entreprises ──
 
 const companyIds = [
   db
@@ -106,8 +102,6 @@ const companyIds = [
     })
     .run().lastInsertRowid,
 ].map(Number);
-
-// ── Contacts ──
 
 const contactIds = [
   db
@@ -203,8 +197,6 @@ const contactIds = [
     .run().lastInsertRowid,
 ].map(Number);
 
-// ── Helpers ──
-
 type ItemSeed = Omit<NewItem, "documentType" | "documentId">;
 
 function insertQuoteItems(quoteId: number, quoteItems: ItemSeed[]) {
@@ -231,9 +223,6 @@ function insertInvoiceItems(invoiceId: number, invoiceItems: ItemSeed[]) {
     .run();
 }
 
-// ── Devis ──
-
-// DEV-2026-001 — accepté (Acme, Jean Martin)
 const q1Id = Number(
   db
     .insert(quotes)
@@ -277,7 +266,6 @@ insertQuoteItems(q1Id, [
   },
 ]);
 
-// DEV-2026-002 — envoyé (Gaston Berger, Pierre Durand)
 const q2Id = Number(
   db
     .insert(quotes)
@@ -321,7 +309,6 @@ insertQuoteItems(q2Id, [
   },
 ]);
 
-// DEV-2026-003 — envoyé (Solaris, Clara Moreau)
 const q3Id = Number(
   db
     .insert(quotes)
@@ -358,7 +345,6 @@ insertQuoteItems(q3Id, [
   },
 ]);
 
-// DEV-2026-004 — refusé (DesignPlus, Lucas Bernard)
 const q4Id = Number(
   db
     .insert(quotes)
@@ -395,7 +381,6 @@ insertQuoteItems(q4Id, [
   },
 ]);
 
-// DEV-2026-005 — expiré (Acme, Sophie Laurent)
 const q5Id = Number(
   db
     .insert(quotes)
@@ -425,7 +410,6 @@ insertQuoteItems(q5Id, [
   },
 ]);
 
-// DEV-2026-006 — brouillon (NordTech, Emma Petit)
 const q6Id = Number(
   db
     .insert(quotes)
@@ -462,7 +446,6 @@ insertQuoteItems(q6Id, [
   },
 ]);
 
-// DEV-2026-007 — accepté (NordTech, Hugo Roux)
 const q7Id = Number(
   db
     .insert(quotes)
@@ -506,9 +489,6 @@ insertQuoteItems(q7Id, [
   },
 ]);
 
-// ── Factures ──
-
-// FAC-2026-001 — à envoyer (issue du DEV-2026-001)
 const inv1Id = Number(
   db
     .insert(invoices)
@@ -553,7 +533,6 @@ insertInvoiceItems(inv1Id, [
   },
 ]);
 
-// FAC-2026-002 — payée
 const inv2Id = Number(
   db
     .insert(invoices)
@@ -592,7 +571,6 @@ insertInvoiceItems(inv2Id, [
   },
 ]);
 
-// FAC-2026-003 — envoyée (issue du DEV-2026-007)
 const inv3Id = Number(
   db
     .insert(invoices)
@@ -637,7 +615,6 @@ insertInvoiceItems(inv3Id, [
   },
 ]);
 
-// FAC-2026-004 — en retard
 const inv4Id = Number(
   db
     .insert(invoices)
@@ -675,7 +652,6 @@ insertInvoiceItems(inv4Id, [
   },
 ]);
 
-// FAC-2026-005 — annulée
 const inv5Id = Number(
   db
     .insert(invoices)

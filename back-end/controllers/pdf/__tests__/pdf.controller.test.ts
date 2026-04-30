@@ -1,12 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import type { Request, Response } from "express";
 
-/*
-Tests unitaires du PdfController
-*/
-
-//Imports réutilisables
-
 import {
   createMockResponse,
   createMockRequest,
@@ -36,8 +30,6 @@ import {
 import { PdfController } from "../index";
 import { PdfService } from "../../../services/pdfService";
 
-//Tests
-
 describe("PdfController", () => {
   let controller: PdfController;
   let res: MockResponse;
@@ -52,7 +44,6 @@ describe("PdfController", () => {
   beforeEach(() => {
     vi.clearAllMocks();
 
-    //Chaque factory crée une instance fraîche avec des vi.fn() vierges
     mockQuoteRepo = createQuoteRepositoryMock();
     mockInvoiceRepo = createInvoiceRepositoryMock();
     mockCompanyRepo = createCompanyRepositoryMock();
@@ -60,7 +51,6 @@ describe("PdfController", () => {
     mockItemRepo = createItemRepositoryMock();
     mockPdfService = createPdfServiceMock();
 
-    //Injection directe
     controller = new PdfController(
       mockQuoteRepo,
       mockInvoiceRepo,
@@ -73,10 +63,6 @@ describe("PdfController", () => {
     res = createMockResponse();
   });
 
-  /*
-  Test 1 Validation des entrées
-  Zod rejette un ID non numérique avant d'atteindre la base.
-  */
   it("doit renvoyer 400 si l'ID n'est pas un nombre valide", async () => {
     const req = createMockRequest({ id: "abc" });
 
@@ -90,14 +76,9 @@ describe("PdfController", () => {
       expect.objectContaining({ success: false, error: "ID invalide" }),
     );
 
-    //La db n'est jamais sollicitée
     expect(mockQuoteRepo.findById).not.toHaveBeenCalled();
   });
 
-  /*
-  Test 2 Ressource introuvable
-  Le devis n'existe pas en base alors 404, sans appeler le service PDF.
-  */
   it("doit renvoyer 404 si le devis n'existe pas en base", async () => {
     const req = createMockRequest({ id: "999" });
 
@@ -116,9 +97,6 @@ describe("PdfController", () => {
     expect(mockPdfService.generateQuote).not.toHaveBeenCalled();
   });
 
-  /*
-  Test 3 Devis complet avec entreprise, contact et lignes
-  */
   it("doit générer et envoyer le PDF du devis avec toutes les données", async () => {
     const req = createMockRequest({ id: "1" });
 
@@ -150,10 +128,6 @@ describe("PdfController", () => {
     expect(res.send).toHaveBeenCalledWith(expect.any(Buffer));
   });
 
-  /*
-  Test 4 Facture sans contact (contactId null)
-  Le contrôleur ne doit PAS appeler ContactRepository.
-  */
   it("doit générer le PDF de la facture sans appeler le ContactRepo", async () => {
     const req = createMockRequest({ id: "1" });
 

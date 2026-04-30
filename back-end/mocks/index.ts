@@ -1,10 +1,3 @@
-/**
- * Point d'entrée unique pour tous les mocks du projet.
- *
- * Usage :
- *   import { createMockResponse, MockedQuoteRepository } from "../../mocks";
- */
-
 export * from "./express";
 export * from "./quote.repository";
 export * from "./invoice.repository";

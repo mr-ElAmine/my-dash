@@ -16,12 +16,8 @@ const quoteController = new QuoteController();
 const invoiceController = new InvoiceController();
 const prospectController = new ProspectController();
 
-// ── Prospects ──
-
 app.get("/prospects", (req, res) => prospectController.list(req, res));
 app.get("/prospects/:id", (req, res) => prospectController.get(req, res));
-
-// ── Quotes ──
 
 app.get("/quotes", (req, res) => quoteController.list(req, res));
 app.get("/quotes/:id", (req, res) => quoteController.get(req, res));
@@ -37,8 +33,6 @@ app.patch("/quotes/:id/cancel", (req, res) =>
   quoteController.cancel(req, res),
 );
 
-// ── Invoices ──
-
 app.get("/invoices", (req, res) => invoiceController.list(req, res));
 app.get("/invoices/:id", (req, res) => invoiceController.get(req, res));
 app.patch("/invoices/:id/send", (req, res) =>
@@ -51,8 +45,6 @@ app.patch("/invoices/:id/cancel", (req, res) =>
 app.patch("/invoices/:id/mark-overdue", (req, res) =>
   invoiceController.markOverdue(req, res),
 );
-
-// ── PDF ──
 
 app.get("/quotes/:id/pdf", (req, res) =>
   pdfController.generateQuote(req, res),

@@ -25,8 +25,6 @@ export class InvoiceController {
     sendSuccess(res, { ...invoice, items });
   }
 
-  // ── Lifecycle ──
-
   async send(req: Request, res: Response) {
     const parsed = idParam.safeParse(req.params);
     if (!parsed.success) return sendError(res, "ID invalide", 400);

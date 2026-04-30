@@ -95,8 +95,6 @@ export class QuoteController {
     return `DEV-${id}`;
   }
 
-  // ── Lifecycle ──
-
   async send(req: Request, res: Response) {
     const parsed = idParam.safeParse(req.params);
     if (!parsed.success) return sendError(res, "ID invalide", 400);
