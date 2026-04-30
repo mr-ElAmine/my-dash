@@ -4,10 +4,8 @@ import { items } from "../entity/item";
 import type { NewItem } from "../entity/item";
 
 export class ItemRepository {
-  private db = db;
-
   async findByDocument(documentType: "quote" | "invoice", documentId: number) {
-    return this.db
+    return db
       .select()
       .from(items)
       .where(

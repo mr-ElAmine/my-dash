@@ -13,6 +13,7 @@ import { mapCompany, mapContact, mapItem } from "../utils";
 import { sender } from "../../config";
 import { idParam } from "./schema";
 
+//Contrôleur
 export class PdfController {
   constructor(
     private quoteRepo = new QuoteRepository(),

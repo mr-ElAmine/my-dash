@@ -11,7 +11,7 @@ export class InvoiceRepository {
   }
 
   async findById(id: number) {
-    return this.db.select().from(invoices).where(eq(invoices.id, id)).get();
+    return db.select().from(invoices).where(eq(invoices.id, id)).get();
   }
 
   async findList() {

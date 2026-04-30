@@ -11,7 +11,7 @@ export class QuoteRepository {
   }
 
   async findById(id: number) {
-    return this.db.select().from(quotes).where(eq(quotes.id, id)).get();
+    return db.select().from(quotes).where(eq(quotes.id, id)).get();
   }
 
   async findList() {
