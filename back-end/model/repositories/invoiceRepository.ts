@@ -1,14 +1,12 @@
-import { desc } from "drizzle-orm";
-import { eq } from "drizzle-orm";
+import { desc, eq } from "drizzle-orm";
+
 import { db } from "../entity/db";
 import { invoices } from "../entity/invoice";
 import type { NewInvoice } from "../entity/invoice";
 
 export class InvoiceRepository {
-  private db = db;
-
   async findAll() {
-    return this.db.select().from(invoices).all();
+    return db.select().from(invoices).all();
   }
 
   async findById(id: number) {
@@ -16,7 +14,7 @@ export class InvoiceRepository {
   }
 
   async findList() {
-    return this.db.query.invoices.findMany({
+    return db.query.invoices.findMany({
       with: {
         company: { columns: { id: true, name: true } },
         contact: { columns: { id: true, firstName: true, lastName: true } },
@@ -26,7 +24,7 @@ export class InvoiceRepository {
   }
 
   async findDetail(id: number) {
-    return this.db.query.invoices.findFirst({
+    return db.query.invoices.findFirst({
       where: eq(invoices.id, id),
       with: {
         company: true,
@@ -37,7 +35,7 @@ export class InvoiceRepository {
   }
 
   async create(data: NewInvoice) {
-    return this.db.insert(invoices).values(data).returning().get();
+    return db.insert(invoices).values(data).returning().get();
   }
 
   async updateStatus(
@@ -45,7 +43,7 @@ export class InvoiceRepository {
     status: "to_send" | "sent" | "paid" | "overdue" | "cancelled",
     extra?: { paidAt?: string },
   ) {
-    return this.db
+    return db
       .update(invoices)
       .set({ status, updatedAt: new Date().toISOString(), ...extra })
       .where(eq(invoices.id, id))

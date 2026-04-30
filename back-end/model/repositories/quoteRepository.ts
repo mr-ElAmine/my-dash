@@ -1,14 +1,12 @@
-import { desc } from "drizzle-orm";
-import { eq } from "drizzle-orm";
+import { desc, eq } from "drizzle-orm";
+
 import { db } from "../entity/db";
 import { quotes } from "../entity/quote";
 import type { NewQuote } from "../entity/quote";
 
 export class QuoteRepository {
-  private db = db;
-
   async findAll() {
-    return this.db.select().from(quotes).all();
+    return db.select().from(quotes).all();
   }
 
   async findById(id: number) {
@@ -16,7 +14,7 @@ export class QuoteRepository {
   }
 
   async findList() {
-    return this.db.query.quotes.findMany({
+    return db.query.quotes.findMany({
       with: {
         company: { columns: { id: true, name: true } },
         contact: { columns: { id: true, firstName: true, lastName: true } },
@@ -26,7 +24,7 @@ export class QuoteRepository {
   }
 
   async findDetail(id: number) {
-    return this.db.query.quotes.findFirst({
+    return db.query.quotes.findFirst({
       where: eq(quotes.id, id),
       with: {
         company: true,
@@ -36,14 +34,14 @@ export class QuoteRepository {
   }
 
   async create(data: NewQuote) {
-    return this.db.insert(quotes).values(data).returning().get();
+    return db.insert(quotes).values(data).returning().get();
   }
 
   async updateStatus(
     id: number,
     status: "draft" | "sent" | "accepted" | "refused" | "expired",
   ) {
-    return this.db
+    return db
       .update(quotes)
       .set({ status, updatedAt: new Date().toISOString() })
       .where(eq(quotes.id, id))

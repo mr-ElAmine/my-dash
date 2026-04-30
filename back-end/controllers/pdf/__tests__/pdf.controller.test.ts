@@ -67,8 +67,8 @@ describe("PdfController", () => {
       mockCompanyRepo,
       mockContactRepo,
       mockItemRepo,
-      mockPdfService as unknown as PdfService, // 
-    ); 
+      mockPdfService as unknown as PdfService,
+    );
 
     res = createMockResponse();
   });

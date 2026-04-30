@@ -1,4 +1,5 @@
 import { vi, type Mock } from "vitest";
+
 import { CompanyRepository } from "../model/repositories/companyRepository";
 
 type Repo = InstanceType<typeof CompanyRepository>;

@@ -1,4 +1,5 @@
 import { eq } from "drizzle-orm";
+
 import { db } from "../entity/db";
 import { contacts } from "../entity/contact";
 
@@ -8,7 +9,7 @@ export class ContactRepository {
   }
 
   async findList() {
-    return this.db.query.contacts.findMany({
+    return db.query.contacts.findMany({
       with: {
         company: { columns: { id: true, name: true } },
       },
@@ -16,7 +17,7 @@ export class ContactRepository {
   }
 
   async findDetail(id: number) {
-    return this.db.query.contacts.findFirst({
+    return db.query.contacts.findFirst({
       where: eq(contacts.id, id),
       with: {
         company: true,

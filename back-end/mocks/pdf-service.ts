@@ -1,11 +1,12 @@
 import { vi, type Mock } from "vitest";
+
 import { PdfService } from "../services/pdfService";
 
-type Service = InstanceType<typeof PdfService>;
+type Svc = InstanceType<typeof PdfService>;
 
 export type MockedPdfService = {
-  generateQuote: Mock<Service["generateQuote"]>;
-  generateInvoice: Mock<Service["generateInvoice"]>;
+  generateQuote: Mock<Svc["generateQuote"]>;
+  generateInvoice: Mock<Svc["generateInvoice"]>;
 };
 
 export function createPdfServiceMock(): MockedPdfService {
