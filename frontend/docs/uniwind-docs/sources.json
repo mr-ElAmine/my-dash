@@ -1,0 +1,482 @@
+{
+  "generated_at_utc": "2026-05-03T16:14:56.882987+00:00",
+  "source_index": "https://docs.uniwind.dev/llms.txt",
+  "source_full": "https://docs.uniwind.dev/llms-full.txt",
+  "pages_count": 66,
+  "pages": [
+    {
+      "title": "CSS Parser",
+      "description": "Write custom CSS classes alongside Tailwind in your React Native app",
+      "source_url": "https://docs.uniwind.dev/api/css",
+      "source_markdown_url": "https://docs.uniwind.dev/api/css.md",
+      "local_path": "api/css-parser.md"
+    },
+    {
+      "title": "CSS Functions",
+      "description": "Use CSS functions to create dynamic styles",
+      "source_url": "https://docs.uniwind.dev/api/css-functions",
+      "source_markdown_url": "https://docs.uniwind.dev/api/css-functions.md",
+      "local_path": "api/css-functions.md"
+    },
+    {
+      "title": "Data Selectors",
+      "description": "Style components based on prop values using data-[...] variants",
+      "source_url": "https://docs.uniwind.dev/api/data-selectors",
+      "source_markdown_url": "https://docs.uniwind.dev/api/data-selectors.md",
+      "local_path": "api/data-selectors.md"
+    },
+    {
+      "title": "metro.config.js",
+      "description": "Configure Uniwind in your Metro bundler for React Native",
+      "source_url": "https://docs.uniwind.dev/api/metro-config",
+      "source_markdown_url": "https://docs.uniwind.dev/api/metro-config.md",
+      "local_path": "api/metro-config-js.md"
+    },
+    {
+      "title": "Platform Selectors",
+      "description": "Apply platform-specific styles with built-in selectors for iOS, Android, Web, and TV platforms",
+      "source_url": "https://docs.uniwind.dev/api/platform-select",
+      "source_markdown_url": "https://docs.uniwind.dev/api/platform-select.md",
+      "local_path": "api/platform-selectors.md"
+    },
+    {
+      "title": "Scoped Themes",
+      "description": "Apply a different theme to a subtree with `ScopedTheme`",
+      "source_url": "https://docs.uniwind.dev/api/scoped-themes",
+      "source_markdown_url": "https://docs.uniwind.dev/api/scoped-themes.md",
+      "local_path": "api/scoped-themes.md"
+    },
+    {
+      "title": "useCSSVariable",
+      "description": "Access CSS variable values in JavaScript with automatic theme updates",
+      "source_url": "https://docs.uniwind.dev/api/use-css-variable",
+      "source_markdown_url": "https://docs.uniwind.dev/api/use-css-variable.md",
+      "local_path": "api/usecssvariable.md"
+    },
+    {
+      "title": "useResolveClassNames",
+      "description": "Convert Tailwind class names to React Native style objects at runtime",
+      "source_url": "https://docs.uniwind.dev/api/use-resolve-class-names",
+      "source_markdown_url": "https://docs.uniwind.dev/api/use-resolve-class-names.md",
+      "local_path": "api/useresolveclassnames.md"
+    },
+    {
+      "title": "useUniwind",
+      "description": "React hook for accessing the current theme and reacting to theme changes",
+      "source_url": "https://docs.uniwind.dev/api/use-uniwind",
+      "source_markdown_url": "https://docs.uniwind.dev/api/use-uniwind.md",
+      "local_path": "api/useuniwind.md"
+    },
+    {
+      "title": "withUniwind",
+      "description": "Add `className` support to any React Native component",
+      "source_url": "https://docs.uniwind.dev/api/with-uniwind",
+      "source_markdown_url": "https://docs.uniwind.dev/api/with-uniwind.md",
+      "local_path": "api/withuniwind.md"
+    },
+    {
+      "title": "Responsive Breakpoints",
+      "description": "Use Tailwind's responsive breakpoints to build adaptive layouts in React Native",
+      "source_url": "https://docs.uniwind.dev/breakpoints",
+      "source_markdown_url": "https://docs.uniwind.dev/breakpoints.md",
+      "local_path": "tailwind/responsive-breakpoints.md"
+    },
+    {
+      "title": "Supported classNames",
+      "description": "Comprehensive guide to Tailwind class names supported in Uniwind",
+      "source_url": "https://docs.uniwind.dev/class-names",
+      "source_markdown_url": "https://docs.uniwind.dev/class-names.md",
+      "local_path": "tailwind/supported-classnames.md"
+    },
+    {
+      "title": "ActivityIndicator",
+      "description": "Learn how to use ActivityIndicator with Uniwind className props",
+      "source_url": "https://docs.uniwind.dev/components/activity-indicator",
+      "source_markdown_url": "https://docs.uniwind.dev/components/activity-indicator.md",
+      "local_path": "components/activityindicator.md"
+    },
+    {
+      "title": "Button",
+      "description": "Learn how to use Button with Uniwind className props",
+      "source_url": "https://docs.uniwind.dev/components/button",
+      "source_markdown_url": "https://docs.uniwind.dev/components/button.md",
+      "local_path": "components/button.md"
+    },
+    {
+      "title": "FlatList",
+      "description": "Learn how to use FlatList with Uniwind className props",
+      "source_url": "https://docs.uniwind.dev/components/flat-list",
+      "source_markdown_url": "https://docs.uniwind.dev/components/flat-list.md",
+      "local_path": "components/flatlist.md"
+    },
+    {
+      "title": "Image",
+      "description": "Learn how to use Image with Uniwind className props",
+      "source_url": "https://docs.uniwind.dev/components/image",
+      "source_markdown_url": "https://docs.uniwind.dev/components/image.md",
+      "local_path": "components/image.md"
+    },
+    {
+      "title": "ImageBackground",
+      "description": "Learn how to use ImageBackground with Uniwind className props",
+      "source_url": "https://docs.uniwind.dev/components/image-background",
+      "source_markdown_url": "https://docs.uniwind.dev/components/image-background.md",
+      "local_path": "components/imagebackground.md"
+    },
+    {
+      "title": "InputAccessoryView",
+      "description": "Learn how to use InputAccessoryView with Uniwind className props",
+      "source_url": "https://docs.uniwind.dev/components/input-accessory-view",
+      "source_markdown_url": "https://docs.uniwind.dev/components/input-accessory-view.md",
+      "local_path": "components/inputaccessoryview.md"
+    },
+    {
+      "title": "KeyboardAvoidingView",
+      "description": "Learn how to use KeyboardAvoidingView with Uniwind className props",
+      "source_url": "https://docs.uniwind.dev/components/keyboard-avoiding-view",
+      "source_markdown_url": "https://docs.uniwind.dev/components/keyboard-avoiding-view.md",
+      "local_path": "components/keyboardavoidingview.md"
+    },
+    {
+      "title": "Modal",
+      "description": "Learn how to use Modal with Uniwind className props",
+      "source_url": "https://docs.uniwind.dev/components/modal",
+      "source_markdown_url": "https://docs.uniwind.dev/components/modal.md",
+      "local_path": "components/modal.md"
+    },
+    {
+      "title": "Third-Party Components",
+      "description": "Learn how to use Uniwind with third-party component libraries",
+      "source_url": "https://docs.uniwind.dev/components/other-components",
+      "source_markdown_url": "https://docs.uniwind.dev/components/other-components.md",
+      "local_path": "components/third-party-components.md"
+    },
+    {
+      "title": "Pressable",
+      "description": "Learn how to use Pressable with Uniwind className props",
+      "source_url": "https://docs.uniwind.dev/components/pressable",
+      "source_markdown_url": "https://docs.uniwind.dev/components/pressable.md",
+      "local_path": "components/pressable.md"
+    },
+    {
+      "title": "RefreshControl",
+      "description": "Learn how to use RefreshControl with Uniwind className props",
+      "source_url": "https://docs.uniwind.dev/components/refresh-control",
+      "source_markdown_url": "https://docs.uniwind.dev/components/refresh-control.md",
+      "local_path": "components/refreshcontrol.md"
+    },
+    {
+      "title": "SafeAreaView",
+      "description": "Learn how to use SafeAreaView with Uniwind className props",
+      "source_url": "https://docs.uniwind.dev/components/safe-area-view",
+      "source_markdown_url": "https://docs.uniwind.dev/components/safe-area-view.md",
+      "local_path": "components/safeareaview.md"
+    },
+    {
+      "title": "ScrollView",
+      "description": "Learn how to use ScrollView with Uniwind className props",
+      "source_url": "https://docs.uniwind.dev/components/scroll-view",
+      "source_markdown_url": "https://docs.uniwind.dev/components/scroll-view.md",
+      "local_path": "components/scrollview.md"
+    },
+    {
+      "title": "SectionList",
+      "description": "Learn how to use SectionList with Uniwind className props",
+      "source_url": "https://docs.uniwind.dev/components/section-list",
+      "source_markdown_url": "https://docs.uniwind.dev/components/section-list.md",
+      "local_path": "components/sectionlist.md"
+    },
+    {
+      "title": "Switch",
+      "description": "Learn how to use Switch with Uniwind className props",
+      "source_url": "https://docs.uniwind.dev/components/switch",
+      "source_markdown_url": "https://docs.uniwind.dev/components/switch.md",
+      "local_path": "components/switch.md"
+    },
+    {
+      "title": "Text",
+      "description": "Learn how to use Text with Uniwind className props",
+      "source_url": "https://docs.uniwind.dev/components/text",
+      "source_markdown_url": "https://docs.uniwind.dev/components/text.md",
+      "local_path": "components/text.md"
+    },
+    {
+      "title": "TextInput",
+      "description": "Learn how to use TextInput with Uniwind className props",
+      "source_url": "https://docs.uniwind.dev/components/text-input",
+      "source_markdown_url": "https://docs.uniwind.dev/components/text-input.md",
+      "local_path": "components/textinput.md"
+    },
+    {
+      "title": "TouchableHighlight",
+      "description": "Learn how to use TouchableHighlight with Uniwind className props",
+      "source_url": "https://docs.uniwind.dev/components/touchable-highlight",
+      "source_markdown_url": "https://docs.uniwind.dev/components/touchable-highlight.md",
+      "local_path": "components/touchablehighlight.md"
+    },
+    {
+      "title": "TouchableNativeFeedback",
+      "description": "Learn how to use TouchableNativeFeedback with Uniwind className props",
+      "source_url": "https://docs.uniwind.dev/components/touchable-native-feedback",
+      "source_markdown_url": "https://docs.uniwind.dev/components/touchable-native-feedback.md",
+      "local_path": "components/touchablenativefeedback.md"
+    },
+    {
+      "title": "TouchableOpacity",
+      "description": "Learn how to use TouchableOpacity with Uniwind className props",
+      "source_url": "https://docs.uniwind.dev/components/touchable-opacity",
+      "source_markdown_url": "https://docs.uniwind.dev/components/touchable-opacity.md",
+      "local_path": "components/touchableopacity.md"
+    },
+    {
+      "title": "TouchableWithoutFeedback",
+      "description": "Learn how to use TouchableWithoutFeedback with Uniwind className props",
+      "source_url": "https://docs.uniwind.dev/components/touchable-without-feedback",
+      "source_markdown_url": "https://docs.uniwind.dev/components/touchable-without-feedback.md",
+      "local_path": "components/touchablewithoutfeedback.md"
+    },
+    {
+      "title": "View",
+      "description": "Learn how to use View with Uniwind className props",
+      "source_url": "https://docs.uniwind.dev/components/view",
+      "source_markdown_url": "https://docs.uniwind.dev/components/view.md",
+      "local_path": "components/view.md"
+    },
+    {
+      "title": "VirtualizedList",
+      "description": "Learn how to use VirtualizedList with Uniwind className props",
+      "source_url": "https://docs.uniwind.dev/components/virtualized-list",
+      "source_markdown_url": "https://docs.uniwind.dev/components/virtualized-list.md",
+      "local_path": "components/virtualizedlist.md"
+    },
+    {
+      "title": "Troubleshooting",
+      "description": "Common issues and solutions for Uniwind — the React Native Tailwind CSS library. Setup errors, theming questions, className merging, migration from NativeWind, and performance tips.",
+      "source_url": "https://docs.uniwind.dev/faq",
+      "source_markdown_url": "https://docs.uniwind.dev/faq.md",
+      "local_path": "guides/troubleshooting.md"
+    },
+    {
+      "title": "Introduction",
+      "description": "Uniwind is the fastest Tailwind CSS library for React Native — 2x faster than NativeWind, full Tailwind v4 support, works with Expo, iOS, Android, tvOS and Web.",
+      "source_url": "https://docs.uniwind.dev/index",
+      "source_markdown_url": "https://docs.uniwind.dev/index.md",
+      "local_path": "getting-started/introduction.md"
+    },
+    {
+      "title": "Migrate to Pro",
+      "description": "Upgrade from Uniwind Free to Uniwind Pro",
+      "source_url": "https://docs.uniwind.dev/migrate-to-pro",
+      "source_markdown_url": "https://docs.uniwind.dev/migrate-to-pro.md",
+      "local_path": "pro/migrate-to-pro.md"
+    },
+    {
+      "title": "Migrate from NativeWind to Uniwind",
+      "description": "Drop-in migration from NativeWind to Uniwind in under 5 minutes. No Babel preset, full Tailwind v4, 2x faster — with a step-by-step guide and a one-shot AI skill.",
+      "source_url": "https://docs.uniwind.dev/migration-from-nativewind",
+      "source_markdown_url": "https://docs.uniwind.dev/migration-from-nativewind.md",
+      "local_path": "guides/migrate-from-nativewind-to-uniwind.md"
+    },
+    {
+      "title": "Monorepos",
+      "description": "Configure Uniwind to work seamlessly in monorepo setups",
+      "source_url": "https://docs.uniwind.dev/monorepos",
+      "source_markdown_url": "https://docs.uniwind.dev/monorepos.md",
+      "local_path": "guides/monorepos.md"
+    },
+    {
+      "title": "Pro Version",
+      "description": "Uniwind Pro: C++ engine, zero re-renders, native theme transitions, Reanimated 4 support, and priority access to the core team",
+      "source_url": "https://docs.uniwind.dev/pro-version",
+      "source_markdown_url": "https://docs.uniwind.dev/pro-version.md",
+      "local_path": "pro/pro-version.md"
+    },
+    {
+      "title": "Changelog",
+      "description": "Latest updates and improvements to Uniwind Pro",
+      "source_url": "https://docs.uniwind.dev/pro/changelog",
+      "source_markdown_url": "https://docs.uniwind.dev/pro/changelog.md",
+      "local_path": "pro/changelog.md"
+    },
+    {
+      "title": "CI/CD License",
+      "description": "Automated pipeline access for continuous integration",
+      "source_url": "https://docs.uniwind.dev/pro/cicd-license",
+      "source_markdown_url": "https://docs.uniwind.dev/pro/cicd-license.md",
+      "local_path": "pro/ci-cd-license.md"
+    },
+    {
+      "title": "Compatibility",
+      "description": "Supported React Native, Expo, and dependency versions for Uniwind Pro",
+      "source_url": "https://docs.uniwind.dev/pro/compatibility",
+      "source_markdown_url": "https://docs.uniwind.dev/pro/compatibility.md",
+      "local_path": "pro/compatibility.md"
+    },
+    {
+      "title": "Get Your License",
+      "description": "Purchase and manage your Uniwind Pro license",
+      "source_url": "https://docs.uniwind.dev/pro/get-license",
+      "source_markdown_url": "https://docs.uniwind.dev/pro/get-license.md",
+      "local_path": "pro/get-your-license.md"
+    },
+    {
+      "title": "Group Variants",
+      "description": "Style descendants based on a parent's interaction state using Tailwind group variants",
+      "source_url": "https://docs.uniwind.dev/pro/group-variants",
+      "source_markdown_url": "https://docs.uniwind.dev/pro/group-variants.md",
+      "local_path": "pro/group-variants.md"
+    },
+    {
+      "title": "Individual License",
+      "description": "Personal license for individual developers",
+      "source_url": "https://docs.uniwind.dev/pro/individual-license",
+      "source_markdown_url": "https://docs.uniwind.dev/pro/individual-license.md",
+      "local_path": "pro/individual-license.md"
+    },
+    {
+      "title": "Installation",
+      "description": "Install Uniwind Pro in your React Native project",
+      "source_url": "https://docs.uniwind.dev/pro/installation",
+      "source_markdown_url": "https://docs.uniwind.dev/pro/installation.md",
+      "local_path": "pro/installation.md"
+    },
+    {
+      "title": "Native Insets",
+      "description": "Safe area insets injected automatically from C++ with zero setup",
+      "source_url": "https://docs.uniwind.dev/pro/native-insets",
+      "source_markdown_url": "https://docs.uniwind.dev/pro/native-insets.md",
+      "local_path": "pro/native-insets.md"
+    },
+    {
+      "title": "Reanimated Animations",
+      "description": "Use Tailwind classNames to trigger high-performance native animations",
+      "source_url": "https://docs.uniwind.dev/pro/reanimated-animations",
+      "source_markdown_url": "https://docs.uniwind.dev/pro/reanimated-animations.md",
+      "local_path": "pro/reanimated-animations.md"
+    },
+    {
+      "title": "Shadow Tree Diagnostics",
+      "description": "Debug and monitor Shadow Tree updates in real-time",
+      "source_url": "https://docs.uniwind.dev/pro/shadow-tree-diagnostics",
+      "source_markdown_url": "https://docs.uniwind.dev/pro/shadow-tree-diagnostics.md",
+      "local_path": "pro/shadow-tree-diagnostics.md"
+    },
+    {
+      "title": "Shadow Tree Updates",
+      "description": "Update any React Native style prop with zero re-renders",
+      "source_url": "https://docs.uniwind.dev/pro/shadow-tree-updates",
+      "source_markdown_url": "https://docs.uniwind.dev/pro/shadow-tree-updates.md",
+      "local_path": "pro/shadow-tree-updates.md"
+    },
+    {
+      "title": "Team License",
+      "description": "Project-based license for team collaboration",
+      "source_url": "https://docs.uniwind.dev/pro/team-license",
+      "source_markdown_url": "https://docs.uniwind.dev/pro/team-license.md",
+      "local_path": "pro/team-license.md"
+    },
+    {
+      "title": "Theme Transitions",
+      "description": "Smooth animated theme transitions powered by native snapshots",
+      "source_url": "https://docs.uniwind.dev/pro/theme-transitions",
+      "source_markdown_url": "https://docs.uniwind.dev/pro/theme-transitions.md",
+      "local_path": "pro/theme-transitions.md"
+    },
+    {
+      "title": "Quickstart",
+      "description": "Set up Tailwind CSS in React Native with Uniwind in under 5 minutes. Works with Expo, bare React Native, and Vite. No Babel preset required.",
+      "source_url": "https://docs.uniwind.dev/quickstart",
+      "source_markdown_url": "https://docs.uniwind.dev/quickstart.md",
+      "local_path": "getting-started/quickstart.md"
+    },
+    {
+      "title": "Skills",
+      "description": "Reusable AI capabilities for Uniwind workflows",
+      "source_url": "https://docs.uniwind.dev/skills",
+      "source_markdown_url": "https://docs.uniwind.dev/skills.md",
+      "local_path": "getting-started/skills.md"
+    },
+    {
+      "title": "Tailwind Basics",
+      "description": "Learn to use Tailwind CSS classes in React Native with Uniwind. Covers utility classes, responsive breakpoints, dark mode, CSS variables, and platform selectors.",
+      "source_url": "https://docs.uniwind.dev/tailwind-basics",
+      "source_markdown_url": "https://docs.uniwind.dev/tailwind-basics.md",
+      "local_path": "tailwind/tailwind-basics.md"
+    },
+    {
+      "title": "Theming Basics",
+      "description": "Set up themes in your React Native app with Uniwind. CSS-first theming with @theme, dark mode, custom colors, and dynamic theme switching — no ThemeProvider needed.",
+      "source_url": "https://docs.uniwind.dev/theming/basics",
+      "source_markdown_url": "https://docs.uniwind.dev/theming/basics.md",
+      "local_path": "theming/theming-basics.md"
+    },
+    {
+      "title": "Custom Tailwind Themes",
+      "description": "Go beyond light and dark. Create unlimited custom themes in React Native using Tailwind CSS variables — branding, seasonal modes, accessibility themes and more.",
+      "source_url": "https://docs.uniwind.dev/theming/custom-themes",
+      "source_markdown_url": "https://docs.uniwind.dev/theming/custom-themes.md",
+      "local_path": "theming/custom-tailwind-themes.md"
+    },
+    {
+      "title": "Custom Tailwind Utilities",
+      "description": "Add, extend, and override Tailwind utility classes using @utility and @theme in global.css",
+      "source_url": "https://docs.uniwind.dev/theming/custom-utilities",
+      "source_markdown_url": "https://docs.uniwind.dev/theming/custom-utilities.md",
+      "local_path": "theming/custom-tailwind-utilities.md"
+    },
+    {
+      "title": "Global CSS",
+      "description": "Configure global styles, themes, and CSS variables in your Uniwind app",
+      "source_url": "https://docs.uniwind.dev/theming/global-css",
+      "source_markdown_url": "https://docs.uniwind.dev/theming/global-css.md",
+      "local_path": "theming/global-css.md"
+    },
+    {
+      "title": "Style Based on Themes",
+      "description": "Learn different approaches to create theme-aware styles in Uniwind",
+      "source_url": "https://docs.uniwind.dev/theming/style-based-on-themes",
+      "source_markdown_url": "https://docs.uniwind.dev/theming/style-based-on-themes.md",
+      "local_path": "theming/style-based-on-themes.md"
+    },
+    {
+      "title": "updateCSSVariables",
+      "description": "Dynamically update CSS variables at runtime for specific themes",
+      "source_url": "https://docs.uniwind.dev/theming/update-css-variables",
+      "source_markdown_url": "https://docs.uniwind.dev/theming/update-css-variables.md",
+      "local_path": "theming/updatecssvariables.md"
+    },
+    {
+      "title": "llms-full.txt",
+      "description": "",
+      "source_url": "https://docs.uniwind.dev/llms-full.txt",
+      "source_markdown_url": null,
+      "local_path": "guides/llms-full-txt.md"
+    },
+    {
+      "title": "llms.txt",
+      "description": "",
+      "source_url": "https://docs.uniwind.dev/llms.txt",
+      "source_markdown_url": null,
+      "local_path": "guides/llms-txt.md"
+    },
+    {
+      "title": "MCP Server",
+      "description": "",
+      "source_url": "https://docs.uniwind.dev/mcp",
+      "source_markdown_url": null,
+      "local_path": "guides/mcp-server.md"
+    }
+  ],
+  "optional_links": [
+    {
+      "title": "Github",
+      "url": "https://github.com/uni-stack/uniwind",
+      "description": ""
+    },
+    {
+      "title": "Hire us!",
+      "url": "https://codemask.com/estimate?utm_source=uniwind.dev",
+      "description": ""
+    }
+  ]
+}
