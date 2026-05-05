@@ -19,7 +19,7 @@ export default function QuotesScreen() {
   const getStatusColor = (status: Quote['status']) => {
     switch (status) {
       case 'accepted': return 'success' as const;
-      case 'sent': return 'primary' as const;
+      case 'sent': return 'accent' as const;
       case 'refused': return 'danger' as const;
       case 'expired': return 'warning' as const;
       default: return 'default' as const;
@@ -61,7 +61,7 @@ export default function QuotesScreen() {
               {item.company.name}
             </Text>
           </View>
-          <Chip color={getStatusColor(item.status)} variant="flat" size="sm">
+          <Chip color={getStatusColor(item.status)} variant="soft" size="sm">
             <Chip.Label>{getStatusLabel(item.status)}</Chip.Label>
           </Chip>
         </View>
@@ -87,7 +87,7 @@ export default function QuotesScreen() {
             <Button 
               variant="light"
               className="bg-blue-50 h-12 w-12 rounded-full items-center justify-center p-0"
-              onPress={() => router.push(`/(tabs)/quotes/${item.id}`)}
+              onPress={() => router.push(`/quotes/${item.id}`)}
             >
               <Ionicons name="eye-outline" size={22} color="#3b82f6" />
             </Button>

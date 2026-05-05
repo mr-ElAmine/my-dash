@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getProspects, Prospect } from "../api/prospects";
+import { getProspects } from "../api/prospects";
 
 export const useGetProspects = () => {
   const query = useQuery({

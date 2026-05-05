@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Platform } from "react-native";
 import { File, Paths } from "expo-file-system";
 import * as Sharing from "expo-sharing";
-import { addToast } from "heroui-native";
+import { useToast } from "heroui-native";
 
 interface DownloadOptions {
   fetchFn: (id: number) => Promise<ArrayBuffer>;
@@ -13,6 +13,7 @@ interface DownloadOptions {
 
 export function usePdfDownload() {
   const [loading, setLoading] = useState(false);
+  const { toast } = useToast();
 
   const download = async ({
     fetchFn,
@@ -34,10 +35,10 @@ export function usePdfDownload() {
             filename,
           );
           file.copy(downloadsFile);
-          addToast({
-            title: "PDF sauvegardé",
+          toast.show({
+            variant: "success",
+            label: "PDF sauvegardé",
             description: `${filename} enregistré dans Téléchargements`,
-            color: "success",
           });
           return;
         } catch {
@@ -53,10 +54,10 @@ export function usePdfDownload() {
       }
     } catch (error) {
       console.error(error);
-      addToast({
-        title: "Erreur",
+      toast.show({
+        variant: "danger",
+        label: "Erreur",
         description: "Impossible de générer le PDF",
-        color: "danger",
       });
     } finally {
       setLoading(false);

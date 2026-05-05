@@ -157,12 +157,12 @@ export default function Dashboard() {
                   </Text>
                   <Chip
                     size="sm"
-                    variant="flat"
+                    variant="soft"
                     color={
                       activity.status === "accepté"
                         ? "success"
                         : activity.status === "envoyée"
-                          ? "primary"
+                          ? "accent"
                           : "default"
                     }
                   >

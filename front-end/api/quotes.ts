@@ -22,7 +22,7 @@ const CreateQuoteItemSchema = z.object({
 
 // Schéma global pour la création d'un devis
 export const CreateQuoteSchema = z.object({
-  contactId: numStr.pipe(z.number().int().positive("Le prospect est requis")),
+  contactId: z.number().int().positive("Le prospect est requis"),
   issueDate: z.string().min(1, "La date d'émission est requise"),
   validUntil: z.string().min(1, "La date de validité est requise"),
   items: z.array(CreateQuoteItemSchema).min(1, "Au moins un article est requis"),
@@ -50,10 +50,22 @@ export const QuoteSchema = z.object({
   contact: z.object({ id: z.number(), firstName: z.string(), lastName: z.string() }).nullable().optional(),
 });
 
+export const QuoteDetailSchema = QuoteSchema.extend({
+  items: z.array(z.object({
+    id: z.number(),
+    description: z.string(),
+    quantity: z.number(),
+    unitPrice: z.number(),
+    taxRate: z.number(),
+    lineTotal: z.number(),
+  })),
+});
+
 // on génère les types TS a partir des schémas Zod
 export type CreateQuoteFormValues = z.input<typeof CreateQuoteSchema>;
 export type CreateQuoteInput = z.output<typeof CreateQuoteSchema>;
 export type Quote = z.infer<typeof QuoteSchema>;
+export type QuoteDetail = z.infer<typeof QuoteDetailSchema>;
 
 // Récupération de tous les devis
 export const getQuotes = async (): Promise<Quote[]> => {
@@ -65,6 +77,24 @@ export const getQuotes = async (): Promise<Quote[]> => {
 // Créer un nouveau devis
 export const createQuote = async (data: CreateQuoteInput): Promise<Quote> => {
   const response = await api.post("/quotes", data);
-  // On valide l'objet reçu du back end avec le schéma zod pour être sur qu'on a reçu ce qu'on attend
   return QuoteSchema.parse(response.data.data);
 };
+
+// Récupérer un devis par ID
+export const getQuote = async (id: number): Promise<QuoteDetail> => {
+  const response = await api.get(`/quotes/${id}`);
+  return QuoteDetailSchema.parse(response.data.data);
+};
+
+// Actions sur un devis
+export const sendQuote = (id: number) =>
+  api.patch(`/quotes/${id}/send`).then((r) => r.data.data);
+
+export const acceptQuote = (id: number) =>
+  api.patch(`/quotes/${id}/accept`).then((r) => r.data.data);
+
+export const refuseQuote = (id: number) =>
+  api.patch(`/quotes/${id}/refuse`).then((r) => r.data.data);
+
+export const cancelQuote = (id: number) =>
+  api.patch(`/quotes/${id}/cancel`).then((r) => r.data.data);

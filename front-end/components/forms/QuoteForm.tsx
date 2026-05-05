@@ -40,7 +40,7 @@ export function QuoteForm({
   >({
     resolver: zodResolver(CreateQuoteSchema),
     defaultValues: {
-      contactId: "",
+      contactId: undefined,
       issueDate: new Date().toISOString().split("T")[0],
       validUntil: new Date(Date.now() + 30 * 86400000)
         .toISOString()

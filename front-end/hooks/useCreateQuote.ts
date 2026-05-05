@@ -9,10 +9,7 @@ export const useCreateQuote = () => {
   return useMutation({
     mutationFn: (data: CreateQuoteInput) => createQuote(data),
     onSuccess: () => {
-      // Invalide le cache 'quotes' pour forcer le rafraîchissement de la liste
       queryClient.invalidateQueries({ queryKey: ['quotes'] });
-      // On retourne à la liste
-      router.back();
     },
     onError: (error) => {
       console.error("Erreur création devis:", error);

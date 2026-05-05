@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, FlatList, RefreshControl } from 'react-native';
 import { Card, Chip, Button, Spinner } from 'heroui-native';
 import { Ionicons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
 import { useGetInvoices } from '../../hooks/useGetInvoices';
 import { usePdfDownload } from '../../hooks/usePdfDownload';
 import { useStoragePermission } from '../../hooks/useStoragePermission';
@@ -9,6 +10,7 @@ import { getInvoicePdf } from '../../api/pdf';
 import { Invoice } from '../../api/invoices';
 
 export default function InvoicesScreen() {
+  const router = useRouter();
   const { invoices, isLoading, isRefetching, refetch, error } = useGetInvoices();
   const { download, loading: downloading } = usePdfDownload();
   const { granted: hasPermission } = useStoragePermission();
@@ -16,7 +18,7 @@ export default function InvoicesScreen() {
   const getStatusColor = (status: Invoice['status']) => {
     switch (status) {
       case 'paid': return 'success' as const;
-      case 'sent': return 'primary' as const;
+      case 'sent': return 'accent' as const;
       case 'overdue': return 'danger' as const;
       case 'cancelled': return 'default' as const;
       case 'to_send': return 'warning' as const;
@@ -56,7 +58,7 @@ export default function InvoicesScreen() {
               {item.company.name}
             </Text>
           </View>
-          <Chip color={getStatusColor(item.status)} variant="flat" size="sm">
+          <Chip color={getStatusColor(item.status)} variant="soft" size="sm">
             <Chip.Label>{getStatusLabel(item.status)}</Chip.Label>
           </Chip>
         </View>
@@ -84,12 +86,22 @@ export default function InvoicesScreen() {
             </Text>
           </View>
 
-          <Button
+          <View className="flex-row gap-2">
+            <Button
+              variant="light"
+              className="bg-blue-50 h-12 w-12 rounded-full items-center justify-center p-0"
+              onPress={() => router.push(`/invoices/${item.id}`)}
+            >
+              <Ionicons name="eye-outline" size={22} color="#3b82f6" />
+            </Button>
+
+            <Button
             className="bg-gray-900 h-12 w-12 rounded-full items-center justify-center p-0"
             onPress={() => handleDownload(item)}
           >
             <Ionicons name="download-outline" size={22} color="white" />
-          </Button>
+            </Button>
+          </View>
         </View>
       </Card.Body>
     </Card>
