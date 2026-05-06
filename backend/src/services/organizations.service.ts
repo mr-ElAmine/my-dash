@@ -49,7 +49,7 @@ export interface IOrganizationsService {
     page: number;
     limit: number;
     offset: number;
-    status?: string;
+    status?: "active" | "archived";
   }): Promise<PaginatedOrganizations>;
   getById(input: {
     organizationId: string;
@@ -105,16 +105,17 @@ export class OrganizationsService implements IOrganizationsService {
     page,
     limit,
     offset,
+    status,
   }: {
     userId: string;
     page: number;
     limit: number;
     offset: number;
-    status?: string;
+    status?: "active" | "archived";
   }): Promise<PaginatedOrganizations> {
     const [data, total] = await Promise.all([
-      this.orgsRepo.findActiveByUserId(userId, offset, limit),
-      this.orgsRepo.countActiveByUserId(userId),
+      this.orgsRepo.findByUserId(userId, offset, limit, status),
+      this.orgsRepo.countByUserId(userId, status),
     ]);
     return { data, pagination: { page, limit, total } };
   }

@@ -47,6 +47,10 @@ export const DoughnutChart = ({ data, config = {}, style }: Props) => {
 
   const animationProgress = useSharedValue(0);
 
+  const sliceAnimatedProps = useAnimatedProps(() => ({
+    opacity: animationProgress.value,
+  }));
+
   const handleLayout = (event: LayoutChangeEvent) => {
     const { width: w } = event.nativeEvent.layout;
     if (w > 0) setContainerWidth(w);
@@ -107,10 +111,6 @@ export const DoughnutChart = ({ data, config = {}, style }: Props) => {
           const labelY = centerY + labelRadius * Math.sin(labelAngle);
 
           currentAngle = endAngle;
-
-          const sliceAnimatedProps = useAnimatedProps(() => ({
-            opacity: animationProgress.value,
-          }));
 
           return (
             <G key={`slice-${index}`}>

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useQueryClient } from "@tanstack/react-query";
 import type {
   IOrganizationService,
   CreateOrgData,
@@ -9,6 +10,7 @@ import type { Organization } from "../types/organization";
 export function useCreateOrganization(
   service: IOrganizationService = new OrganizationService(),
 ) {
+  const qc = useQueryClient();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -17,6 +19,7 @@ export function useCreateOrganization(
     setError(null);
     try {
       const org = await service.create(data);
+      await qc.invalidateQueries({ queryKey: ["organizations"] });
       return org;
     } catch {
       setError("Erreur lors de la creation de l'organisation");

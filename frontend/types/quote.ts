@@ -6,6 +6,33 @@ export type QuoteStatus =
   | "expired"
   | "cancelled";
 
+export interface ClientSnapshot {
+  name: string;
+  billingStreet: string | null;
+  billingCity: string | null;
+  billingZipCode: string | null;
+  billingCountry: string | null;
+  contactFirstName?: string;
+  contactLastName?: string;
+  contactEmail?: string | null;
+  contactPhone?: string | null;
+  contactJobTitle?: string | null;
+}
+
+export interface IssuerSnapshot {
+  name: string;
+  legalName: string | null;
+  siren: string | null;
+  siret: string | null;
+  vatNumber: string | null;
+  billingStreet: string | null;
+  billingCity: string | null;
+  billingZipCode: string | null;
+  billingCountry: string | null;
+  email: string | null;
+  phone: string | null;
+}
+
 export interface Quote {
   id: string;
   organizationId: string;
@@ -16,8 +43,8 @@ export interface Quote {
   companyId: string;
   contactId: string | null;
   createdBy: string;
-  clientSnapshot: Record<string, unknown> | null;
-  issuerSnapshot: Record<string, unknown> | null;
+  clientSnapshot: ClientSnapshot | null;
+  issuerSnapshot: IssuerSnapshot | null;
   subtotalHtCents: number;
   taxAmountCents: number;
   totalTtcCents: number;

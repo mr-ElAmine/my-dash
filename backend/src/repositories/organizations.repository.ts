@@ -7,13 +7,19 @@ import {
 } from "../db/schema/organizations.schema";
 import { organizationMembers } from "../db/schema/organization-members.schema";
 
+type OrganizationStatus = "active" | "archived";
+
 export interface IOrganizationsRepository {
-  findActiveByUserId(
+  findByUserId(
     userId: string,
     offset: number,
     limit: number,
+    status?: OrganizationStatus,
   ): Promise<Organization[]>;
-  countActiveByUserId(userId: string): Promise<number>;
+  countByUserId(
+    userId: string,
+    status?: OrganizationStatus,
+  ): Promise<number>;
   findById(id: string): Promise<Organization | undefined>;
   create(data: NewOrganization): Promise<Organization>;
   update(
@@ -27,11 +33,20 @@ export interface IOrganizationsRepository {
 export class OrganizationsRepository implements IOrganizationsRepository {
   constructor(private database: typeof db = db) {}
 
-  async findActiveByUserId(
+  async findByUserId(
     userId: string,
     offset: number,
     limit: number,
+    status?: OrganizationStatus,
   ): Promise<Organization[]> {
+    const conditions = [
+      eq(organizationMembers.userId, userId),
+      eq(organizationMembers.status, "active"),
+    ];
+    if (status) {
+      conditions.push(eq(organizations.status, status));
+    }
+
     return this.database
       .select({
         id: organizations.id,
@@ -58,16 +73,25 @@ export class OrganizationsRepository implements IOrganizationsRepository {
         organizationMembers,
         and(
           eq(organizationMembers.organizationId, organizations.id),
-          eq(organizationMembers.userId, userId),
-          eq(organizationMembers.status, "active"),
+          ...conditions,
         ),
       )
-      .where(eq(organizations.status, "active"))
       .offset(offset)
       .limit(limit);
   }
 
-  async countActiveByUserId(userId: string): Promise<number> {
+  async countByUserId(
+    userId: string,
+    status?: OrganizationStatus,
+  ): Promise<number> {
+    const conditions = [
+      eq(organizationMembers.userId, userId),
+      eq(organizationMembers.status, "active"),
+    ];
+    if (status) {
+      conditions.push(eq(organizations.status, status));
+    }
+
     const rows = await this.database
       .select({ count: organizations.id })
       .from(organizations)
@@ -75,11 +99,9 @@ export class OrganizationsRepository implements IOrganizationsRepository {
         organizationMembers,
         and(
           eq(organizationMembers.organizationId, organizations.id),
-          eq(organizationMembers.userId, userId),
-          eq(organizationMembers.status, "active"),
+          ...conditions,
         ),
-      )
-      .where(eq(organizations.status, "active"));
+      );
     return rows.length;
   }
 

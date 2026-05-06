@@ -1,12 +1,9 @@
-import { useState } from "react";
-import { View, Text, Pressable } from "react-native";
-import { Surface, Button } from "heroui-native";
-import { useRouter } from "expo-router";
+import { View, Text } from "react-native";
+import { Avatar, Menu, Separator } from "heroui-native";
+import { Ionicons } from "@expo/vector-icons";
 import { useAuthStore } from "../../stores/auth.store";
 
 export function UserMenu() {
-  const [open, setOpen] = useState(false);
-  const router = useRouter();
   const user = useAuthStore((s) => s.user);
   const logout = useAuthStore((s) => s.logout);
 
@@ -15,52 +12,48 @@ export function UserMenu() {
   const initials = (user.firstName[0] + user.lastName[0]).toUpperCase();
 
   return (
-    <View className="relative">
-      <Pressable
-        onPress={() => setOpen((v) => !v)}
-        className="w-10 h-10 rounded-full bg-blue-500 items-center justify-center"
-      >
-        <Text className="text-white font-bold text-sm">{initials}</Text>
-      </Pressable>
+    <Menu>
+      <Menu.Trigger>
+        <Avatar size="sm" color="accent">
+          <Avatar.Fallback>{initials}</Avatar.Fallback>
+        </Avatar>
+      </Menu.Trigger>
 
-      {open && (
-        <>
-          <Pressable
-            onPress={() => setOpen(false)}
-            className="absolute inset-0"
-            accessibilityRole="button"
-          />
-          <Surface className="absolute top-12 right-0 min-w-[180px] rounded-lg p-1 z-50 shadow-md">
-            <View className="p-2.5 gap-0.5">
+      <Menu.Portal>
+        <Menu.Overlay />
+        <Menu.Content
+          presentation="popover"
+          placement="bottom"
+          align="end"
+          width={220}
+        >
+          {/* User info */}
+          <View className="flex-row items-center gap-3 px-2.5 pb-2 pt-1">
+            <Avatar size="sm" color="accent">
+              <Avatar.Fallback>{initials}</Avatar.Fallback>
+            </Avatar>
+            <View className="flex-1">
               <Text className="font-semibold text-sm text-foreground">
                 {user.firstName} {user.lastName}
               </Text>
-              <Text className="text-xs text-muted">{user.email}</Text>
+              <Text
+                className="text-xs text-muted-foreground mt-0.5"
+                numberOfLines={1}
+              >
+                {user.email}
+              </Text>
             </View>
-            <View className="h-px bg-border" />
-            <Button
-              variant="ghost"
-              className="justify-start"
-              onPress={() => {
-                setOpen(false);
-                router.push("/organizations");
-              }}
-            >
-              <Button.Label>Organisations</Button.Label>
-            </Button>
-            <Button
-              variant="ghost"
-              className="justify-start"
-              onPress={() => {
-                setOpen(false);
-                logout();
-              }}
-            >
-              <Button.Label>Se deconnecter</Button.Label>
-            </Button>
-          </Surface>
-        </>
-      )}
-    </View>
+          </View>
+
+          <Separator className="mx-2 my-1 opacity-75" />
+
+          {/* Logout */}
+          <Menu.Item variant="danger" onPress={() => logout()}>
+            <Ionicons name="log-out-outline" size={18} color="#ef4444" />
+            <Menu.ItemTitle>Se déconnecter</Menu.ItemTitle>
+          </Menu.Item>
+        </Menu.Content>
+      </Menu.Portal>
+    </Menu>
   );
 }

@@ -130,6 +130,17 @@ export class PaymentsService implements IPaymentsService {
       throw new AppError("Payment already cancelled", 400, "PAYMENT_ALREADY_CANCELLED");
     }
 
+    const invoice = await this.invoicesRepo.findById(payment.invoiceId);
+    if (!invoice) {
+      throw new AppError("Invoice not found", 404, "INVOICE_NOT_FOUND");
+    }
+    if (invoice.status === "paid") {
+      throw new AppError("Cannot cancel payment on a paid invoice", 400, "INVOICE_ALREADY_PAID");
+    }
+    if (invoice.status === "cancelled") {
+      throw new AppError("Cannot cancel payment on a cancelled invoice", 400, "INVOICE_CANCELLED");
+    }
+
     const cancelled = await this.paymentsRepo.update(payment.id, {
       status: "cancelled",
       cancelledAt: new Date(),

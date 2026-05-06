@@ -25,14 +25,14 @@ describe("OrganizationsService", () => {
   describe("list", () => {
     it("should return paginated organizations for a user", async () => {
       const org = createOrganization();
-      vi.mocked(orgsRepo.findActiveByUserId).mockResolvedValue([org]);
-      vi.mocked(orgsRepo.countActiveByUserId).mockResolvedValue(1);
+      vi.mocked(orgsRepo.findByUserId).mockResolvedValue([org]);
+      vi.mocked(orgsRepo.countByUserId).mockResolvedValue(1);
 
       const result = await service.list({ userId: "user_1", page: 1, limit: 20, offset: 0 });
 
       expect(result.data).toHaveLength(1);
       expect(result.pagination.total).toBe(1);
-      expect(orgsRepo.findActiveByUserId).toHaveBeenCalledWith("user_1", 0, 20);
+      expect(orgsRepo.findByUserId).toHaveBeenCalledWith("user_1", 0, 20, undefined);
     });
   });
 

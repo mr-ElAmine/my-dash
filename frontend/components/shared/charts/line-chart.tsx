@@ -121,7 +121,9 @@ export const LineChart = ({ data, config = {}, style }: Props) => {
   const chartHeight = height - padding * 2;
 
   const points = data.map((point, index) => ({
-    x: leftPadding + (index / (data.length - 1)) * innerChartWidth,
+    x: data.length === 1
+      ? leftPadding + innerChartWidth / 2
+      : leftPadding + (index / (data.length - 1)) * innerChartWidth,
     y: padding + ((maxValue - point.y) / valueRange) * chartHeight,
   }));
 

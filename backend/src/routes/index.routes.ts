@@ -10,6 +10,7 @@ import paymentsRoutes from "./payments.routes";
 import notesRoutes from "./notes.routes";
 import contactsRoutes from "./contacts.routes";
 import companiesRoutes from "./companies.routes";
+import dashboardRoutes from "./dashboard.routes";
 
 const router = Router();
 
@@ -24,5 +25,6 @@ router.use("/", paymentsRoutes);
 router.use("/", notesRoutes);
 router.use("/", contactsRoutes);
 router.use("/", companiesRoutes);
+router.use("/", dashboardRoutes);
 
 export default router;

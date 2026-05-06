@@ -3,12 +3,12 @@ import type { IOrganizationsRepository } from "../../../src/repositories/organiz
 
 export function createOrganizationsRepositoryMock(): IOrganizationsRepository {
   return {
-    findActiveByUserId: vi.fn(),
+    findByUserId: vi.fn(),
     findById: vi.fn(),
     create: vi.fn(),
     update: vi.fn(),
     archive: vi.fn(),
     restore: vi.fn(),
-    countActiveByUserId: vi.fn(),
+    countByUserId: vi.fn(),
   };
 }

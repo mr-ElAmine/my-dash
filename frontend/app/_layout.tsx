@@ -2,10 +2,11 @@ import "../global.css";
 import { Slot, Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { HeroUINativeProvider } from "heroui-native";
+import { HeroUINativeProvider, ToastProvider } from "heroui-native";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { AuthProvider } from "../providers/auth-provider";
+import { OrganizationProvider } from "../providers/organization-provider";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -22,7 +23,9 @@ export default function RootLayout() {
       <GestureHandlerRootView style={{ flex: 1 }}>
         <QueryClientProvider client={queryClient}>
           <HeroUINativeProvider>
+          <ToastProvider>
             <AuthProvider>
+              <OrganizationProvider>
               <Stack>
                 <Stack.Screen
                   name="(private)"
@@ -34,7 +37,9 @@ export default function RootLayout() {
                 />
               </Stack>
               <StatusBar style="auto" />
+              </OrganizationProvider>
             </AuthProvider>
+          </ToastProvider>
           </HeroUINativeProvider>
         </QueryClientProvider>
       </GestureHandlerRootView>

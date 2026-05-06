@@ -1,11 +1,13 @@
 import { View, Text, ScrollView } from "react-native";
-import { Button, Input, Separator, Spinner } from "heroui-native";
+import { Button, Spinner, Input } from "heroui-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { useForm, Controller } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useCreateOrganization } from "../../hooks/use-create-organization";
+import { useCreateOrganization } from "../../../hooks/use-create-organization";
+import { Field } from "../../../components/shared/form/field";
+import { SectionDivider } from "../../../components/shared/form/section-divider";
 
 const orgSchema = z.object({
   name: z.string().min(1, "Le nom est requis"),
@@ -23,24 +25,6 @@ const orgSchema = z.object({
 });
 
 type OrgForm = z.infer<typeof orgSchema>;
-
-function Field({
-  label,
-  error,
-  children,
-}: {
-  label: string;
-  error?: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <View className="gap-4">
-      <Text className="text-sm font-medium text-foreground">{label}</Text>
-      {children}
-      {error && <Text className="text-xs text-danger">{error}</Text>}
-    </View>
-  );
-}
 
 export default function OrganizationCreateScreen() {
   const router = useRouter();
@@ -72,19 +56,20 @@ export default function OrganizationCreateScreen() {
   async function onSubmit(data: OrgForm) {
     const result = await create(data);
     if (result) {
-      router.back();
+      router.push("/organizations");
     }
   }
 
   return (
     <ScrollView className="bg-background">
       <View className="gap-5 p-5 pb-10">
+        {/* Header */}
         <View className="flex-row items-center gap-3">
           <Button
             size="sm"
             variant="ghost"
             isIconOnly
-            onPress={() => router.back()}
+            onPress={() => router.push("/organizations")}
           >
             <Ionicons name="arrow-back" size={22} className="text-foreground" />
           </Button>
@@ -98,14 +83,11 @@ export default function OrganizationCreateScreen() {
           </View>
         </View>
 
-        <Separator />
+        <SectionDivider icon="business" label="Informations" />
 
+        {/* Legal info */}
         <View style={{ gap: 14 }}>
-          <Text className="text-base font-semibold text-foreground">
-            Informations
-          </Text>
-
-          <Field label="Nom *" error={errors.name?.message}>
+          <Field label="Nom" error={errors.name?.message} isRequired>
             <Controller
               control={control}
               name="name"
@@ -189,13 +171,10 @@ export default function OrganizationCreateScreen() {
           </Field>
         </View>
 
-        <Separator />
+        <SectionDivider icon="location" label="Adresse de facturation" />
 
+        {/* Address */}
         <View style={{ gap: 14 }}>
-          <Text className="text-base font-semibold text-foreground">
-            Adresse de facturation
-          </Text>
-
           <Field label="Rue" error={errors.billingStreet?.message}>
             <Controller
               control={control}
@@ -265,13 +244,10 @@ export default function OrganizationCreateScreen() {
           </Field>
         </View>
 
-        <Separator />
+        <SectionDivider icon="call" label="Contact" />
 
+        {/* Contact */}
         <View style={{ gap: 14 }}>
-          <Text className="text-base font-semibold text-foreground">
-            Contact
-          </Text>
-
           <Field label="Email" error={errors.email?.message}>
             <Controller
               control={control}
@@ -322,8 +298,6 @@ export default function OrganizationCreateScreen() {
             />
           </Field>
         </View>
-
-        <Separator />
 
         {error && <Text className="text-sm text-danger">{error}</Text>}
 
