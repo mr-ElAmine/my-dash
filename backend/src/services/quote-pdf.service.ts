@@ -5,8 +5,9 @@ import { formatCents } from "../utils/money";
 import {
   createDocument,
   drawHeader,
-  drawAddressBlock,
+  drawAddressBlocks,
   drawMetaLine,
+  drawSeparator,
   drawTable,
   drawTotals,
   toBuffer,
@@ -20,35 +21,38 @@ export class QuotePdfService implements IQuotePdfService {
   async generate(quote: Quote, items: QuoteItem[]): Promise<Buffer> {
     const doc = createDocument();
 
-    drawHeader(doc, "DEVIS");
-
     const issuer = (quote.issuerSnapshot ?? {}) as Partial<IssuerSnapshot>;
     const client = (quote.clientSnapshot ?? {}) as Partial<ClientSnapshot>;
 
-    doc.moveDown(0.5);
+    // Header with number
+    drawHeader(doc, "DEVIS", quote.quoteNumber);
 
-    const savedY = doc.y;
-    drawAddressBlock(doc, "Émetteur", {
-      name: issuer.name ?? "",
-      street: issuer.billingStreet,
-      zipCode: issuer.billingZipCode,
-      city: issuer.billingCity,
-      country: issuer.billingCountry,
-      email: issuer.email,
-      phone: issuer.phone,
-    });
+    // Address blocks — side by side, dynamic height
+    drawAddressBlocks(
+      doc,
+      "Émetteur",
+      {
+        name: issuer.name ?? "",
+        street: issuer.billingStreet,
+        zipCode: issuer.billingZipCode,
+        city: issuer.billingCity,
+        country: issuer.billingCountry,
+        email: issuer.email,
+        phone: issuer.phone,
+      },
+      "Client",
+      {
+        name: client.name ?? "",
+        street: client.billingStreet,
+        zipCode: client.billingZipCode,
+        city: client.billingCity,
+        country: client.billingCountry,
+      },
+    );
 
-    doc.y = savedY;
-    drawAddressBlock(doc, "Client", {
-      name: client.name ?? "",
-      street: client.billingStreet,
-      zipCode: client.billingZipCode,
-      city: client.billingCity,
-      country: client.billingCountry,
-    });
+    drawSeparator(doc);
 
-    doc.moveDown(0.5);
-
+    // Meta info
     drawMetaLine(doc, "Numéro :", quote.quoteNumber);
     drawMetaLine(doc, "Date d'émission :", quote.issueDate);
     drawMetaLine(doc, "Valide jusqu'au :", quote.validUntil);
@@ -59,12 +63,13 @@ export class QuotePdfService implements IQuotePdfService {
 
     doc.moveDown(1);
 
+    // Table
     const cols = [
       { header: "Description", width: 220 },
-      { header: "Qté", width: 50, align: "right" as const },
-      { header: "Prix unit. HT", width: 90, align: "right" as const },
-      { header: "TVA %", width: 55, align: "right" as const },
-      { header: "Total TTC", width: 85, align: "right" as const },
+      { header: "Qté", width: 45, align: "right" as const },
+      { header: "Prix unit. HT", width: 85, align: "right" as const },
+      { header: "TVA %", width: 50, align: "right" as const },
+      { header: "Total TTC", width: 80, align: "right" as const },
     ];
 
     const rows = items.map((item) => [
