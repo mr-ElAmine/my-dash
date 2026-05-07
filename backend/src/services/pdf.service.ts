@@ -1,43 +1,137 @@
 import PDFDocument from "pdfkit";
 
+const PAGE_WIDTH = 595.28;
+const MARGIN = 50;
+const CONTENT_WIDTH = PAGE_WIDTH - MARGIN * 2;
+const HALF_WIDTH = CONTENT_WIDTH / 2 - 8;
+
 export function createDocument(): PDFKit.PDFDocument {
-  return new PDFDocument({ size: "A4", margins: { top: 50, bottom: 50, left: 50, right: 50 } });
+  return new PDFDocument({
+    size: "A4",
+    margins: { top: MARGIN, bottom: MARGIN, left: MARGIN, right: MARGIN },
+  });
 }
 
-export function drawHeader(doc: PDFKit.PDFDocument, title: string): void {
-  doc.fontSize(20).font("Helvetica-Bold").text(title, { align: "left" });
-  doc.moveDown(0.5);
+export function drawHeader(doc: PDFKit.PDFDocument, title: string, number: string): void {
+  const y = doc.y;
+
+  // Title banner
+  doc.rect(MARGIN, y, CONTENT_WIDTH, 40).fill("#2c3e50");
+  doc.fontSize(20).font("Helvetica-Bold").fillColor("#fff")
+    .text(title, MARGIN + 16, y + 10, { width: CONTENT_WIDTH / 2 });
+
+  doc.fontSize(14).font("Helvetica-Bold").fillColor("#fff")
+    .text(number, MARGIN, y + 12, { width: CONTENT_WIDTH - 16, align: "right" });
+
+  doc.fillColor("#000");
+  doc.y = y + 52;
+  doc.x = MARGIN;
 }
 
-export function drawAddressBlock(
+export interface AddressInfo {
+  name: string;
+  street?: string | null;
+  zipCode?: string | null;
+  city?: string | null;
+  country?: string | null;
+  email?: string | null;
+  phone?: string | null;
+}
+
+function measureBlockHeight(doc: PDFKit.PDFDocument, label: string, address: AddressInfo): number {
+  const lines: string[] = [];
+  lines.push(address.name);
+  if (address.street) lines.push(address.street);
+  if (address.zipCode && address.city) lines.push(`${address.zipCode} ${address.city}`);
+  if (address.country) lines.push(address.country);
+  if (address.email) lines.push(address.email);
+  if (address.phone) lines.push(address.phone);
+
+  const labelTextH = doc.fontSize(8).font("Helvetica-Bold").heightOfString(label.toUpperCase(), { width: HALF_WIDTH });
+  doc.fontSize(9).font("Helvetica");
+  let bodyH = 0;
+  for (const line of lines) {
+    bodyH += doc.heightOfString(line, { width: HALF_WIDTH });
+  }
+  return labelTextH + 4 + bodyH;
+}
+
+export function drawAddressBlocks(
+  doc: PDFKit.PDFDocument,
+  issuerLabel: string,
+  issuer: AddressInfo,
+  clientLabel: string,
+  client: AddressInfo,
+): void {
+  const startY = doc.y;
+  const leftX = MARGIN;
+  const rightX = MARGIN + HALF_WIDTH + 16;
+
+  // Measure both blocks to find the tallest
+  const leftH = measureBlockHeight(doc, issuerLabel, issuer);
+  const rightH = measureBlockHeight(doc, clientLabel, client);
+  const blockMaxH = Math.max(leftH, rightH);
+
+  // Draw issuer (left)
+  drawSingleAddress(doc, issuerLabel, issuer, leftX, startY);
+  // Draw client (right)
+  drawSingleAddress(doc, clientLabel, client, rightX, startY);
+
+  // Advance Y past the tallest block
+  doc.y = startY + blockMaxH + 12;
+  doc.x = MARGIN;
+}
+
+function drawSingleAddress(
   doc: PDFKit.PDFDocument,
   label: string,
-  address: {
-    name: string;
-    street?: string | null;
-    zipCode?: string | null;
-    city?: string | null;
-    country?: string | null;
-    email?: string | null;
-    phone?: string | null;
-  },
+  address: AddressInfo,
+  x: number,
+  y: number,
 ): void {
-  doc.fontSize(9).font("Helvetica-Bold").fillColor("#666").text(label.toUpperCase());
-  doc.font("Helvetica").fillColor("#000").fontSize(10);
-  doc.text(address.name);
-  if (address.street) doc.text(address.street);
-  if (address.zipCode && address.city) {
-    doc.text(`${address.zipCode} ${address.city}`);
+  const w = HALF_WIDTH;
+
+  doc.fontSize(8).font("Helvetica-Bold").fillColor("#999")
+    .text(label.toUpperCase(), x, y, { width: w });
+
+  let cy = y + 14;
+
+  doc.fontSize(10).font("Helvetica-Bold").fillColor("#000")
+    .text(address.name, x, cy, { width: w });
+  cy = doc.y + 2;
+
+  doc.fontSize(9).font("Helvetica").fillColor("#333");
+  if (address.street) {
+    doc.text(address.street, x, cy, { width: w });
+    cy = doc.y + 1;
   }
-  if (address.country) doc.text(address.country);
-  if (address.email) doc.text(address.email);
-  if (address.phone) doc.text(address.phone);
-  doc.moveDown(1);
+  if (address.zipCode && address.city) {
+    doc.text(`${address.zipCode} ${address.city}`, x, cy, { width: w });
+    cy = doc.y + 1;
+  }
+  if (address.country) {
+    doc.text(address.country, x, cy, { width: w });
+    cy = doc.y + 1;
+  }
+  if (address.email) {
+    doc.text(address.email, x, cy, { width: w });
+    cy = doc.y + 1;
+  }
+  if (address.phone) {
+    doc.text(address.phone, x, cy, { width: w });
+  }
 }
 
 export function drawMetaLine(doc: PDFKit.PDFDocument, label: string, value: string): void {
-  doc.fontSize(10).font("Helvetica-Bold").text(label, { continued: true });
-  doc.font("Helvetica").text(` ${value}`);
+  doc.fontSize(10).font("Helvetica-Bold").fillColor("#666").text(label, { continued: true });
+  doc.fillColor("#000").font("Helvetica").text(` ${value}`);
+}
+
+export function drawSeparator(doc: PDFKit.PDFDocument): void {
+  const y = doc.y;
+  doc.moveTo(MARGIN, y).lineTo(MARGIN + CONTENT_WIDTH, y)
+    .strokeColor("#ddd").lineWidth(0.5).stroke();
+  doc.y = y + 8;
 }
 
 export interface TableCol {
@@ -51,42 +145,58 @@ export function drawTable(
   cols: TableCol[],
   rows: string[][],
 ): void {
-  const startX = doc.x;
-  const rowHeight = 22;
-  const headerHeight = 26;
+  const startX = MARGIN;
+  const tableWidth = cols.reduce((s, c) => s + c.width, 0);
+  const headerHeight = 28;
+  const cellPadX = 6;
+  const cellPadY = 5;
   let y = doc.y;
 
-  doc.rect(startX, y, cols.reduce((s, c) => s + c.width, 0), headerHeight)
-    .fill("#2c3e50");
+  // Header
+  doc.rect(startX, y, tableWidth, headerHeight).fill("#2c3e50");
 
   let x = startX;
   for (const col of cols) {
     doc.fontSize(9).font("Helvetica-Bold").fillColor("#fff")
-      .text(col.header, x + 6, y + 7, { width: col.width - 12, align: col.align ?? "left" });
+      .text(col.header, x + cellPadX, y + 8, {
+        width: col.width - cellPadX * 2,
+        align: col.align ?? "left",
+      });
     x += col.width;
   }
-
   y += headerHeight;
 
+  // Rows
   for (let i = 0; i < rows.length; i++) {
-    if (y + rowHeight > 750) {
+    const row = rows[i];
+
+    // Dynamic row height
+    let maxH = 16;
+    for (let j = 0; j < cols.length && j < row.length; j++) {
+      doc.fontSize(9).font("Helvetica");
+      const h = doc.heightOfString(row[j], { width: cols[j].width - cellPadX * 2 });
+      if (h + cellPadY * 2 > maxH) maxH = h + cellPadY * 2;
+    }
+
+    if (y + maxH > 770) {
       doc.addPage();
-      y = 50;
+      y = MARGIN;
     }
 
     if (i % 2 === 0) {
-      doc.rect(startX, y, cols.reduce((s, c) => s + c.width, 0), rowHeight)
-        .fill("#f5f5f5");
+      doc.rect(startX, y, tableWidth, maxH).fill("#f7f7f7");
     }
 
     x = startX;
-    const row = rows[i];
     for (let j = 0; j < cols.length && j < row.length; j++) {
       doc.fontSize(9).font("Helvetica").fillColor("#000")
-        .text(row[j], x + 6, y + 6, { width: cols[j].width - 12, align: cols[j].align ?? "left" });
+        .text(row[j], x + cellPadX, y + cellPadY, {
+          width: cols[j].width - cellPadX * 2,
+          align: cols[j].align ?? "left",
+        });
       x += cols[j].width;
     }
-    y += rowHeight;
+    y += maxH;
   }
 
   doc.y = y;
@@ -101,27 +211,31 @@ export function drawTotals(
   totalTtc: string,
   taxRateLabel?: string,
 ): void {
-  doc.moveDown(0.5);
-  const labelX = 340;
-  const valueX = 440;
-  const y = doc.y;
+  doc.moveDown(0.8);
 
-  doc.fontSize(10).font("Helvetica");
-  doc.text("Sous-total HT", labelX, y, { width: 90, align: "left" });
-  doc.text(`${subtotalHt} EUR`, valueX, y, { width: 100, align: "right" });
+  const tableWidth = 480;
+  const labelX = MARGIN + tableWidth - 195;
+  const valueX = MARGIN + tableWidth - 90;
+  let y = doc.y;
 
+  doc.fontSize(10).font("Helvetica").fillColor("#333");
+  doc.text("Sous-total HT", labelX, y, { width: 100 });
+  doc.text(`${subtotalHt} EUR`, valueX, y, { width: 90, align: "right" });
+
+  y += 18;
   const taxLabel = taxRateLabel ? `TVA (${taxRateLabel})` : "TVA";
-  doc.text(taxLabel, labelX, y + 18, { width: 90, align: "left" });
-  doc.text(`${taxAmount} EUR`, valueX, y + 18, { width: 100, align: "right" });
+  doc.text(taxLabel, labelX, y, { width: 100 });
+  doc.text(`${taxAmount} EUR`, valueX, y, { width: 90, align: "right" });
 
-  doc.moveDown(2);
-  const totalY = doc.y;
-  doc.rect(labelX - 10, totalY - 4, 210, 24).fill("#2c3e50");
-  doc.fontSize(12).font("Helvetica-Bold").fillColor("#fff");
-  doc.text("Total TTC", labelX, totalY, { width: 90, align: "left" });
-  doc.text(`${totalTtc} EUR`, valueX, totalY, { width: 100, align: "right" });
+  y += 24;
+  doc.rect(labelX - 8, y - 4, 200, 28).fill("#2c3e50");
+  doc.fontSize(13).font("Helvetica-Bold").fillColor("#fff");
+  doc.text("Total TTC", labelX, y + 2, { width: 100 });
+  doc.text(`${totalTtc} EUR`, valueX, y + 2, { width: 90, align: "right" });
 
   doc.fillColor("#000");
+  doc.y = y + 36;
+  doc.x = MARGIN;
 }
 
 export function toBuffer(doc: PDFKit.PDFDocument): Promise<Buffer> {
