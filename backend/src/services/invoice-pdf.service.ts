@@ -6,8 +6,9 @@ import { formatCents } from "../utils/money";
 import {
   createDocument,
   drawHeader,
-  drawAddressBlock,
+  drawAddressBlocks,
   drawMetaLine,
+  drawSeparator,
   drawTable,
   drawTotals,
   toBuffer,
@@ -21,38 +22,41 @@ export class InvoicePdfService implements IInvoicePdfService {
   async generate(invoice: Invoice, items: InvoiceItem[], payments: Payment[]): Promise<Buffer> {
     const doc = createDocument();
 
-    drawHeader(doc, "FACTURE");
-
     const issuer = (invoice.issuerSnapshot ?? {}) as Partial<IssuerSnapshot>;
     const client = (invoice.clientSnapshot ?? {}) as Partial<ClientSnapshot>;
 
-    doc.moveDown(0.5);
+    // Header with number
+    drawHeader(doc, "FACTURE", invoice.invoiceNumber);
 
-    const savedY = doc.y;
-    drawAddressBlock(doc, "Emetteur", {
-      name: issuer.name ?? "",
-      street: issuer.billingStreet,
-      zipCode: issuer.billingZipCode,
-      city: issuer.billingCity,
-      country: issuer.billingCountry,
-      email: issuer.email,
-      phone: issuer.phone,
-    });
+    // Address blocks — side by side, dynamic height
+    drawAddressBlocks(
+      doc,
+      "Émetteur",
+      {
+        name: issuer.name ?? "",
+        street: issuer.billingStreet,
+        zipCode: issuer.billingZipCode,
+        city: issuer.billingCity,
+        country: issuer.billingCountry,
+        email: issuer.email,
+        phone: issuer.phone,
+      },
+      "Client",
+      {
+        name: client.name ?? "",
+        street: client.billingStreet,
+        zipCode: client.billingZipCode,
+        city: client.billingCity,
+        country: client.billingCountry,
+      },
+    );
 
-    doc.y = savedY;
-    drawAddressBlock(doc, "Client", {
-      name: client.name ?? "",
-      street: client.billingStreet,
-      zipCode: client.billingZipCode,
-      city: client.billingCity,
-      country: client.billingCountry,
-    });
+    drawSeparator(doc);
 
-    doc.moveDown(0.5);
-
-    drawMetaLine(doc, "Numero :", invoice.invoiceNumber);
-    drawMetaLine(doc, "Date d'emission :", invoice.issueDate);
-    drawMetaLine(doc, "Date d'echeance :", invoice.dueDate);
+    // Meta info
+    drawMetaLine(doc, "Numéro :", invoice.invoiceNumber);
+    drawMetaLine(doc, "Date d'émission :", invoice.issueDate);
+    drawMetaLine(doc, "Date d'échéance :", invoice.dueDate);
     if (invoice.serviceDate) {
       drawMetaLine(doc, "Date de prestation :", invoice.serviceDate);
     }
@@ -63,12 +67,13 @@ export class InvoicePdfService implements IInvoicePdfService {
 
     doc.moveDown(1);
 
+    // Table
     const cols = [
       { header: "Description", width: 220 },
-      { header: "Qte", width: 50, align: "right" as const },
-      { header: "Prix unit. HT", width: 90, align: "right" as const },
-      { header: "TVA %", width: 55, align: "right" as const },
-      { header: "Total TTC", width: 85, align: "right" as const },
+      { header: "Qté", width: 45, align: "right" as const },
+      { header: "Prix unit. HT", width: 85, align: "right" as const },
+      { header: "TVA %", width: 50, align: "right" as const },
+      { header: "Total TTC", width: 80, align: "right" as const },
     ];
 
     const rows = items.map((item) => [
@@ -88,10 +93,11 @@ export class InvoicePdfService implements IInvoicePdfService {
       formatCents(invoice.totalTtcCents),
     );
 
+    // Payments section
     if (payments.length > 0) {
       doc.moveDown(1);
-      doc.fontSize(11).font("Helvetica-Bold").text("Paiements");
-      doc.moveDown(0.3);
+      doc.fontSize(11).font("Helvetica-Bold").fillColor("#000").text("Paiements");
+      doc.moveDown(0.4);
 
       const payCols = [
         { header: "Date", width: 100 },
@@ -107,10 +113,9 @@ export class InvoicePdfService implements IInvoicePdfService {
 
       drawTable(doc, payCols, payRows);
 
-      doc.moveDown(0.3);
-      doc.fontSize(10).font("Helvetica-Bold");
-      doc.text(`Reste a payer : ${formatCents(invoice.totalTtcCents - invoice.paidAmountCents)} EUR`, { align: "right" });
-      doc.font("Helvetica").fillColor("#000");
+      doc.moveDown(0.4);
+      doc.fontSize(10).font("Helvetica-Bold").fillColor("#000");
+      doc.text(`Reste à payer : ${formatCents(invoice.totalTtcCents - invoice.paidAmountCents)} EUR`, { align: "right" });
     }
 
     return toBuffer(doc);
