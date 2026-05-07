@@ -120,7 +120,7 @@ export default function LoginScreen() {
 
           <Separator />
 
-          <Button variant="ghost">
+          <Button variant="ghost" onPress={() => router.push("/register")}>
             <Button.Label>Pas encore de compte ? S&apos;inscrire</Button.Label>
           </Button>
         </View>
