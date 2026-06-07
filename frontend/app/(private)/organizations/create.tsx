@@ -305,7 +305,7 @@ export default function OrganizationCreateScreen() {
           {loading ? (
             <Spinner size="sm" />
           ) : (
-            <Button.Label>Creer l'organisation</Button.Label>
+            <Button.Label>{"Creer l'organisation"}</Button.Label>
           )}
         </Button>
       </View>

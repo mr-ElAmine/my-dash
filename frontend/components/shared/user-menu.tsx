@@ -14,7 +14,7 @@ export function UserMenu() {
   return (
     <Menu>
       <Menu.Trigger>
-        <Avatar size="sm" color="accent">
+        <Avatar size="sm" color="accent" alt={`${user.firstName} ${user.lastName}`}>
           <Avatar.Fallback>{initials}</Avatar.Fallback>
         </Avatar>
       </Menu.Trigger>
@@ -29,7 +29,7 @@ export function UserMenu() {
         >
           {/* User info */}
           <View className="flex-row items-center gap-3 px-2.5 pb-2 pt-1">
-            <Avatar size="sm" color="accent">
+            <Avatar size="sm" color="accent" alt={`${user.firstName} ${user.lastName}`}>
               <Avatar.Fallback>{initials}</Avatar.Fallback>
             </Avatar>
             <View className="flex-1">

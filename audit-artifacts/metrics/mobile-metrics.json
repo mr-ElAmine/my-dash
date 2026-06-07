@@ -1,0 +1,2319 @@
+{
+  "generatedAt": "2026-06-04T07:40:32.256Z",
+  "frontendUrl": "http://frontend:8081",
+  "apiRewriteTo": "http://backend:3000",
+  "viewport": {
+    "width": 390,
+    "height": 844,
+    "isMobile": true,
+    "hasTouch": true,
+    "deviceScaleFactor": 1
+  },
+  "routes": [
+    "/",
+    "/companies",
+    "/quotes",
+    "/invoices",
+    "/organizations"
+  ],
+  "localRoutes": [
+    {
+      "key": "dashboard",
+      "path": "/",
+      "expectedText": "Tableau de bord",
+      "url": "http://frontend:8081/",
+      "wallTimeMs": 50093.776397999995,
+      "expectedTextFound": true,
+      "performance": {
+        "href": "http://frontend:8081/",
+        "title": "",
+        "bodyTextSample": "\nAtelier Atlas Conseil\n\n\nCM\nTableau de bord\nVue d'ensemble de votre activite\nDevis actifs\n2\nen cours\nEn attente\n10 920,00 €\n1 en retard\nEvolution du CA\n2.2K\n2.2K\n2.2K\n2.2K\n2.2K\nMai\nDevis\nBrouillons: 1\nEnvoyes: 1\nAcceptes: 1\nRefuses: 1\nFactures\nA envoyer: 1\nEnvoyees: 1\nPayees: 1\nEn retard: 1\nPartiel: 1\nFactures en attente\nVoir tout\nFAC-2026-005\n01/04/2026 — Echeance 01/05/2026\n2 520,00 €\nCafe du Rivage\naujourd'hui\nEn retard\nFAC-2026-003\n14/04/2026 — Echeance 14/05/2026\n6 600,00 €\nNova Habitat\n",
+        "navigation": [
+          {
+            "name": "http://frontend:8081/",
+            "startTime": 0,
+            "duration": 48539.5,
+            "domInteractive": 31967.39999999106,
+            "domContentLoadedEventStart": 48531.09999999404,
+            "domContentLoadedEventEnd": 48532.29999999702,
+            "loadEventStart": 48539.5,
+            "loadEventEnd": 48539.5,
+            "transferSize": 84091,
+            "encodedBodySize": 83791,
+            "decodedBodySize": 83791
+          }
+        ],
+        "paints": [
+          {
+            "name": "first-paint",
+            "startTime": 32008,
+            "duration": 0
+          },
+          {
+            "name": "first-contentful-paint",
+            "startTime": 32008,
+            "duration": 0
+          }
+        ],
+        "resources": [
+          {
+            "name": "http://frontend:8081/node_modules/.pnpm/expo-router@6.0.23_6e4bf10d991da47ee6d7a290de0be25f/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&transform.reactCompiler=true",
+            "initiatorType": "script",
+            "startTime": 31932.29999999702,
+            "duration": 16294,
+            "transferSize": 2014526,
+            "encodedBodySize": 2014226,
+            "decodedBodySize": 11829160
+          },
+          {
+            "name": "http://frontend:8081/favicon.ico",
+            "initiatorType": "other",
+            "startTime": 48710.89999999106,
+            "duration": 1.6000000089406967,
+            "transferSize": 0,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0
+          },
+          {
+            "name": "http://localhost:3000/api/organizations",
+            "initiatorType": "xmlhttprequest",
+            "startTime": 48738.20000000298,
+            "duration": 109.3999999910593,
+            "transferSize": 0,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0
+          },
+          {
+            "name": "http://frontend:8081/",
+            "initiatorType": "fetch",
+            "startTime": 48921.39999999106,
+            "duration": 18.700000002980232,
+            "transferSize": 0,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0
+          },
+          {
+            "name": "http://frontend:8081/",
+            "initiatorType": "fetch",
+            "startTime": 48921.89999999106,
+            "duration": 979,
+            "transferSize": 300,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0
+          },
+          {
+            "name": "http://localhost:3000/api/organizations/qfvlqj6anczoh8rgrx1zv3ao/dashboard/stats",
+            "initiatorType": "xmlhttprequest",
+            "startTime": 48923.39999999106,
+            "duration": 90.1000000089407,
+            "transferSize": 0,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0
+          },
+          {
+            "name": "http://localhost:3000/api/organizations/qfvlqj6anczoh8rgrx1zv3ao/quotes",
+            "initiatorType": "xmlhttprequest",
+            "startTime": 48923.59999999404,
+            "duration": 84.40000000596046,
+            "transferSize": 0,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0
+          },
+          {
+            "name": "http://localhost:3000/api/organizations/qfvlqj6anczoh8rgrx1zv3ao/invoices",
+            "initiatorType": "xmlhttprequest",
+            "startTime": 48924.20000000298,
+            "duration": 91.19999998807907,
+            "transferSize": 0,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0
+          },
+          {
+            "name": "http://localhost:3000/api/organizations/qfvlqj6anczoh8rgrx1zv3ao/companies",
+            "initiatorType": "xmlhttprequest",
+            "startTime": 48924.79999999702,
+            "duration": 86.09999999403954,
+            "transferSize": 0,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0
+          },
+          {
+            "name": "http://frontend:8081/assets/?unstable_path=.%2Fnode_modules%2F.pnpm%2F%40expo%2Bvector-icons%4015.1.1_expo-font%4014.0.11_expo%4054.0.34_react-native%400.81.5_%40babel%2Bcor_aeceb50d7980a3a6e04949a1159ea3fc%2Fnode_modules%2F%40expo%2Fvector-icons%2Fbuild%2Fvendor%2Freact-native-vector-icons%2FFonts/Ionicons.ttf",
+            "initiatorType": "css",
+            "startTime": 48940.59999999404,
+            "duration": 821.9000000059605,
+            "transferSize": 390024,
+            "encodedBodySize": 389724,
+            "decodedBodySize": 389724
+          }
+        ]
+      },
+      "apiEvents": [
+        {
+          "method": "GET",
+          "url": "http://localhost:3000/api/organizations",
+          "targetUrl": "http://backend:3000/api/organizations",
+          "status": 200,
+          "startedAt": 49770.315607,
+          "durationMs": 105
+        },
+        {
+          "method": "GET",
+          "url": "http://localhost:3000/api/organizations/qfvlqj6anczoh8rgrx1zv3ao/quotes",
+          "targetUrl": "http://backend:3000/api/organizations/qfvlqj6anczoh8rgrx1zv3ao/quotes",
+          "status": 200,
+          "startedAt": 49957.919024,
+          "durationMs": 78
+        },
+        {
+          "method": "GET",
+          "url": "http://localhost:3000/api/organizations/qfvlqj6anczoh8rgrx1zv3ao/companies",
+          "targetUrl": "http://backend:3000/api/organizations/qfvlqj6anczoh8rgrx1zv3ao/companies",
+          "status": 200,
+          "startedAt": 49958.872149,
+          "durationMs": 80
+        },
+        {
+          "method": "GET",
+          "url": "http://localhost:3000/api/organizations/qfvlqj6anczoh8rgrx1zv3ao/dashboard/stats",
+          "targetUrl": "http://backend:3000/api/organizations/qfvlqj6anczoh8rgrx1zv3ao/dashboard/stats",
+          "status": 200,
+          "startedAt": 49957.069357,
+          "durationMs": 82
+        },
+        {
+          "method": "GET",
+          "url": "http://localhost:3000/api/organizations/qfvlqj6anczoh8rgrx1zv3ao/invoices",
+          "targetUrl": "http://backend:3000/api/organizations/qfvlqj6anczoh8rgrx1zv3ao/invoices",
+          "status": 200,
+          "startedAt": 49958.175232,
+          "durationMs": 85
+        }
+      ],
+      "consoleMessages": [
+        {
+          "type": "warning",
+          "text": "props.pointerEvents is deprecated. Use style.pointerEvents",
+          "location": {
+            "url": "http://frontend:8081/node_modules/.pnpm/expo-router@6.0.23_6e4bf10d991da47ee6d7a290de0be25f/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&transform.reactCompiler=true",
+            "lineNumber": 7996,
+            "columnNumber": 14
+          },
+          "routeKey": null,
+          "capturedAt": "2026-06-04T07:39:19.675Z"
+        },
+        {
+          "type": "error",
+          "text": "[colorKit.RGB] An error occurred while attempting to convert the provided parameter into an `RGB` color. As a result, the default color \"black\" will be used instead.",
+          "location": {
+            "url": "http://frontend:8081/node_modules/.pnpm/expo-router@6.0.23_6e4bf10d991da47ee6d7a290de0be25f/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&transform.reactCompiler=true",
+            "lineNumber": 1120,
+            "columnNumber": 32
+          },
+          "routeKey": null,
+          "capturedAt": "2026-06-04T07:39:19.679Z"
+        },
+        {
+          "type": "warning",
+          "text": "\"shadow*\" style props are deprecated. Use \"boxShadow\".",
+          "location": {
+            "url": "http://frontend:8081/node_modules/.pnpm/expo-router@6.0.23_6e4bf10d991da47ee6d7a290de0be25f/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&transform.reactCompiler=true",
+            "lineNumber": 7996,
+            "columnNumber": 14
+          },
+          "routeKey": null,
+          "capturedAt": "2026-06-04T07:39:19.690Z"
+        },
+        {
+          "type": "error",
+          "text": "[colorKit.RGB] An error occurred while attempting to convert the provided parameter into an `RGB` color. As a result, the default color \"black\" will be used instead.",
+          "location": {
+            "url": "http://frontend:8081/node_modules/.pnpm/expo-router@6.0.23_6e4bf10d991da47ee6d7a290de0be25f/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&transform.reactCompiler=true",
+            "lineNumber": 1120,
+            "columnNumber": 32
+          },
+          "routeKey": null,
+          "capturedAt": "2026-06-04T07:39:19.874Z"
+        },
+        {
+          "type": "error",
+          "text": "[colorKit.RGB] An error occurred while attempting to convert the provided parameter into an `RGB` color. As a result, the default color \"black\" will be used instead.",
+          "location": {
+            "url": "http://frontend:8081/node_modules/.pnpm/expo-router@6.0.23_6e4bf10d991da47ee6d7a290de0be25f/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&transform.reactCompiler=true",
+            "lineNumber": 1120,
+            "columnNumber": 32
+          },
+          "routeKey": null,
+          "capturedAt": "2026-06-04T07:39:19.886Z"
+        },
+        {
+          "type": "error",
+          "text": "[colorKit.RGB] An error occurred while attempting to convert the provided parameter into an `RGB` color. As a result, the default color \"black\" will be used instead.",
+          "location": {
+            "url": "http://frontend:8081/node_modules/.pnpm/expo-router@6.0.23_6e4bf10d991da47ee6d7a290de0be25f/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&transform.reactCompiler=true",
+            "lineNumber": 1120,
+            "columnNumber": 32
+          },
+          "routeKey": null,
+          "capturedAt": "2026-06-04T07:39:19.896Z"
+        }
+      ]
+    },
+    {
+      "key": "companies",
+      "path": "/companies",
+      "expectedText": "Entreprises",
+      "url": "http://frontend:8081/companies",
+      "wallTimeMs": 2180.9249590000036,
+      "expectedTextFound": true,
+      "performance": {
+        "href": "http://frontend:8081/companies",
+        "title": "",
+        "bodyTextSample": "\nAtelier Atlas Conseil\n\n\nCM\nEntreprises\nClients (3)\nProspects (2)\nArchives (0)\nClinique Saint Martin\nSante\nFR\n\nNantes, 44000\n\nclinique-saint-martin.test\nSIREN: 438902771\nClient\nMaison Durand\nRetail\nFR\n\nLyon, 69002\n\nmaison-durand.test\nSIREN: 512804944\nClient\nNova Habitat\nImmobilier\nFR\n\nMontpellier, 34000\n\nnova-habitat.test\nSIREN: 827314652\nClient\n\n\nAccueil\n\nDevis\n\nFactures\n\nClients",
+        "navigation": [
+          {
+            "name": "http://frontend:8081/companies",
+            "startTime": 0,
+            "duration": 650.3000000119209,
+            "domInteractive": 383.1000000089407,
+            "domContentLoadedEventStart": 649.3000000119209,
+            "domContentLoadedEventEnd": 649.3000000119209,
+            "loadEventStart": 650.3000000119209,
+            "loadEventEnd": 650.3000000119209,
+            "transferSize": 84091,
+            "encodedBodySize": 83791,
+            "decodedBodySize": 83791
+          }
+        ],
+        "paints": [
+          {
+            "name": "first-paint",
+            "startTime": 392,
+            "duration": 0
+          },
+          {
+            "name": "first-contentful-paint",
+            "startTime": 392,
+            "duration": 0
+          }
+        ],
+        "resources": [
+          {
+            "name": "http://frontend:8081/node_modules/.pnpm/expo-router@6.0.23_6e4bf10d991da47ee6d7a290de0be25f/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&transform.reactCompiler=true",
+            "initiatorType": "script",
+            "startTime": 380.1000000089407,
+            "duration": 225.5,
+            "transferSize": 2014526,
+            "encodedBodySize": 2014226,
+            "decodedBodySize": 11829160
+          },
+          {
+            "name": "http://frontend:8081/favicon.ico",
+            "initiatorType": "other",
+            "startTime": 693.5,
+            "duration": 0.9000000059604645,
+            "transferSize": 0,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0
+          },
+          {
+            "name": "http://localhost:3000/api/organizations",
+            "initiatorType": "xmlhttprequest",
+            "startTime": 710.6000000089407,
+            "duration": 11.200000002980232,
+            "transferSize": 0,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0
+          },
+          {
+            "name": "http://frontend:8081/",
+            "initiatorType": "fetch",
+            "startTime": 761.6000000089407,
+            "duration": 7,
+            "transferSize": 0,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0
+          },
+          {
+            "name": "http://frontend:8081/",
+            "initiatorType": "fetch",
+            "startTime": 761.9000000059605,
+            "duration": 775.7999999970198,
+            "transferSize": 300,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0
+          },
+          {
+            "name": "http://localhost:3000/api/organizations/qfvlqj6anczoh8rgrx1zv3ao/companies",
+            "initiatorType": "xmlhttprequest",
+            "startTime": 762.7000000029802,
+            "duration": 20,
+            "transferSize": 0,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0
+          },
+          {
+            "name": "http://frontend:8081/assets/?unstable_path=.%2Fnode_modules%2F.pnpm%2F%40expo%2Bvector-icons%4015.1.1_expo-font%4014.0.11_expo%4054.0.34_react-native%400.81.5_%40babel%2Bcor_aeceb50d7980a3a6e04949a1159ea3fc%2Fnode_modules%2F%40expo%2Fvector-icons%2Fbuild%2Fvendor%2Freact-native-vector-icons%2FFonts/Ionicons.ttf",
+            "initiatorType": "css",
+            "startTime": 768.9000000059605,
+            "duration": 702.0999999940395,
+            "transferSize": 390024,
+            "encodedBodySize": 389724,
+            "decodedBodySize": 389724
+          }
+        ]
+      },
+      "apiEvents": [
+        {
+          "method": "GET",
+          "url": "http://localhost:3000/api/organizations",
+          "targetUrl": "http://backend:3000/api/organizations",
+          "status": 200,
+          "startedAt": 51842.775941,
+          "durationMs": 7
+        },
+        {
+          "method": "GET",
+          "url": "http://localhost:3000/api/organizations/qfvlqj6anczoh8rgrx1zv3ao/companies",
+          "targetUrl": "http://backend:3000/api/organizations/qfvlqj6anczoh8rgrx1zv3ao/companies",
+          "status": 200,
+          "startedAt": 51895.608691,
+          "durationMs": 15
+        }
+      ],
+      "consoleMessages": [
+        {
+          "type": "warning",
+          "text": "props.pointerEvents is deprecated. Use style.pointerEvents",
+          "location": {
+            "url": "http://frontend:8081/node_modules/.pnpm/expo-router@6.0.23_6e4bf10d991da47ee6d7a290de0be25f/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&transform.reactCompiler=true",
+            "lineNumber": 7996,
+            "columnNumber": 14
+          },
+          "routeKey": "dashboard",
+          "capturedAt": "2026-06-04T07:39:21.642Z"
+        },
+        {
+          "type": "error",
+          "text": "[colorKit.RGB] An error occurred while attempting to convert the provided parameter into an `RGB` color. As a result, the default color \"black\" will be used instead.",
+          "location": {
+            "url": "http://frontend:8081/node_modules/.pnpm/expo-router@6.0.23_6e4bf10d991da47ee6d7a290de0be25f/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&transform.reactCompiler=true",
+            "lineNumber": 1120,
+            "columnNumber": 32
+          },
+          "routeKey": "dashboard",
+          "capturedAt": "2026-06-04T07:39:21.645Z"
+        },
+        {
+          "type": "warning",
+          "text": "\"shadow*\" style props are deprecated. Use \"boxShadow\".",
+          "location": {
+            "url": "http://frontend:8081/node_modules/.pnpm/expo-router@6.0.23_6e4bf10d991da47ee6d7a290de0be25f/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&transform.reactCompiler=true",
+            "lineNumber": 7996,
+            "columnNumber": 14
+          },
+          "routeKey": "dashboard",
+          "capturedAt": "2026-06-04T07:39:21.656Z"
+        }
+      ]
+    },
+    {
+      "key": "quotes",
+      "path": "/quotes",
+      "expectedText": "Devis",
+      "url": "http://frontend:8081/quotes",
+      "wallTimeMs": 2544.358043,
+      "expectedTextFound": true,
+      "performance": {
+        "href": "http://frontend:8081/quotes",
+        "title": "",
+        "bodyTextSample": "\nAtelier Atlas Conseil\n\n\nCM\nDevis\nBrouillons\nEn cours\nClotures\nDEV-2026-002\nExpire le 25/06/2026\n2 952,00 €\nStudio Bloom\nModifie aujourd'hui\nBrouillon\n\n\nAccueil\n\nDevis\n\nFactures\n\nClients",
+        "navigation": [
+          {
+            "name": "http://frontend:8081/quotes",
+            "startTime": 0,
+            "duration": 1022,
+            "domInteractive": 746.2999999970198,
+            "domContentLoadedEventStart": 1021.3999999910593,
+            "domContentLoadedEventEnd": 1021.5,
+            "loadEventStart": 1022,
+            "loadEventEnd": 1022,
+            "transferSize": 84091,
+            "encodedBodySize": 83791,
+            "decodedBodySize": 83791
+          }
+        ],
+        "paints": [
+          {
+            "name": "first-paint",
+            "startTime": 764,
+            "duration": 0
+          },
+          {
+            "name": "first-contentful-paint",
+            "startTime": 764,
+            "duration": 0
+          }
+        ],
+        "resources": [
+          {
+            "name": "http://frontend:8081/node_modules/.pnpm/expo-router@6.0.23_6e4bf10d991da47ee6d7a290de0be25f/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&transform.reactCompiler=true",
+            "initiatorType": "script",
+            "startTime": 740.5,
+            "duration": 230.70000000298023,
+            "transferSize": 2014526,
+            "encodedBodySize": 2014226,
+            "decodedBodySize": 11829160
+          },
+          {
+            "name": "http://frontend:8081/favicon.ico",
+            "initiatorType": "other",
+            "startTime": 1067.3999999910593,
+            "duration": 0.9000000059604645,
+            "transferSize": 0,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0
+          },
+          {
+            "name": "http://localhost:3000/api/organizations",
+            "initiatorType": "xmlhttprequest",
+            "startTime": 1081,
+            "duration": 14.899999991059303,
+            "transferSize": 0,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0
+          },
+          {
+            "name": "http://frontend:8081/",
+            "initiatorType": "fetch",
+            "startTime": 1148.8999999910593,
+            "duration": 9.5,
+            "transferSize": 0,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0
+          },
+          {
+            "name": "http://frontend:8081/",
+            "initiatorType": "fetch",
+            "startTime": 1149.2000000029802,
+            "duration": 683.6999999880791,
+            "transferSize": 300,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0
+          },
+          {
+            "name": "http://localhost:3000/api/organizations/qfvlqj6anczoh8rgrx1zv3ao/quotes",
+            "initiatorType": "xmlhttprequest",
+            "startTime": 1150.2999999970198,
+            "duration": 28.299999997019768,
+            "transferSize": 0,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0
+          },
+          {
+            "name": "http://localhost:3000/api/organizations/qfvlqj6anczoh8rgrx1zv3ao/companies",
+            "initiatorType": "xmlhttprequest",
+            "startTime": 1150.5,
+            "duration": 27.700000002980232,
+            "transferSize": 0,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0
+          },
+          {
+            "name": "http://frontend:8081/assets/?unstable_path=.%2Fnode_modules%2F.pnpm%2F%40expo%2Bvector-icons%4015.1.1_expo-font%4014.0.11_expo%4054.0.34_react-native%400.81.5_%40babel%2Bcor_aeceb50d7980a3a6e04949a1159ea3fc%2Fnode_modules%2F%40expo%2Fvector-icons%2Fbuild%2Fvendor%2Freact-native-vector-icons%2FFonts/Ionicons.ttf",
+            "initiatorType": "css",
+            "startTime": 1158.7999999970198,
+            "duration": 590.0999999940395,
+            "transferSize": 390024,
+            "encodedBodySize": 389724,
+            "decodedBodySize": 389724
+          }
+        ]
+      },
+      "apiEvents": [
+        {
+          "method": "GET",
+          "url": "http://localhost:3000/api/organizations",
+          "targetUrl": "http://backend:3000/api/organizations",
+          "status": 200,
+          "startedAt": 54403.133151,
+          "durationMs": 12
+        },
+        {
+          "method": "GET",
+          "url": "http://localhost:3000/api/organizations/qfvlqj6anczoh8rgrx1zv3ao/companies",
+          "targetUrl": "http://backend:3000/api/organizations/qfvlqj6anczoh8rgrx1zv3ao/companies",
+          "status": 200,
+          "startedAt": 54475.022776,
+          "durationMs": 23
+        },
+        {
+          "method": "GET",
+          "url": "http://localhost:3000/api/organizations/qfvlqj6anczoh8rgrx1zv3ao/quotes",
+          "targetUrl": "http://backend:3000/api/organizations/qfvlqj6anczoh8rgrx1zv3ao/quotes",
+          "status": 200,
+          "startedAt": 54473.967526,
+          "durationMs": 25
+        }
+      ],
+      "consoleMessages": [
+        {
+          "type": "warning",
+          "text": "props.pointerEvents is deprecated. Use style.pointerEvents",
+          "location": {
+            "url": "http://frontend:8081/node_modules/.pnpm/expo-router@6.0.23_6e4bf10d991da47ee6d7a290de0be25f/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&transform.reactCompiler=true",
+            "lineNumber": 7996,
+            "columnNumber": 14
+          },
+          "routeKey": "companies",
+          "capturedAt": "2026-06-04T07:39:24.206Z"
+        },
+        {
+          "type": "error",
+          "text": "[colorKit.RGB] An error occurred while attempting to convert the provided parameter into an `RGB` color. As a result, the default color \"black\" will be used instead.",
+          "location": {
+            "url": "http://frontend:8081/node_modules/.pnpm/expo-router@6.0.23_6e4bf10d991da47ee6d7a290de0be25f/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&transform.reactCompiler=true",
+            "lineNumber": 1120,
+            "columnNumber": 32
+          },
+          "routeKey": "companies",
+          "capturedAt": "2026-06-04T07:39:24.208Z"
+        },
+        {
+          "type": "warning",
+          "text": "\"shadow*\" style props are deprecated. Use \"boxShadow\".",
+          "location": {
+            "url": "http://frontend:8081/node_modules/.pnpm/expo-router@6.0.23_6e4bf10d991da47ee6d7a290de0be25f/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&transform.reactCompiler=true",
+            "lineNumber": 7996,
+            "columnNumber": 14
+          },
+          "routeKey": "companies",
+          "capturedAt": "2026-06-04T07:39:24.228Z"
+        }
+      ]
+    },
+    {
+      "key": "invoices",
+      "path": "/invoices",
+      "expectedText": "Factures",
+      "url": "http://frontend:8081/invoices",
+      "wallTimeMs": 2303.2037090000013,
+      "expectedTextFound": true,
+      "performance": {
+        "href": "http://frontend:8081/invoices",
+        "title": "",
+        "bodyTextSample": "\nAtelier Atlas Conseil\n\n\nCM\nFactures\nEn attente\nPayees\nAnnulees\nFAC-2026-005\n01/04/2026 — Echeance 01/05/2026\n2 520,00 €\nCafe du Rivage\naujourd'hui\nEn retard\nFAC-2026-003\n14/04/2026 — Echeance 14/05/2026\n6 600,00 €\nNova Habitat\naujourd'hui\nPartiel\nFAC-2026-002\n11/05/2026 — Echeance 10/06/2026\n4 800,00 €\nMaison Durand\naujourd'hui\nEnvoyee\nFAC-2026-001\nDEV-2026-003\n08/05/2026 — Echeance 07/06/2026\n5 064,00 €\nClinique Saint Martin\naujourd'hui\nA envoyer\n\nAccueil\n\nDevis\n\nFactures\n\nClients",
+        "navigation": [
+          {
+            "name": "http://frontend:8081/invoices",
+            "startTime": 0,
+            "duration": 769.9000000059605,
+            "domInteractive": 441.29999999701977,
+            "domContentLoadedEventStart": 769.0999999940395,
+            "domContentLoadedEventEnd": 769.2000000029802,
+            "loadEventStart": 769.9000000059605,
+            "loadEventEnd": 769.9000000059605,
+            "transferSize": 84091,
+            "encodedBodySize": 83791,
+            "decodedBodySize": 83791
+          }
+        ],
+        "paints": [
+          {
+            "name": "first-paint",
+            "startTime": 452,
+            "duration": 0
+          },
+          {
+            "name": "first-contentful-paint",
+            "startTime": 452,
+            "duration": 0
+          }
+        ],
+        "resources": [
+          {
+            "name": "http://frontend:8081/node_modules/.pnpm/expo-router@6.0.23_6e4bf10d991da47ee6d7a290de0be25f/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&transform.reactCompiler=true",
+            "initiatorType": "script",
+            "startTime": 435.20000000298023,
+            "duration": 270.09999999403954,
+            "transferSize": 2014526,
+            "encodedBodySize": 2014226,
+            "decodedBodySize": 11829160
+          },
+          {
+            "name": "http://frontend:8081/favicon.ico",
+            "initiatorType": "other",
+            "startTime": 811.7999999970198,
+            "duration": 1.2999999970197678,
+            "transferSize": 0,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0
+          },
+          {
+            "name": "http://localhost:3000/api/organizations",
+            "initiatorType": "xmlhttprequest",
+            "startTime": 828.7999999970198,
+            "duration": 12.900000005960464,
+            "transferSize": 0,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0
+          },
+          {
+            "name": "http://frontend:8081/",
+            "initiatorType": "fetch",
+            "startTime": 876.2999999970198,
+            "duration": 6.700000002980232,
+            "transferSize": 0,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0
+          },
+          {
+            "name": "http://frontend:8081/",
+            "initiatorType": "fetch",
+            "startTime": 876.5999999940395,
+            "duration": 820.7000000029802,
+            "transferSize": 300,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0
+          },
+          {
+            "name": "http://localhost:3000/api/organizations/qfvlqj6anczoh8rgrx1zv3ao/invoices",
+            "initiatorType": "xmlhttprequest",
+            "startTime": 877.4000000059605,
+            "duration": 19.899999991059303,
+            "transferSize": 0,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0
+          },
+          {
+            "name": "http://localhost:3000/api/organizations/qfvlqj6anczoh8rgrx1zv3ao/quotes",
+            "initiatorType": "xmlhttprequest",
+            "startTime": 877.5999999940395,
+            "duration": 21,
+            "transferSize": 0,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0
+          },
+          {
+            "name": "http://frontend:8081/assets/?unstable_path=.%2Fnode_modules%2F.pnpm%2F%40expo%2Bvector-icons%4015.1.1_expo-font%4014.0.11_expo%4054.0.34_react-native%400.81.5_%40babel%2Bcor_aeceb50d7980a3a6e04949a1159ea3fc%2Fnode_modules%2F%40expo%2Fvector-icons%2Fbuild%2Fvendor%2Freact-native-vector-icons%2FFonts/Ionicons.ttf",
+            "initiatorType": "css",
+            "startTime": 883.2999999970198,
+            "duration": 719.4000000059605,
+            "transferSize": 390024,
+            "encodedBodySize": 389724,
+            "decodedBodySize": 389724
+          }
+        ]
+      },
+      "apiEvents": [
+        {
+          "method": "GET",
+          "url": "http://localhost:3000/api/organizations",
+          "targetUrl": "http://backend:3000/api/organizations",
+          "status": 200,
+          "startedAt": 56762.973694,
+          "durationMs": 10
+        },
+        {
+          "method": "GET",
+          "url": "http://localhost:3000/api/organizations/qfvlqj6anczoh8rgrx1zv3ao/invoices",
+          "targetUrl": "http://backend:3000/api/organizations/qfvlqj6anczoh8rgrx1zv3ao/invoices",
+          "status": 200,
+          "startedAt": 56813.028194,
+          "durationMs": 15
+        },
+        {
+          "method": "GET",
+          "url": "http://localhost:3000/api/organizations/qfvlqj6anczoh8rgrx1zv3ao/quotes",
+          "targetUrl": "http://backend:3000/api/organizations/qfvlqj6anczoh8rgrx1zv3ao/quotes",
+          "status": 200,
+          "startedAt": 56813.680902,
+          "durationMs": 16
+        }
+      ],
+      "consoleMessages": [
+        {
+          "type": "warning",
+          "text": "props.pointerEvents is deprecated. Use style.pointerEvents",
+          "location": {
+            "url": "http://frontend:8081/node_modules/.pnpm/expo-router@6.0.23_6e4bf10d991da47ee6d7a290de0be25f/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&transform.reactCompiler=true",
+            "lineNumber": 7996,
+            "columnNumber": 14
+          },
+          "routeKey": "quotes",
+          "capturedAt": "2026-06-04T07:39:26.564Z"
+        },
+        {
+          "type": "error",
+          "text": "[colorKit.RGB] An error occurred while attempting to convert the provided parameter into an `RGB` color. As a result, the default color \"black\" will be used instead.",
+          "location": {
+            "url": "http://frontend:8081/node_modules/.pnpm/expo-router@6.0.23_6e4bf10d991da47ee6d7a290de0be25f/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&transform.reactCompiler=true",
+            "lineNumber": 1120,
+            "columnNumber": 32
+          },
+          "routeKey": "quotes",
+          "capturedAt": "2026-06-04T07:39:26.565Z"
+        },
+        {
+          "type": "warning",
+          "text": "\"shadow*\" style props are deprecated. Use \"boxShadow\".",
+          "location": {
+            "url": "http://frontend:8081/node_modules/.pnpm/expo-router@6.0.23_6e4bf10d991da47ee6d7a290de0be25f/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&transform.reactCompiler=true",
+            "lineNumber": 7996,
+            "columnNumber": 14
+          },
+          "routeKey": "quotes",
+          "capturedAt": "2026-06-04T07:39:26.574Z"
+        }
+      ]
+    },
+    {
+      "key": "organizations",
+      "path": "/organizations",
+      "expectedText": "Organisations",
+      "url": "http://frontend:8081/organizations",
+      "wallTimeMs": 2164.104293000004,
+      "expectedTextFound": true,
+      "performance": {
+        "href": "http://frontend:8081/organizations",
+        "title": "",
+        "bodyTextSample": "\nAtelier Atlas Conseil\n\n\nCM\nOrganisations\nActives (1)\nArchivees (0)\nAtelier Atlas Conseil\nAtelier Atlas Conseil SAS - SIREN: 914205337\nFR\n\n18 rue des Jeuneurs, Paris, 75002\n\ncontact@atelier-atlas.test\nCreee le 4 juin 2026\nActive\n\n\nAccueil\n\nDevis\n\nFactures\n\nClients",
+        "navigation": [
+          {
+            "name": "http://frontend:8081/organizations",
+            "startTime": 0,
+            "duration": 627.4000000059605,
+            "domInteractive": 374,
+            "domContentLoadedEventStart": 626.9000000059605,
+            "domContentLoadedEventEnd": 626.9000000059605,
+            "loadEventStart": 627.4000000059605,
+            "loadEventEnd": 627.4000000059605,
+            "transferSize": 84091,
+            "encodedBodySize": 83791,
+            "decodedBodySize": 83791
+          }
+        ],
+        "paints": [
+          {
+            "name": "first-paint",
+            "startTime": 376,
+            "duration": 0
+          },
+          {
+            "name": "first-contentful-paint",
+            "startTime": 376,
+            "duration": 0
+          }
+        ],
+        "resources": [
+          {
+            "name": "http://frontend:8081/node_modules/.pnpm/expo-router@6.0.23_6e4bf10d991da47ee6d7a290de0be25f/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&transform.reactCompiler=true",
+            "initiatorType": "script",
+            "startTime": 368,
+            "duration": 217.90000000596046,
+            "transferSize": 2014526,
+            "encodedBodySize": 2014226,
+            "decodedBodySize": 11829160
+          },
+          {
+            "name": "http://frontend:8081/favicon.ico",
+            "initiatorType": "other",
+            "startTime": 673,
+            "duration": 0.7000000029802322,
+            "transferSize": 0,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0
+          },
+          {
+            "name": "http://localhost:3000/api/organizations",
+            "initiatorType": "xmlhttprequest",
+            "startTime": 686.9000000059605,
+            "duration": 13.900000005960464,
+            "transferSize": 0,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0
+          },
+          {
+            "name": "http://frontend:8081/",
+            "initiatorType": "fetch",
+            "startTime": 743.7000000029802,
+            "duration": 7.5,
+            "transferSize": 0,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0
+          },
+          {
+            "name": "http://frontend:8081/",
+            "initiatorType": "fetch",
+            "startTime": 743.8000000119209,
+            "duration": 713.2999999970198,
+            "transferSize": 300,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0
+          },
+          {
+            "name": "http://frontend:8081/assets/?unstable_path=.%2Fnode_modules%2F.pnpm%2F%40expo%2Bvector-icons%4015.1.1_expo-font%4014.0.11_expo%4054.0.34_react-native%400.81.5_%40babel%2Bcor_aeceb50d7980a3a6e04949a1159ea3fc%2Fnode_modules%2F%40expo%2Fvector-icons%2Fbuild%2Fvendor%2Freact-native-vector-icons%2FFonts/Ionicons.ttf",
+            "initiatorType": "css",
+            "startTime": 751.6000000089407,
+            "duration": 680.7000000029802,
+            "transferSize": 390024,
+            "encodedBodySize": 389724,
+            "decodedBodySize": 389724
+          }
+        ]
+      },
+      "apiEvents": [
+        {
+          "method": "GET",
+          "url": "http://localhost:3000/api/organizations",
+          "targetUrl": "http://backend:3000/api/organizations",
+          "status": 200,
+          "startedAt": 58933.023278,
+          "durationMs": 11
+        }
+      ],
+      "consoleMessages": [
+        {
+          "type": "warning",
+          "text": "props.pointerEvents is deprecated. Use style.pointerEvents",
+          "location": {
+            "url": "http://frontend:8081/node_modules/.pnpm/expo-router@6.0.23_6e4bf10d991da47ee6d7a290de0be25f/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&transform.reactCompiler=true",
+            "lineNumber": 7996,
+            "columnNumber": 14
+          },
+          "routeKey": "invoices",
+          "capturedAt": "2026-06-04T07:39:28.734Z"
+        },
+        {
+          "type": "error",
+          "text": "[colorKit.RGB] An error occurred while attempting to convert the provided parameter into an `RGB` color. As a result, the default color \"black\" will be used instead.",
+          "location": {
+            "url": "http://frontend:8081/node_modules/.pnpm/expo-router@6.0.23_6e4bf10d991da47ee6d7a290de0be25f/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&transform.reactCompiler=true",
+            "lineNumber": 1120,
+            "columnNumber": 32
+          },
+          "routeKey": "invoices",
+          "capturedAt": "2026-06-04T07:39:28.735Z"
+        },
+        {
+          "type": "warning",
+          "text": "\"shadow*\" style props are deprecated. Use \"boxShadow\".",
+          "location": {
+            "url": "http://frontend:8081/node_modules/.pnpm/expo-router@6.0.23_6e4bf10d991da47ee6d7a290de0be25f/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&transform.reactCompiler=true",
+            "lineNumber": 7996,
+            "columnNumber": 14
+          },
+          "routeKey": "invoices",
+          "capturedAt": "2026-06-04T07:39:28.753Z"
+        }
+      ]
+    }
+  ],
+  "localSummaries": [
+    {
+      "key": "dashboard",
+      "path": "/",
+      "title": "",
+      "bodyTextSample": "\nAtelier Atlas Conseil\n\n\nCM\nTableau de bord\nVue d'ensemble de votre activite\nDevis actifs\n2\nen cours\nEn attente\n10 920,00 €\n1 en retard\nEvolution du CA\n2.2K\n2.2K\n2.2K\n2.2K\n2.2K\nMai\nDevis\nBrouillons: 1\nEnvoyes: 1\nAcceptes: 1\nRefuses: 1\nFactures\nA envoyer: 1\nEnvoyees: 1\nPayees: 1\nEn retard: 1\nPartiel: 1\nFactures en attente\nVoir tout\nFAC-2026-005\n01/04/2026 — Echeance 01/05/2026\n2 520,00 €\nCafe du Rivage\naujourd'hui\nEn retard\nFAC-2026-003\n14/04/2026 — Echeance 14/05/2026\n6 600,00 €\nNova Habitat\n",
+      "expectedTextFound": true,
+      "wallTimeMs": 50094,
+      "domContentLoadedMs": 48532,
+      "loadEventMs": 48540,
+      "firstPaintMs": 32008,
+      "firstContentfulPaintMs": 32008,
+      "resourceCount": 10,
+      "totalTransferSize": 2404850,
+      "scriptTransferSize": 2014526,
+      "imageTransferSize": 0,
+      "resourceSummary": {
+        "script": {
+          "count": 1,
+          "transferSize": 2014526,
+          "encodedBodySize": 2014226,
+          "decodedBodySize": 11829160,
+          "durationMs": 16294
+        },
+        "other": {
+          "count": 1,
+          "transferSize": 0,
+          "encodedBodySize": 0,
+          "decodedBodySize": 0,
+          "durationMs": 2
+        },
+        "xmlhttprequest": {
+          "count": 5,
+          "transferSize": 0,
+          "encodedBodySize": 0,
+          "decodedBodySize": 0,
+          "durationMs": 461
+        },
+        "fetch": {
+          "count": 2,
+          "transferSize": 300,
+          "encodedBodySize": 0,
+          "decodedBodySize": 0,
+          "durationMs": 998
+        },
+        "css": {
+          "count": 1,
+          "transferSize": 390024,
+          "encodedBodySize": 389724,
+          "decodedBodySize": 389724,
+          "durationMs": 822
+        }
+      },
+      "apiCount": 5,
+      "apiAvgMs": 86,
+      "apiP95Ms": 105,
+      "apiFailedCount": 0,
+      "consoleWarningCount": 2,
+      "consoleErrorCount": 4
+    },
+    {
+      "key": "companies",
+      "path": "/companies",
+      "title": "",
+      "bodyTextSample": "\nAtelier Atlas Conseil\n\n\nCM\nEntreprises\nClients (3)\nProspects (2)\nArchives (0)\nClinique Saint Martin\nSante\nFR\n\nNantes, 44000\n\nclinique-saint-martin.test\nSIREN: 438902771\nClient\nMaison Durand\nRetail\nFR\n\nLyon, 69002\n\nmaison-durand.test\nSIREN: 512804944\nClient\nNova Habitat\nImmobilier\nFR\n\nMontpellier, 34000\n\nnova-habitat.test\nSIREN: 827314652\nClient\n\n\nAccueil\n\nDevis\n\nFactures\n\nClients",
+      "expectedTextFound": true,
+      "wallTimeMs": 2181,
+      "domContentLoadedMs": 649,
+      "loadEventMs": 650,
+      "firstPaintMs": 392,
+      "firstContentfulPaintMs": 392,
+      "resourceCount": 7,
+      "totalTransferSize": 2404850,
+      "scriptTransferSize": 2014526,
+      "imageTransferSize": 0,
+      "resourceSummary": {
+        "script": {
+          "count": 1,
+          "transferSize": 2014526,
+          "encodedBodySize": 2014226,
+          "decodedBodySize": 11829160,
+          "durationMs": 226
+        },
+        "other": {
+          "count": 1,
+          "transferSize": 0,
+          "encodedBodySize": 0,
+          "decodedBodySize": 0,
+          "durationMs": 1
+        },
+        "xmlhttprequest": {
+          "count": 2,
+          "transferSize": 0,
+          "encodedBodySize": 0,
+          "decodedBodySize": 0,
+          "durationMs": 31
+        },
+        "fetch": {
+          "count": 2,
+          "transferSize": 300,
+          "encodedBodySize": 0,
+          "decodedBodySize": 0,
+          "durationMs": 783
+        },
+        "css": {
+          "count": 1,
+          "transferSize": 390024,
+          "encodedBodySize": 389724,
+          "decodedBodySize": 389724,
+          "durationMs": 702
+        }
+      },
+      "apiCount": 2,
+      "apiAvgMs": 11,
+      "apiP95Ms": 15,
+      "apiFailedCount": 0,
+      "consoleWarningCount": 2,
+      "consoleErrorCount": 1
+    },
+    {
+      "key": "quotes",
+      "path": "/quotes",
+      "title": "",
+      "bodyTextSample": "\nAtelier Atlas Conseil\n\n\nCM\nDevis\nBrouillons\nEn cours\nClotures\nDEV-2026-002\nExpire le 25/06/2026\n2 952,00 €\nStudio Bloom\nModifie aujourd'hui\nBrouillon\n\n\nAccueil\n\nDevis\n\nFactures\n\nClients",
+      "expectedTextFound": true,
+      "wallTimeMs": 2544,
+      "domContentLoadedMs": 1022,
+      "loadEventMs": 1022,
+      "firstPaintMs": 764,
+      "firstContentfulPaintMs": 764,
+      "resourceCount": 8,
+      "totalTransferSize": 2404850,
+      "scriptTransferSize": 2014526,
+      "imageTransferSize": 0,
+      "resourceSummary": {
+        "script": {
+          "count": 1,
+          "transferSize": 2014526,
+          "encodedBodySize": 2014226,
+          "decodedBodySize": 11829160,
+          "durationMs": 231
+        },
+        "other": {
+          "count": 1,
+          "transferSize": 0,
+          "encodedBodySize": 0,
+          "decodedBodySize": 0,
+          "durationMs": 1
+        },
+        "xmlhttprequest": {
+          "count": 3,
+          "transferSize": 0,
+          "encodedBodySize": 0,
+          "decodedBodySize": 0,
+          "durationMs": 71
+        },
+        "fetch": {
+          "count": 2,
+          "transferSize": 300,
+          "encodedBodySize": 0,
+          "decodedBodySize": 0,
+          "durationMs": 693
+        },
+        "css": {
+          "count": 1,
+          "transferSize": 390024,
+          "encodedBodySize": 389724,
+          "decodedBodySize": 389724,
+          "durationMs": 590
+        }
+      },
+      "apiCount": 3,
+      "apiAvgMs": 20,
+      "apiP95Ms": 25,
+      "apiFailedCount": 0,
+      "consoleWarningCount": 2,
+      "consoleErrorCount": 1
+    },
+    {
+      "key": "invoices",
+      "path": "/invoices",
+      "title": "",
+      "bodyTextSample": "\nAtelier Atlas Conseil\n\n\nCM\nFactures\nEn attente\nPayees\nAnnulees\nFAC-2026-005\n01/04/2026 — Echeance 01/05/2026\n2 520,00 €\nCafe du Rivage\naujourd'hui\nEn retard\nFAC-2026-003\n14/04/2026 — Echeance 14/05/2026\n6 600,00 €\nNova Habitat\naujourd'hui\nPartiel\nFAC-2026-002\n11/05/2026 — Echeance 10/06/2026\n4 800,00 €\nMaison Durand\naujourd'hui\nEnvoyee\nFAC-2026-001\nDEV-2026-003\n08/05/2026 — Echeance 07/06/2026\n5 064,00 €\nClinique Saint Martin\naujourd'hui\nA envoyer\n\nAccueil\n\nDevis\n\nFactures\n\nClients",
+      "expectedTextFound": true,
+      "wallTimeMs": 2303,
+      "domContentLoadedMs": 769,
+      "loadEventMs": 770,
+      "firstPaintMs": 452,
+      "firstContentfulPaintMs": 452,
+      "resourceCount": 8,
+      "totalTransferSize": 2404850,
+      "scriptTransferSize": 2014526,
+      "imageTransferSize": 0,
+      "resourceSummary": {
+        "script": {
+          "count": 1,
+          "transferSize": 2014526,
+          "encodedBodySize": 2014226,
+          "decodedBodySize": 11829160,
+          "durationMs": 270
+        },
+        "other": {
+          "count": 1,
+          "transferSize": 0,
+          "encodedBodySize": 0,
+          "decodedBodySize": 0,
+          "durationMs": 1
+        },
+        "xmlhttprequest": {
+          "count": 3,
+          "transferSize": 0,
+          "encodedBodySize": 0,
+          "decodedBodySize": 0,
+          "durationMs": 54
+        },
+        "fetch": {
+          "count": 2,
+          "transferSize": 300,
+          "encodedBodySize": 0,
+          "decodedBodySize": 0,
+          "durationMs": 827
+        },
+        "css": {
+          "count": 1,
+          "transferSize": 390024,
+          "encodedBodySize": 389724,
+          "decodedBodySize": 389724,
+          "durationMs": 719
+        }
+      },
+      "apiCount": 3,
+      "apiAvgMs": 14,
+      "apiP95Ms": 16,
+      "apiFailedCount": 0,
+      "consoleWarningCount": 2,
+      "consoleErrorCount": 1
+    },
+    {
+      "key": "organizations",
+      "path": "/organizations",
+      "title": "",
+      "bodyTextSample": "\nAtelier Atlas Conseil\n\n\nCM\nOrganisations\nActives (1)\nArchivees (0)\nAtelier Atlas Conseil\nAtelier Atlas Conseil SAS - SIREN: 914205337\nFR\n\n18 rue des Jeuneurs, Paris, 75002\n\ncontact@atelier-atlas.test\nCreee le 4 juin 2026\nActive\n\n\nAccueil\n\nDevis\n\nFactures\n\nClients",
+      "expectedTextFound": true,
+      "wallTimeMs": 2164,
+      "domContentLoadedMs": 627,
+      "loadEventMs": 627,
+      "firstPaintMs": 376,
+      "firstContentfulPaintMs": 376,
+      "resourceCount": 6,
+      "totalTransferSize": 2404850,
+      "scriptTransferSize": 2014526,
+      "imageTransferSize": 0,
+      "resourceSummary": {
+        "script": {
+          "count": 1,
+          "transferSize": 2014526,
+          "encodedBodySize": 2014226,
+          "decodedBodySize": 11829160,
+          "durationMs": 218
+        },
+        "other": {
+          "count": 1,
+          "transferSize": 0,
+          "encodedBodySize": 0,
+          "decodedBodySize": 0,
+          "durationMs": 1
+        },
+        "xmlhttprequest": {
+          "count": 1,
+          "transferSize": 0,
+          "encodedBodySize": 0,
+          "decodedBodySize": 0,
+          "durationMs": 14
+        },
+        "fetch": {
+          "count": 2,
+          "transferSize": 300,
+          "encodedBodySize": 0,
+          "decodedBodySize": 0,
+          "durationMs": 721
+        },
+        "css": {
+          "count": 1,
+          "transferSize": 390024,
+          "encodedBodySize": 389724,
+          "decodedBodySize": 389724,
+          "durationMs": 681
+        }
+      },
+      "apiCount": 1,
+      "apiAvgMs": 11,
+      "apiP95Ms": 11,
+      "apiFailedCount": 0,
+      "consoleWarningCount": 2,
+      "consoleErrorCount": 1
+    }
+  ],
+  "throttledRoutes": [
+    {
+      "key": "dashboard",
+      "path": "/",
+      "expectedText": "Tableau de bord",
+      "url": "http://frontend:8081/",
+      "wallTimeMs": 12416.138714,
+      "expectedTextFound": true,
+      "performance": {
+        "href": "http://frontend:8081/",
+        "title": "",
+        "bodyTextSample": "\nAtelier Atlas Conseil\n\n\nCM\nTableau de bord\nVue d'ensemble de votre activite\nDevis actifs\n2\nen cours\nEn attente\n10 920,00 €\n1 en retard\nEvolution du CA\n2.2K\n2.2K\n2.2K\n2.2K\n2.2K\nMai\nDevis\nBrouillons: 1\nEnvoyes: 1\nAcceptes: 1\nRefuses: 1\nFactures\nA envoyer: 1\nEnvoyees: 1\nPayees: 1\nEn retard: 1\nPartiel: 1\nFactures en attente\nVoir tout\nFAC-2026-005\n01/04/2026 — Echeance 01/05/2026\n2 520,00 €\nCafe du Rivage\naujourd'hui\nEn retard\nFAC-2026-003\n14/04/2026 — Echeance 14/05/2026\n6 600,00 €\nNova Habitat\n",
+        "navigation": [
+          {
+            "name": "http://frontend:8081/",
+            "startTime": 0,
+            "duration": 10887.300000011921,
+            "domInteractive": 820.7000000029802,
+            "domContentLoadedEventStart": 10884.800000011921,
+            "domContentLoadedEventEnd": 10885,
+            "loadEventStart": 10887.300000011921,
+            "loadEventEnd": 10887.300000011921,
+            "transferSize": 84091,
+            "encodedBodySize": 83791,
+            "decodedBodySize": 83791
+          }
+        ],
+        "paints": [
+          {
+            "name": "first-paint",
+            "startTime": 824,
+            "duration": 0
+          },
+          {
+            "name": "first-contentful-paint",
+            "startTime": 840,
+            "duration": 0
+          }
+        ],
+        "resources": [
+          {
+            "name": "http://frontend:8081/node_modules/.pnpm/expo-router@6.0.23_6e4bf10d991da47ee6d7a290de0be25f/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&transform.reactCompiler=true",
+            "initiatorType": "script",
+            "startTime": 819.5,
+            "duration": 9803.10000000894,
+            "transferSize": 2014526,
+            "encodedBodySize": 2014226,
+            "decodedBodySize": 11829160
+          },
+          {
+            "name": "http://frontend:8081/favicon.ico",
+            "initiatorType": "other",
+            "startTime": 11064.90000000596,
+            "duration": 1.4000000059604645,
+            "transferSize": 0,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0
+          },
+          {
+            "name": "http://localhost:3000/api/organizations",
+            "initiatorType": "xmlhttprequest",
+            "startTime": 11091.5,
+            "duration": 23.100000008940697,
+            "transferSize": 0,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0
+          },
+          {
+            "name": "http://frontend:8081/",
+            "initiatorType": "fetch",
+            "startTime": 11176.40000000596,
+            "duration": 14.599999994039536,
+            "transferSize": 0,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0
+          },
+          {
+            "name": "http://frontend:8081/",
+            "initiatorType": "fetch",
+            "startTime": 11176.70000000298,
+            "duration": 1197,
+            "transferSize": 300,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0
+          },
+          {
+            "name": "http://localhost:3000/api/organizations/qfvlqj6anczoh8rgrx1zv3ao/dashboard/stats",
+            "initiatorType": "xmlhttprequest",
+            "startTime": 11177.90000000596,
+            "duration": 141.40000000596046,
+            "transferSize": 0,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0
+          },
+          {
+            "name": "http://localhost:3000/api/organizations/qfvlqj6anczoh8rgrx1zv3ao/quotes",
+            "initiatorType": "xmlhttprequest",
+            "startTime": 11178.10000000894,
+            "duration": 145.59999999403954,
+            "transferSize": 0,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0
+          },
+          {
+            "name": "http://localhost:3000/api/organizations/qfvlqj6anczoh8rgrx1zv3ao/invoices",
+            "initiatorType": "xmlhttprequest",
+            "startTime": 11178.300000011921,
+            "duration": 143.8999999910593,
+            "transferSize": 0,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0
+          },
+          {
+            "name": "http://localhost:3000/api/organizations/qfvlqj6anczoh8rgrx1zv3ao/companies",
+            "initiatorType": "xmlhttprequest",
+            "startTime": 11178.40000000596,
+            "duration": 144.29999999701977,
+            "transferSize": 0,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0
+          }
+        ]
+      },
+      "apiEvents": [
+        {
+          "method": "GET",
+          "url": "http://localhost:3000/api/organizations",
+          "targetUrl": "http://backend:3000/api/organizations",
+          "status": 200,
+          "startedAt": 71936.597576,
+          "durationMs": 21
+        },
+        {
+          "method": "GET",
+          "url": "http://localhost:3000/api/organizations/qfvlqj6anczoh8rgrx1zv3ao/dashboard/stats",
+          "targetUrl": "http://backend:3000/api/organizations/qfvlqj6anczoh8rgrx1zv3ao/dashboard/stats",
+          "status": 200,
+          "startedAt": 72024.831451,
+          "durationMs": 137
+        },
+        {
+          "method": "GET",
+          "url": "http://localhost:3000/api/organizations/qfvlqj6anczoh8rgrx1zv3ao/invoices",
+          "targetUrl": "http://backend:3000/api/organizations/qfvlqj6anczoh8rgrx1zv3ao/invoices",
+          "status": 200,
+          "startedAt": 72026.798242,
+          "durationMs": 138
+        },
+        {
+          "method": "GET",
+          "url": "http://localhost:3000/api/organizations/qfvlqj6anczoh8rgrx1zv3ao/companies",
+          "targetUrl": "http://backend:3000/api/organizations/qfvlqj6anczoh8rgrx1zv3ao/companies",
+          "status": 200,
+          "startedAt": 72027.465659,
+          "durationMs": 138
+        },
+        {
+          "method": "GET",
+          "url": "http://localhost:3000/api/organizations/qfvlqj6anczoh8rgrx1zv3ao/quotes",
+          "targetUrl": "http://backend:3000/api/organizations/qfvlqj6anczoh8rgrx1zv3ao/quotes",
+          "status": 200,
+          "startedAt": 72025.829451,
+          "durationMs": 141
+        }
+      ],
+      "consoleMessages": [
+        {
+          "type": "warning",
+          "text": "props.pointerEvents is deprecated. Use style.pointerEvents",
+          "location": {
+            "url": "http://frontend:8081/node_modules/.pnpm/expo-router@6.0.23_6e4bf10d991da47ee6d7a290de0be25f/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&transform.reactCompiler=true",
+            "lineNumber": 7996,
+            "columnNumber": 14
+          },
+          "routeKey": null,
+          "capturedAt": "2026-06-04T07:39:41.756Z"
+        },
+        {
+          "type": "error",
+          "text": "[colorKit.RGB] An error occurred while attempting to convert the provided parameter into an `RGB` color. As a result, the default color \"black\" will be used instead.",
+          "location": {
+            "url": "http://frontend:8081/node_modules/.pnpm/expo-router@6.0.23_6e4bf10d991da47ee6d7a290de0be25f/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&transform.reactCompiler=true",
+            "lineNumber": 1120,
+            "columnNumber": 32
+          },
+          "routeKey": null,
+          "capturedAt": "2026-06-04T07:39:41.759Z"
+        },
+        {
+          "type": "warning",
+          "text": "\"shadow*\" style props are deprecated. Use \"boxShadow\".",
+          "location": {
+            "url": "http://frontend:8081/node_modules/.pnpm/expo-router@6.0.23_6e4bf10d991da47ee6d7a290de0be25f/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&transform.reactCompiler=true",
+            "lineNumber": 7996,
+            "columnNumber": 14
+          },
+          "routeKey": null,
+          "capturedAt": "2026-06-04T07:39:41.771Z"
+        },
+        {
+          "type": "error",
+          "text": "[colorKit.RGB] An error occurred while attempting to convert the provided parameter into an `RGB` color. As a result, the default color \"black\" will be used instead.",
+          "location": {
+            "url": "http://frontend:8081/node_modules/.pnpm/expo-router@6.0.23_6e4bf10d991da47ee6d7a290de0be25f/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&transform.reactCompiler=true",
+            "lineNumber": 1120,
+            "columnNumber": 32
+          },
+          "routeKey": null,
+          "capturedAt": "2026-06-04T07:39:41.994Z"
+        },
+        {
+          "type": "error",
+          "text": "[colorKit.RGB] An error occurred while attempting to convert the provided parameter into an `RGB` color. As a result, the default color \"black\" will be used instead.",
+          "location": {
+            "url": "http://frontend:8081/node_modules/.pnpm/expo-router@6.0.23_6e4bf10d991da47ee6d7a290de0be25f/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&transform.reactCompiler=true",
+            "lineNumber": 1120,
+            "columnNumber": 32
+          },
+          "routeKey": null,
+          "capturedAt": "2026-06-04T07:39:42.008Z"
+        },
+        {
+          "type": "error",
+          "text": "[colorKit.RGB] An error occurred while attempting to convert the provided parameter into an `RGB` color. As a result, the default color \"black\" will be used instead.",
+          "location": {
+            "url": "http://frontend:8081/node_modules/.pnpm/expo-router@6.0.23_6e4bf10d991da47ee6d7a290de0be25f/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&transform.reactCompiler=true",
+            "lineNumber": 1120,
+            "columnNumber": 32
+          },
+          "routeKey": null,
+          "capturedAt": "2026-06-04T07:39:42.019Z"
+        }
+      ]
+    },
+    {
+      "key": "companies",
+      "path": "/companies",
+      "expectedText": "Entreprises",
+      "url": "http://frontend:8081/companies",
+      "wallTimeMs": 12283.446630999999,
+      "expectedTextFound": true,
+      "performance": {
+        "href": "http://frontend:8081/companies",
+        "title": "",
+        "bodyTextSample": "\nAtelier Atlas Conseil\n\n\nCM\nEntreprises\nClients (3)\nProspects (2)\nArchives (0)\nClinique Saint Martin\nSante\nFR\n\nNantes, 44000\n\nclinique-saint-martin.test\nSIREN: 438902771\nClient\nMaison Durand\nRetail\nFR\n\nLyon, 69002\n\nmaison-durand.test\nSIREN: 512804944\nClient\nNova Habitat\nImmobilier\nFR\n\nMontpellier, 34000\n\nnova-habitat.test\nSIREN: 827314652\nClient\n\n\nAccueil\n\nDevis\n\nFactures\n\nClients",
+        "navigation": [
+          {
+            "name": "http://frontend:8081/companies",
+            "startTime": 0,
+            "duration": 10763.40000000596,
+            "domInteractive": 830.5,
+            "domContentLoadedEventStart": 10761.60000000894,
+            "domContentLoadedEventEnd": 10761.70000000298,
+            "loadEventStart": 10763.40000000596,
+            "loadEventEnd": 10763.40000000596,
+            "transferSize": 84091,
+            "encodedBodySize": 83791,
+            "decodedBodySize": 83791
+          }
+        ],
+        "paints": [
+          {
+            "name": "first-paint",
+            "startTime": 840,
+            "duration": 0
+          },
+          {
+            "name": "first-contentful-paint",
+            "startTime": 860,
+            "duration": 0
+          }
+        ],
+        "resources": [
+          {
+            "name": "http://frontend:8081/node_modules/.pnpm/expo-router@6.0.23_6e4bf10d991da47ee6d7a290de0be25f/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&transform.reactCompiler=true",
+            "initiatorType": "script",
+            "startTime": 829.4000000059605,
+            "duration": 9817.70000000298,
+            "transferSize": 2014526,
+            "encodedBodySize": 2014226,
+            "decodedBodySize": 11829160
+          },
+          {
+            "name": "http://frontend:8081/favicon.ico",
+            "initiatorType": "other",
+            "startTime": 10822.10000000894,
+            "duration": 3.8999999910593033,
+            "transferSize": 0,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0
+          },
+          {
+            "name": "http://localhost:3000/api/organizations",
+            "initiatorType": "xmlhttprequest",
+            "startTime": 10841.60000000894,
+            "duration": 29.899999991059303,
+            "transferSize": 0,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0
+          },
+          {
+            "name": "http://frontend:8081/",
+            "initiatorType": "fetch",
+            "startTime": 10912,
+            "duration": 8.300000011920929,
+            "transferSize": 0,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0
+          },
+          {
+            "name": "http://frontend:8081/",
+            "initiatorType": "fetch",
+            "startTime": 10912.40000000596,
+            "duration": 808.7000000029802,
+            "transferSize": 300,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0
+          },
+          {
+            "name": "http://localhost:3000/api/organizations/qfvlqj6anczoh8rgrx1zv3ao/companies",
+            "initiatorType": "xmlhttprequest",
+            "startTime": 10913.40000000596,
+            "duration": 15.5,
+            "transferSize": 0,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0
+          }
+        ]
+      },
+      "apiEvents": [
+        {
+          "method": "GET",
+          "url": "http://localhost:3000/api/organizations",
+          "targetUrl": "http://backend:3000/api/organizations",
+          "status": 200,
+          "startedAt": 84122.683581,
+          "durationMs": 25
+        },
+        {
+          "method": "GET",
+          "url": "http://localhost:3000/api/organizations/qfvlqj6anczoh8rgrx1zv3ao/companies",
+          "targetUrl": "http://backend:3000/api/organizations/qfvlqj6anczoh8rgrx1zv3ao/companies",
+          "status": 200,
+          "startedAt": 84192.843206,
+          "durationMs": 12
+        }
+      ],
+      "consoleMessages": [
+        {
+          "type": "warning",
+          "text": "props.pointerEvents is deprecated. Use style.pointerEvents",
+          "location": {
+            "url": "http://frontend:8081/node_modules/.pnpm/expo-router@6.0.23_6e4bf10d991da47ee6d7a290de0be25f/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&transform.reactCompiler=true",
+            "lineNumber": 7996,
+            "columnNumber": 14
+          },
+          "routeKey": "dashboard",
+          "capturedAt": "2026-06-04T07:39:53.939Z"
+        },
+        {
+          "type": "error",
+          "text": "[colorKit.RGB] An error occurred while attempting to convert the provided parameter into an `RGB` color. As a result, the default color \"black\" will be used instead.",
+          "location": {
+            "url": "http://frontend:8081/node_modules/.pnpm/expo-router@6.0.23_6e4bf10d991da47ee6d7a290de0be25f/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&transform.reactCompiler=true",
+            "lineNumber": 1120,
+            "columnNumber": 32
+          },
+          "routeKey": "dashboard",
+          "capturedAt": "2026-06-04T07:39:53.942Z"
+        },
+        {
+          "type": "warning",
+          "text": "\"shadow*\" style props are deprecated. Use \"boxShadow\".",
+          "location": {
+            "url": "http://frontend:8081/node_modules/.pnpm/expo-router@6.0.23_6e4bf10d991da47ee6d7a290de0be25f/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&transform.reactCompiler=true",
+            "lineNumber": 7996,
+            "columnNumber": 14
+          },
+          "routeKey": "dashboard",
+          "capturedAt": "2026-06-04T07:39:53.952Z"
+        }
+      ]
+    },
+    {
+      "key": "quotes",
+      "path": "/quotes",
+      "expectedText": "Devis",
+      "url": "http://frontend:8081/quotes",
+      "wallTimeMs": 12187.48163000001,
+      "expectedTextFound": true,
+      "performance": {
+        "href": "http://frontend:8081/quotes",
+        "title": "",
+        "bodyTextSample": "\nAtelier Atlas Conseil\n\n\nCM\nDevis\nBrouillons\nEn cours\nClotures\nDEV-2026-002\nExpire le 25/06/2026\n2 952,00 €\nStudio Bloom\nModifie aujourd'hui\nBrouillon\n\n\nAccueil\n\nDevis\n\nFactures\n\nClients",
+        "navigation": [
+          {
+            "name": "http://frontend:8081/quotes",
+            "startTime": 0,
+            "duration": 10649.20000000298,
+            "domInteractive": 745.2000000029802,
+            "domContentLoadedEventStart": 10647.5,
+            "domContentLoadedEventEnd": 10647.60000000894,
+            "loadEventStart": 10649.20000000298,
+            "loadEventEnd": 10649.20000000298,
+            "transferSize": 84091,
+            "encodedBodySize": 83791,
+            "decodedBodySize": 83791
+          }
+        ],
+        "paints": [
+          {
+            "name": "first-paint",
+            "startTime": 744,
+            "duration": 0
+          },
+          {
+            "name": "first-contentful-paint",
+            "startTime": 756,
+            "duration": 0
+          }
+        ],
+        "resources": [
+          {
+            "name": "http://frontend:8081/node_modules/.pnpm/expo-router@6.0.23_6e4bf10d991da47ee6d7a290de0be25f/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&transform.reactCompiler=true",
+            "initiatorType": "script",
+            "startTime": 744,
+            "duration": 9796,
+            "transferSize": 2014526,
+            "encodedBodySize": 2014226,
+            "decodedBodySize": 11829160
+          },
+          {
+            "name": "http://frontend:8081/favicon.ico",
+            "initiatorType": "other",
+            "startTime": 10696.90000000596,
+            "duration": 1.2000000029802322,
+            "transferSize": 0,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0
+          },
+          {
+            "name": "http://localhost:3000/api/organizations",
+            "initiatorType": "xmlhttprequest",
+            "startTime": 10718.300000011921,
+            "duration": 10.899999991059303,
+            "transferSize": 0,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0
+          },
+          {
+            "name": "http://frontend:8081/",
+            "initiatorType": "fetch",
+            "startTime": 10763.5,
+            "duration": 6.5,
+            "transferSize": 0,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0
+          },
+          {
+            "name": "http://frontend:8081/",
+            "initiatorType": "fetch",
+            "startTime": 10763.800000011921,
+            "duration": 935.8999999910593,
+            "transferSize": 300,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0
+          },
+          {
+            "name": "http://localhost:3000/api/organizations/qfvlqj6anczoh8rgrx1zv3ao/quotes",
+            "initiatorType": "xmlhttprequest",
+            "startTime": 10764.60000000894,
+            "duration": 20.5,
+            "transferSize": 0,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0
+          },
+          {
+            "name": "http://localhost:3000/api/organizations/qfvlqj6anczoh8rgrx1zv3ao/companies",
+            "initiatorType": "xmlhttprequest",
+            "startTime": 10764.800000011921,
+            "duration": 20.799999997019768,
+            "transferSize": 0,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0
+          }
+        ]
+      },
+      "apiEvents": [
+        {
+          "method": "GET",
+          "url": "http://localhost:3000/api/organizations",
+          "targetUrl": "http://backend:3000/api/organizations",
+          "status": 200,
+          "startedAt": 96282.401586,
+          "durationMs": 9
+        },
+        {
+          "method": "GET",
+          "url": "http://localhost:3000/api/organizations/qfvlqj6anczoh8rgrx1zv3ao/quotes",
+          "targetUrl": "http://backend:3000/api/organizations/qfvlqj6anczoh8rgrx1zv3ao/quotes",
+          "status": 200,
+          "startedAt": 96331.227545,
+          "durationMs": 15
+        },
+        {
+          "method": "GET",
+          "url": "http://localhost:3000/api/organizations/qfvlqj6anczoh8rgrx1zv3ao/companies",
+          "targetUrl": "http://backend:3000/api/organizations/qfvlqj6anczoh8rgrx1zv3ao/companies",
+          "status": 200,
+          "startedAt": 96331.811961,
+          "durationMs": 16
+        }
+      ],
+      "consoleMessages": [
+        {
+          "type": "warning",
+          "text": "props.pointerEvents is deprecated. Use style.pointerEvents",
+          "location": {
+            "url": "http://frontend:8081/node_modules/.pnpm/expo-router@6.0.23_6e4bf10d991da47ee6d7a290de0be25f/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&transform.reactCompiler=true",
+            "lineNumber": 7996,
+            "columnNumber": 14
+          },
+          "routeKey": "companies",
+          "capturedAt": "2026-06-04T07:40:06.081Z"
+        },
+        {
+          "type": "error",
+          "text": "[colorKit.RGB] An error occurred while attempting to convert the provided parameter into an `RGB` color. As a result, the default color \"black\" will be used instead.",
+          "location": {
+            "url": "http://frontend:8081/node_modules/.pnpm/expo-router@6.0.23_6e4bf10d991da47ee6d7a290de0be25f/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&transform.reactCompiler=true",
+            "lineNumber": 1120,
+            "columnNumber": 32
+          },
+          "routeKey": "companies",
+          "capturedAt": "2026-06-04T07:40:06.084Z"
+        },
+        {
+          "type": "warning",
+          "text": "\"shadow*\" style props are deprecated. Use \"boxShadow\".",
+          "location": {
+            "url": "http://frontend:8081/node_modules/.pnpm/expo-router@6.0.23_6e4bf10d991da47ee6d7a290de0be25f/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&transform.reactCompiler=true",
+            "lineNumber": 7996,
+            "columnNumber": 14
+          },
+          "routeKey": "companies",
+          "capturedAt": "2026-06-04T07:40:06.092Z"
+        }
+      ]
+    },
+    {
+      "key": "invoices",
+      "path": "/invoices",
+      "expectedText": "Factures",
+      "url": "http://frontend:8081/invoices",
+      "wallTimeMs": 12321.946547,
+      "expectedTextFound": true,
+      "performance": {
+        "href": "http://frontend:8081/invoices",
+        "title": "",
+        "bodyTextSample": "\nAtelier Atlas Conseil\n\n\nCM\nFactures\nEn attente\nPayees\nAnnulees\nFAC-2026-005\n01/04/2026 — Echeance 01/05/2026\n2 520,00 €\nCafe du Rivage\naujourd'hui\nEn retard\nFAC-2026-003\n14/04/2026 — Echeance 14/05/2026\n6 600,00 €\nNova Habitat\naujourd'hui\nPartiel\nFAC-2026-002\n11/05/2026 — Echeance 10/06/2026\n4 800,00 €\nMaison Durand\naujourd'hui\nEnvoyee\nFAC-2026-001\nDEV-2026-003\n08/05/2026 — Echeance 07/06/2026\n5 064,00 €\nClinique Saint Martin\naujourd'hui\nA envoyer\n\nAccueil\n\nDevis\n\nFactures\n\nClients",
+        "navigation": [
+          {
+            "name": "http://frontend:8081/invoices",
+            "startTime": 0,
+            "duration": 10794.59999999404,
+            "domInteractive": 841.2000000029802,
+            "domContentLoadedEventStart": 10792.5,
+            "domContentLoadedEventEnd": 10792.59999999404,
+            "loadEventStart": 10794.59999999404,
+            "loadEventEnd": 10794.59999999404,
+            "transferSize": 84091,
+            "encodedBodySize": 83791,
+            "decodedBodySize": 83791
+          }
+        ],
+        "paints": [
+          {
+            "name": "first-paint",
+            "startTime": 844,
+            "duration": 0
+          },
+          {
+            "name": "first-contentful-paint",
+            "startTime": 872,
+            "duration": 0
+          }
+        ],
+        "resources": [
+          {
+            "name": "http://frontend:8081/node_modules/.pnpm/expo-router@6.0.23_6e4bf10d991da47ee6d7a290de0be25f/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&transform.reactCompiler=true",
+            "initiatorType": "script",
+            "startTime": 839.5999999940395,
+            "duration": 9787.29999999702,
+            "transferSize": 2014526,
+            "encodedBodySize": 2014226,
+            "decodedBodySize": 11829160
+          },
+          {
+            "name": "http://frontend:8081/favicon.ico",
+            "initiatorType": "other",
+            "startTime": 10849.79999999702,
+            "duration": 1.4000000059604645,
+            "transferSize": 0,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0
+          },
+          {
+            "name": "http://localhost:3000/api/organizations",
+            "initiatorType": "xmlhttprequest",
+            "startTime": 10863.09999999404,
+            "duration": 19.400000005960464,
+            "transferSize": 0,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0
+          },
+          {
+            "name": "http://frontend:8081/",
+            "initiatorType": "fetch",
+            "startTime": 10919,
+            "duration": 7.0999999940395355,
+            "transferSize": 0,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0
+          },
+          {
+            "name": "http://frontend:8081/",
+            "initiatorType": "fetch",
+            "startTime": 10919.20000000298,
+            "duration": 859.2999999970198,
+            "transferSize": 300,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0
+          },
+          {
+            "name": "http://localhost:3000/api/organizations/qfvlqj6anczoh8rgrx1zv3ao/invoices",
+            "initiatorType": "xmlhttprequest",
+            "startTime": 10920.20000000298,
+            "duration": 36.5,
+            "transferSize": 0,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0
+          },
+          {
+            "name": "http://localhost:3000/api/organizations/qfvlqj6anczoh8rgrx1zv3ao/quotes",
+            "initiatorType": "xmlhttprequest",
+            "startTime": 10920.29999999702,
+            "duration": 38.29999999701977,
+            "transferSize": 0,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0
+          }
+        ]
+      },
+      "apiEvents": [
+        {
+          "method": "GET",
+          "url": "http://localhost:3000/api/organizations",
+          "targetUrl": "http://backend:3000/api/organizations",
+          "status": 200,
+          "startedAt": 108622.923842,
+          "durationMs": 17
+        },
+        {
+          "method": "GET",
+          "url": "http://localhost:3000/api/organizations/qfvlqj6anczoh8rgrx1zv3ao/invoices",
+          "targetUrl": "http://backend:3000/api/organizations/qfvlqj6anczoh8rgrx1zv3ao/invoices",
+          "status": 200,
+          "startedAt": 108682.790675,
+          "durationMs": 30
+        },
+        {
+          "method": "GET",
+          "url": "http://localhost:3000/api/organizations/qfvlqj6anczoh8rgrx1zv3ao/quotes",
+          "targetUrl": "http://backend:3000/api/organizations/qfvlqj6anczoh8rgrx1zv3ao/quotes",
+          "status": 200,
+          "startedAt": 108683.369509,
+          "durationMs": 31
+        }
+      ],
+      "consoleMessages": [
+        {
+          "type": "warning",
+          "text": "props.pointerEvents is deprecated. Use style.pointerEvents",
+          "location": {
+            "url": "http://frontend:8081/node_modules/.pnpm/expo-router@6.0.23_6e4bf10d991da47ee6d7a290de0be25f/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&transform.reactCompiler=true",
+            "lineNumber": 7996,
+            "columnNumber": 14
+          },
+          "routeKey": "quotes",
+          "capturedAt": "2026-06-04T07:40:18.430Z"
+        },
+        {
+          "type": "error",
+          "text": "[colorKit.RGB] An error occurred while attempting to convert the provided parameter into an `RGB` color. As a result, the default color \"black\" will be used instead.",
+          "location": {
+            "url": "http://frontend:8081/node_modules/.pnpm/expo-router@6.0.23_6e4bf10d991da47ee6d7a290de0be25f/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&transform.reactCompiler=true",
+            "lineNumber": 1120,
+            "columnNumber": 32
+          },
+          "routeKey": "quotes",
+          "capturedAt": "2026-06-04T07:40:18.432Z"
+        },
+        {
+          "type": "warning",
+          "text": "\"shadow*\" style props are deprecated. Use \"boxShadow\".",
+          "location": {
+            "url": "http://frontend:8081/node_modules/.pnpm/expo-router@6.0.23_6e4bf10d991da47ee6d7a290de0be25f/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&transform.reactCompiler=true",
+            "lineNumber": 7996,
+            "columnNumber": 14
+          },
+          "routeKey": "quotes",
+          "capturedAt": "2026-06-04T07:40:18.439Z"
+        }
+      ]
+    },
+    {
+      "key": "organizations",
+      "path": "/organizations",
+      "expectedText": "Organisations",
+      "url": "http://frontend:8081/organizations",
+      "wallTimeMs": 12336.593297,
+      "expectedTextFound": true,
+      "performance": {
+        "href": "http://frontend:8081/organizations",
+        "title": "",
+        "bodyTextSample": "\nAtelier Atlas Conseil\n\n\nCM\nOrganisations\nActives (1)\nArchivees (0)\nAtelier Atlas Conseil\nAtelier Atlas Conseil SAS - SIREN: 914205337\nFR\n\n18 rue des Jeuneurs, Paris, 75002\n\ncontact@atelier-atlas.test\nCreee le 4 juin 2026\nActive\n\n\nAccueil\n\nDevis\n\nFactures\n\nClients",
+        "navigation": [
+          {
+            "name": "http://frontend:8081/organizations",
+            "startTime": 0,
+            "duration": 10806.199999988079,
+            "domInteractive": 805.1999999880791,
+            "domContentLoadedEventStart": 10802.29999999702,
+            "domContentLoadedEventEnd": 10802.79999999702,
+            "loadEventStart": 10806.199999988079,
+            "loadEventEnd": 10806.199999988079,
+            "transferSize": 84091,
+            "encodedBodySize": 83791,
+            "decodedBodySize": 83791
+          }
+        ],
+        "paints": [
+          {
+            "name": "first-paint",
+            "startTime": 808,
+            "duration": 0
+          },
+          {
+            "name": "first-contentful-paint",
+            "startTime": 816,
+            "duration": 0
+          }
+        ],
+        "resources": [
+          {
+            "name": "http://frontend:8081/node_modules/.pnpm/expo-router@6.0.23_6e4bf10d991da47ee6d7a290de0be25f/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&transform.reactCompiler=true",
+            "initiatorType": "script",
+            "startTime": 804.5,
+            "duration": 9811.59999999404,
+            "transferSize": 2014526,
+            "encodedBodySize": 2014226,
+            "decodedBodySize": 11829160
+          },
+          {
+            "name": "http://frontend:8081/favicon.ico",
+            "initiatorType": "other",
+            "startTime": 10878.5,
+            "duration": 9.299999997019768,
+            "transferSize": 0,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0
+          },
+          {
+            "name": "http://localhost:3000/api/organizations",
+            "initiatorType": "xmlhttprequest",
+            "startTime": 10900.699999988079,
+            "duration": 36.80000001192093,
+            "transferSize": 0,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0
+          },
+          {
+            "name": "http://frontend:8081/",
+            "initiatorType": "fetch",
+            "startTime": 10998.699999988079,
+            "duration": 14.200000002980232,
+            "transferSize": 0,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0
+          },
+          {
+            "name": "http://frontend:8081/",
+            "initiatorType": "fetch",
+            "startTime": 10998.79999999702,
+            "duration": 1247.7999999970198,
+            "transferSize": 300,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0
+          }
+        ]
+      },
+      "apiEvents": [
+        {
+          "method": "GET",
+          "url": "http://localhost:3000/api/organizations",
+          "targetUrl": "http://backend:3000/api/organizations",
+          "status": 200,
+          "startedAt": 120991.866015,
+          "durationMs": 29
+        }
+      ],
+      "consoleMessages": [
+        {
+          "type": "warning",
+          "text": "props.pointerEvents is deprecated. Use style.pointerEvents",
+          "location": {
+            "url": "http://frontend:8081/node_modules/.pnpm/expo-router@6.0.23_6e4bf10d991da47ee6d7a290de0be25f/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&transform.reactCompiler=true",
+            "lineNumber": 7996,
+            "columnNumber": 14
+          },
+          "routeKey": "invoices",
+          "capturedAt": "2026-06-04T07:40:30.816Z"
+        },
+        {
+          "type": "error",
+          "text": "[colorKit.RGB] An error occurred while attempting to convert the provided parameter into an `RGB` color. As a result, the default color \"black\" will be used instead.",
+          "location": {
+            "url": "http://frontend:8081/node_modules/.pnpm/expo-router@6.0.23_6e4bf10d991da47ee6d7a290de0be25f/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&transform.reactCompiler=true",
+            "lineNumber": 1120,
+            "columnNumber": 32
+          },
+          "routeKey": "invoices",
+          "capturedAt": "2026-06-04T07:40:30.817Z"
+        },
+        {
+          "type": "warning",
+          "text": "\"shadow*\" style props are deprecated. Use \"boxShadow\".",
+          "location": {
+            "url": "http://frontend:8081/node_modules/.pnpm/expo-router@6.0.23_6e4bf10d991da47ee6d7a290de0be25f/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&transform.reactCompiler=true",
+            "lineNumber": 7996,
+            "columnNumber": 14
+          },
+          "routeKey": "invoices",
+          "capturedAt": "2026-06-04T07:40:30.837Z"
+        }
+      ]
+    }
+  ],
+  "throttledSummaries": [
+    {
+      "key": "dashboard",
+      "path": "/",
+      "title": "",
+      "bodyTextSample": "\nAtelier Atlas Conseil\n\n\nCM\nTableau de bord\nVue d'ensemble de votre activite\nDevis actifs\n2\nen cours\nEn attente\n10 920,00 €\n1 en retard\nEvolution du CA\n2.2K\n2.2K\n2.2K\n2.2K\n2.2K\nMai\nDevis\nBrouillons: 1\nEnvoyes: 1\nAcceptes: 1\nRefuses: 1\nFactures\nA envoyer: 1\nEnvoyees: 1\nPayees: 1\nEn retard: 1\nPartiel: 1\nFactures en attente\nVoir tout\nFAC-2026-005\n01/04/2026 — Echeance 01/05/2026\n2 520,00 €\nCafe du Rivage\naujourd'hui\nEn retard\nFAC-2026-003\n14/04/2026 — Echeance 14/05/2026\n6 600,00 €\nNova Habitat\n",
+      "expectedTextFound": true,
+      "wallTimeMs": 12416,
+      "domContentLoadedMs": 10885,
+      "loadEventMs": 10887,
+      "firstPaintMs": 824,
+      "firstContentfulPaintMs": 840,
+      "resourceCount": 9,
+      "totalTransferSize": 2014826,
+      "scriptTransferSize": 2014526,
+      "imageTransferSize": 0,
+      "resourceSummary": {
+        "script": {
+          "count": 1,
+          "transferSize": 2014526,
+          "encodedBodySize": 2014226,
+          "decodedBodySize": 11829160,
+          "durationMs": 9803
+        },
+        "other": {
+          "count": 1,
+          "transferSize": 0,
+          "encodedBodySize": 0,
+          "decodedBodySize": 0,
+          "durationMs": 1
+        },
+        "xmlhttprequest": {
+          "count": 5,
+          "transferSize": 0,
+          "encodedBodySize": 0,
+          "decodedBodySize": 0,
+          "durationMs": 598
+        },
+        "fetch": {
+          "count": 2,
+          "transferSize": 300,
+          "encodedBodySize": 0,
+          "decodedBodySize": 0,
+          "durationMs": 1212
+        }
+      },
+      "apiCount": 5,
+      "apiAvgMs": 115,
+      "apiP95Ms": 141,
+      "apiFailedCount": 0,
+      "consoleWarningCount": 2,
+      "consoleErrorCount": 4
+    },
+    {
+      "key": "companies",
+      "path": "/companies",
+      "title": "",
+      "bodyTextSample": "\nAtelier Atlas Conseil\n\n\nCM\nEntreprises\nClients (3)\nProspects (2)\nArchives (0)\nClinique Saint Martin\nSante\nFR\n\nNantes, 44000\n\nclinique-saint-martin.test\nSIREN: 438902771\nClient\nMaison Durand\nRetail\nFR\n\nLyon, 69002\n\nmaison-durand.test\nSIREN: 512804944\nClient\nNova Habitat\nImmobilier\nFR\n\nMontpellier, 34000\n\nnova-habitat.test\nSIREN: 827314652\nClient\n\n\nAccueil\n\nDevis\n\nFactures\n\nClients",
+      "expectedTextFound": true,
+      "wallTimeMs": 12283,
+      "domContentLoadedMs": 10762,
+      "loadEventMs": 10763,
+      "firstPaintMs": 840,
+      "firstContentfulPaintMs": 860,
+      "resourceCount": 6,
+      "totalTransferSize": 2014826,
+      "scriptTransferSize": 2014526,
+      "imageTransferSize": 0,
+      "resourceSummary": {
+        "script": {
+          "count": 1,
+          "transferSize": 2014526,
+          "encodedBodySize": 2014226,
+          "decodedBodySize": 11829160,
+          "durationMs": 9818
+        },
+        "other": {
+          "count": 1,
+          "transferSize": 0,
+          "encodedBodySize": 0,
+          "decodedBodySize": 0,
+          "durationMs": 4
+        },
+        "xmlhttprequest": {
+          "count": 2,
+          "transferSize": 0,
+          "encodedBodySize": 0,
+          "decodedBodySize": 0,
+          "durationMs": 45
+        },
+        "fetch": {
+          "count": 2,
+          "transferSize": 300,
+          "encodedBodySize": 0,
+          "decodedBodySize": 0,
+          "durationMs": 817
+        }
+      },
+      "apiCount": 2,
+      "apiAvgMs": 19,
+      "apiP95Ms": 25,
+      "apiFailedCount": 0,
+      "consoleWarningCount": 2,
+      "consoleErrorCount": 1
+    },
+    {
+      "key": "quotes",
+      "path": "/quotes",
+      "title": "",
+      "bodyTextSample": "\nAtelier Atlas Conseil\n\n\nCM\nDevis\nBrouillons\nEn cours\nClotures\nDEV-2026-002\nExpire le 25/06/2026\n2 952,00 €\nStudio Bloom\nModifie aujourd'hui\nBrouillon\n\n\nAccueil\n\nDevis\n\nFactures\n\nClients",
+      "expectedTextFound": true,
+      "wallTimeMs": 12187,
+      "domContentLoadedMs": 10648,
+      "loadEventMs": 10649,
+      "firstPaintMs": 744,
+      "firstContentfulPaintMs": 756,
+      "resourceCount": 7,
+      "totalTransferSize": 2014826,
+      "scriptTransferSize": 2014526,
+      "imageTransferSize": 0,
+      "resourceSummary": {
+        "script": {
+          "count": 1,
+          "transferSize": 2014526,
+          "encodedBodySize": 2014226,
+          "decodedBodySize": 11829160,
+          "durationMs": 9796
+        },
+        "other": {
+          "count": 1,
+          "transferSize": 0,
+          "encodedBodySize": 0,
+          "decodedBodySize": 0,
+          "durationMs": 1
+        },
+        "xmlhttprequest": {
+          "count": 3,
+          "transferSize": 0,
+          "encodedBodySize": 0,
+          "decodedBodySize": 0,
+          "durationMs": 52
+        },
+        "fetch": {
+          "count": 2,
+          "transferSize": 300,
+          "encodedBodySize": 0,
+          "decodedBodySize": 0,
+          "durationMs": 942
+        }
+      },
+      "apiCount": 3,
+      "apiAvgMs": 13,
+      "apiP95Ms": 16,
+      "apiFailedCount": 0,
+      "consoleWarningCount": 2,
+      "consoleErrorCount": 1
+    },
+    {
+      "key": "invoices",
+      "path": "/invoices",
+      "title": "",
+      "bodyTextSample": "\nAtelier Atlas Conseil\n\n\nCM\nFactures\nEn attente\nPayees\nAnnulees\nFAC-2026-005\n01/04/2026 — Echeance 01/05/2026\n2 520,00 €\nCafe du Rivage\naujourd'hui\nEn retard\nFAC-2026-003\n14/04/2026 — Echeance 14/05/2026\n6 600,00 €\nNova Habitat\naujourd'hui\nPartiel\nFAC-2026-002\n11/05/2026 — Echeance 10/06/2026\n4 800,00 €\nMaison Durand\naujourd'hui\nEnvoyee\nFAC-2026-001\nDEV-2026-003\n08/05/2026 — Echeance 07/06/2026\n5 064,00 €\nClinique Saint Martin\naujourd'hui\nA envoyer\n\nAccueil\n\nDevis\n\nFactures\n\nClients",
+      "expectedTextFound": true,
+      "wallTimeMs": 12322,
+      "domContentLoadedMs": 10793,
+      "loadEventMs": 10795,
+      "firstPaintMs": 844,
+      "firstContentfulPaintMs": 872,
+      "resourceCount": 7,
+      "totalTransferSize": 2014826,
+      "scriptTransferSize": 2014526,
+      "imageTransferSize": 0,
+      "resourceSummary": {
+        "script": {
+          "count": 1,
+          "transferSize": 2014526,
+          "encodedBodySize": 2014226,
+          "decodedBodySize": 11829160,
+          "durationMs": 9787
+        },
+        "other": {
+          "count": 1,
+          "transferSize": 0,
+          "encodedBodySize": 0,
+          "decodedBodySize": 0,
+          "durationMs": 1
+        },
+        "xmlhttprequest": {
+          "count": 3,
+          "transferSize": 0,
+          "encodedBodySize": 0,
+          "decodedBodySize": 0,
+          "durationMs": 94
+        },
+        "fetch": {
+          "count": 2,
+          "transferSize": 300,
+          "encodedBodySize": 0,
+          "decodedBodySize": 0,
+          "durationMs": 866
+        }
+      },
+      "apiCount": 3,
+      "apiAvgMs": 26,
+      "apiP95Ms": 31,
+      "apiFailedCount": 0,
+      "consoleWarningCount": 2,
+      "consoleErrorCount": 1
+    },
+    {
+      "key": "organizations",
+      "path": "/organizations",
+      "title": "",
+      "bodyTextSample": "\nAtelier Atlas Conseil\n\n\nCM\nOrganisations\nActives (1)\nArchivees (0)\nAtelier Atlas Conseil\nAtelier Atlas Conseil SAS - SIREN: 914205337\nFR\n\n18 rue des Jeuneurs, Paris, 75002\n\ncontact@atelier-atlas.test\nCreee le 4 juin 2026\nActive\n\n\nAccueil\n\nDevis\n\nFactures\n\nClients",
+      "expectedTextFound": true,
+      "wallTimeMs": 12337,
+      "domContentLoadedMs": 10803,
+      "loadEventMs": 10806,
+      "firstPaintMs": 808,
+      "firstContentfulPaintMs": 816,
+      "resourceCount": 5,
+      "totalTransferSize": 2014826,
+      "scriptTransferSize": 2014526,
+      "imageTransferSize": 0,
+      "resourceSummary": {
+        "script": {
+          "count": 1,
+          "transferSize": 2014526,
+          "encodedBodySize": 2014226,
+          "decodedBodySize": 11829160,
+          "durationMs": 9812
+        },
+        "other": {
+          "count": 1,
+          "transferSize": 0,
+          "encodedBodySize": 0,
+          "decodedBodySize": 0,
+          "durationMs": 9
+        },
+        "xmlhttprequest": {
+          "count": 1,
+          "transferSize": 0,
+          "encodedBodySize": 0,
+          "decodedBodySize": 0,
+          "durationMs": 37
+        },
+        "fetch": {
+          "count": 2,
+          "transferSize": 300,
+          "encodedBodySize": 0,
+          "decodedBodySize": 0,
+          "durationMs": 1262
+        }
+      },
+      "apiCount": 1,
+      "apiAvgMs": 29,
+      "apiP95Ms": 29,
+      "apiFailedCount": 0,
+      "consoleWarningCount": 2,
+      "consoleErrorCount": 1
+    }
+  ]
+}

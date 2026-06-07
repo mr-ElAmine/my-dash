@@ -7,6 +7,8 @@ import { useRouter } from "expo-router";
 import { useQuotes } from "../../../hooks/use-quotes";
 import { useCompanies } from "../../../hooks/use-companies";
 import { QuoteCard } from "../../../components/shared/quote-card";
+import { useOrganizationStore } from "../../../stores/organization.store";
+import { NoOrgScreen } from "../../../components/shared/no-org-screen";
 import type { Quote, QuoteStatus } from "../../../types/quote";
 
 type QuoteTab = "draft" | "active" | "closed";
@@ -73,6 +75,9 @@ export default function QuotesScreen() {
 
   const list = byTab(tab);
   const empty = emptyByTab[tab];
+  const hasOrg = !!useOrganizationStore((s) => s.currentOrganizationId);
+
+  if (!hasOrg) return <NoOrgScreen />;
 
   if (isLoading) {
     return (

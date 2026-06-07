@@ -1,4 +1,5 @@
-import { View, Text, ScrollView, ActivityIndicator } from "react-native";
+import { useEffect } from "react";
+import { View, Text, ScrollView } from "react-native";
 import { Button, Input, Select, Spinner } from "heroui-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter, useLocalSearchParams } from "expo-router";
@@ -8,6 +9,8 @@ import { z } from "zod";
 import { useRecordPayment } from "../../../../hooks/use-payments";
 import { useInvoice } from "../../../../hooks/use-invoices";
 import { useToastMsg } from "../../../../hooks/use-toast-msg";
+import { NoOrgScreen } from "../../../../components/shared/no-org-screen";
+import { useOrganizationStore } from "../../../../stores/organization.store";
 import { Field } from "../../../../components/shared/form/field";
 import { SectionDivider } from "../../../../components/shared/form/section-divider";
 import type { PaymentMethod } from "../../../../types/payment";
@@ -19,7 +22,7 @@ const paymentSchema = z.object({
   reference: z.string().optional(),
 });
 
-type PaymentForm = z.infer<typeof paymentSchema>;
+type PaymentForm = z.input<typeof paymentSchema>;
 
 const methodOptions: { value: PaymentMethod; label: string }[] = [
   { value: "bank_transfer", label: "Virement" },
@@ -35,12 +38,11 @@ const formatCents = (cents: number) =>
 export default function AddPaymentScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const router = useRouter();
+  const hasOrg = !!useOrganizationStore((s) => s.currentOrganizationId);
   const { data } = useInvoice(id);
   const recordPayment = useRecordPayment(id);
   const toast = useToastMsg();
-
   const invoice = data?.invoice;
-
   const remaining = invoice
     ? Math.max(invoice.totalTtcCents - invoice.paidAmountCents, 0)
     : 0;
@@ -62,6 +64,14 @@ export default function AddPaymentScreen() {
     mode: "onChange",
   });
 
+  useEffect(() => {
+    if (remaining > 0) {
+      setValue("amountEur", remaining / 100);
+    }
+  }, [remaining, setValue]);
+
+  if (!hasOrg) return <NoOrgScreen />;
+
   const amountEur = Number(watch("amountEur")) || 0;
 
   const selectedMethod = watch("method");
@@ -80,7 +90,7 @@ export default function AddPaymentScreen() {
       await recordPayment.mutateAsync(payload);
       toast.success("Paiement enregistre");
       router.push(`/invoices/${id}`);
-    } catch (err: any) {
+    } catch {
       toast.error("Erreur", "Impossible d'enregistrer le paiement");
     }
   }

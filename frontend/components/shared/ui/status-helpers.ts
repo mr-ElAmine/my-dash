@@ -1,6 +1,3 @@
-import type { InvoiceStatus } from "../../../types/invoice";
-import type { QuoteStatus } from "../../../types/quote";
-
 export const statusColor: Record<
   string,
   "success" | "accent" | "danger" | "warning" | "default"

@@ -42,6 +42,34 @@ export type ChartDataPoint = {
 const AnimatedPath = Animated.createAnimatedComponent(Path);
 const AnimatedCircle = Animated.createAnimatedComponent(Circle);
 
+type AnimatedPointProps = {
+  cx: number;
+  cy: number;
+  fill: string;
+  animationProgress: { value: number };
+};
+
+function AnimatedPoint({
+  cx,
+  cy,
+  fill,
+  animationProgress,
+}: AnimatedPointProps) {
+  const animatedProps = useAnimatedProps(() => ({
+    opacity: animationProgress.value,
+  }));
+
+  return (
+    <AnimatedCircle
+      cx={cx}
+      cy={cy}
+      r={4}
+      fill={fill}
+      animatedProps={animatedProps}
+    />
+  );
+}
+
 const createPath = (points: { x: number; y: number }[]): string => {
   if (points.length === 0) return "";
   let path = `M${points[0].x},${points[0].y}`;
@@ -108,7 +136,19 @@ export const LineChart = ({ data, config = {}, style }: Props) => {
     animationProgress.value = animated
       ? withTiming(1, { duration })
       : 1;
-  }, [data, animated, duration]);
+  }, [data, animated, duration, animationProgress]);
+
+  const lineAnimatedProps = useAnimatedProps(() => ({
+    strokeDasharray: animated
+      ? `${animationProgress.value * 1000} 1000`
+      : undefined,
+  }));
+
+  const areaAnimatedProps = useAnimatedProps(() => ({
+    strokeDasharray: animated
+      ? `${animationProgress.value * 1000} 1000`
+      : undefined,
+  }));
 
   if (!data.length) return null;
 
@@ -140,18 +180,6 @@ export const LineChart = ({ data, config = {}, style }: Props) => {
       });
     }
   }
-
-  const lineAnimatedProps = useAnimatedProps(() => ({
-    strokeDasharray: animated
-      ? `${animationProgress.value * 1000} 1000`
-      : undefined,
-  }));
-
-  const areaAnimatedProps = useAnimatedProps(() => ({
-    strokeDasharray: animated
-      ? `${animationProgress.value * 1000} 1000`
-      : undefined,
-  }));
 
   const panGesture = Gesture.Pan()
     .onStart((event) => {
@@ -255,21 +283,15 @@ export const LineChart = ({ data, config = {}, style }: Props) => {
               animatedProps={lineAnimatedProps}
             />
 
-            {points.map((point, index) => {
-              const pointAnimatedProps = useAnimatedProps(() => ({
-                opacity: animationProgress.value,
-              }));
-              return (
-                <AnimatedCircle
-                  key={`p-${index}`}
-                  cx={point.x}
-                  cy={point.y}
-                  r={4}
-                  fill={accentColor}
-                  animatedProps={pointAnimatedProps}
-                />
-              );
-            })}
+            {points.map((point, index) => (
+              <AnimatedPoint
+                key={`p-${index}`}
+                cx={point.x}
+                cy={point.y}
+                fill={accentColor}
+                animationProgress={animationProgress}
+              />
+            ))}
 
             {showLabels && (
               <G>

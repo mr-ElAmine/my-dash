@@ -50,7 +50,7 @@ export const ProgressRingChart = ({
 
   useEffect(() => {
     animationProgress.value = animated ? withTiming(1, { duration }) : 1;
-  }, [progress, animated, duration]);
+  }, [progress, animated, duration, animationProgress]);
 
   const radius = (size - strokeWidth) / 2;
   const circumference = 2 * Math.PI * radius;

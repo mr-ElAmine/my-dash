@@ -47,7 +47,7 @@ export function TabBar({ state, navigation }: BottomTabBarProps) {
         elevation: 20,
       }}
     >
-      <View className="flex-row items-center justify-center px-3 gap-2">
+      <View className="flex-row items-center justify-center px-2 gap-2">
         {tabs.map((tab, index) => {
           const isFocused = state.index === index;
 
@@ -69,7 +69,7 @@ export function TabBar({ state, navigation }: BottomTabBarProps) {
               }}
             >
               <View
-                className="items-center justify-center rounded-4xl w-22 bg-white px-4 py-2"
+                className="flex items-center justify-center rounded-4xl w-[87px] bg-white px-1 py-2"
                 style={isFocused ? { elevation: 4 } : undefined}
               >
                 <Ionicons

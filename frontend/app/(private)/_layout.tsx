@@ -1,11 +1,10 @@
-import { Tabs } from "expo-router";
+import { Redirect, Tabs } from "expo-router";
 import { useAuthStore } from "../../stores/auth.store";
-import { Redirect } from "expo-router";
 import { View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { AppHeader } from "../../components/shared/app-header";
+import { OfflineBanner } from "../../components/shared/offline-banner";
 import { TabBar } from "../../components/shared/tab-bar";
-import { ScrollView } from "react-native-gesture-handler";
 
 export default function PrivateLayout() {
   const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
@@ -17,6 +16,7 @@ export default function PrivateLayout() {
 
   return (
     <View className="flex-1" style={{ paddingTop: top }}>
+      <OfflineBanner />
       <AppHeader />
       <Tabs
         tabBar={(props) => <TabBar {...props} />}
