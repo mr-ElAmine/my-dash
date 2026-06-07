@@ -7,6 +7,8 @@ import { useRouter } from "expo-router";
 import { useInvoices } from "../../../hooks/use-invoices";
 import { useQuotes } from "../../../hooks/use-quotes";
 import { InvoiceCard } from "../../../components/shared/invoice-card";
+import { useOrganizationStore } from "../../../stores/organization.store";
+import { NoOrgScreen } from "../../../components/shared/no-org-screen";
 import type { Invoice, InvoiceStatus } from "../../../types/invoice";
 
 type InvoiceTab = "pending" | "paid" | "cancelled";
@@ -49,6 +51,7 @@ export default function InvoicesScreen() {
   const router = useRouter();
   const { data: invoices, isLoading } = useInvoices();
   const { data: quotes } = useQuotes();
+  const hasOrg = !!useOrganizationStore((s) => s.currentOrganizationId);
 
   const quoteMap = new Map(quotes?.map((q) => [q.id, q.quoteNumber]) ?? []);
 
@@ -73,6 +76,10 @@ export default function InvoicesScreen() {
 
   const list = byTab(tab);
   const empty = emptyByTab[tab];
+
+  if (!hasOrg) {
+    return <NoOrgScreen />;
+  }
 
   if (isLoading) {
     return (

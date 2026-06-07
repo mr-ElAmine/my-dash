@@ -7,6 +7,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useAddQuoteItem } from "../../../../hooks/use-quotes";
 import { useToastMsg } from "../../../../hooks/use-toast-msg";
+import { NoOrgScreen } from "../../../../components/shared/no-org-screen";
+import { useOrganizationStore } from "../../../../stores/organization.store";
 import { Field } from "../../../../components/shared/form/field";
 import { SectionDivider } from "../../../../components/shared/form/section-divider";
 
@@ -17,18 +19,18 @@ const lineSchema = z.object({
   taxRatePercent: z.coerce.number().min(0, "Le taux doit etre >= 0"),
 });
 
-type LineForm = z.infer<typeof lineSchema>;
+type LineForm = z.input<typeof lineSchema>;
 
 export default function AddLineScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const router = useRouter();
+  const hasOrg = !!useOrganizationStore((s) => s.currentOrganizationId);
   const addItem = useAddQuoteItem(id);
   const toast = useToastMsg();
 
   const {
     control,
     handleSubmit,
-    setValue,
     watch,
     formState: { errors },
   } = useForm<LineForm>({
@@ -41,6 +43,8 @@ export default function AddLineScreen() {
     },
     mode: "onChange",
   });
+
+  if (!hasOrg) return <NoOrgScreen />;
 
   const qty = Number(watch("quantity")) || 0;
   const priceEur = Number(watch("unitPriceHtEur")) || 0;

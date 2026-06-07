@@ -1,0 +1,148 @@
+name: mydash-audit
+
+x-node-service: &node-service
+  build:
+    context: ../..
+    dockerfile: infrastructure/audit/Dockerfile.node
+  init: true
+  environment:
+    CI: "1"
+    EXPO_NO_TELEMETRY: "1"
+    PNPM_STORE_DIR: /pnpm/store
+  volumes:
+    - ../../backend:/workspace/backend
+    - ../../frontend:/workspace/frontend
+    - ./frontend.env:/workspace/frontend/.env:ro
+    - backend_node_modules:/workspace/backend/node_modules
+    - frontend_node_modules:/workspace/frontend/node_modules
+    - pnpm_store:/pnpm/store
+
+services:
+  postgres:
+    image: postgres:17-alpine
+    container_name: mydash-audit-db
+    environment:
+      POSTGRES_USER: mydash
+      POSTGRES_PASSWORD: mydash
+      POSTGRES_DB: mydash_audit
+    ports:
+      - "5434:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U mydash -d mydash_audit"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    volumes:
+      - postgres_audit_data:/var/lib/postgresql/data
+
+  mailpit:
+    image: axllent/mailpit
+    container_name: mydash-audit-mailpit
+    ports:
+      - "1026:1025"
+      - "8026:8025"
+    environment:
+      MP_SMTP_AUTH_ACCEPT_ANY: 1
+      MP_SMTP_AUTH_ALLOW_INSECURE: 1
+
+  backend:
+    <<: *node-service
+    container_name: mydash-audit-backend
+    working_dir: /workspace/backend
+    command: >
+      bash -lc "pnpm install --frozen-lockfile --store-dir /pnpm/store
+      && pnpm db:push:raw
+      && pnpm dev"
+    environment:
+      CI: "1"
+      PNPM_STORE_DIR: /pnpm/store
+      NODE_ENV: development
+      PORT: 3000
+      DATABASE_URL: postgresql://mydash:mydash@postgres:5432/mydash_audit
+      JWT_SECRET: audit-local-dev-secret-change-me
+      JWT_EXPIRES_IN: 86400
+      SMTP_HOST: mailpit
+      SMTP_PORT: 1025
+      SMTP_FROM: noreply@mydash.local
+    ports:
+      - "3010:3000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      mailpit:
+        condition: service_started
+
+  frontend:
+    <<: *node-service
+    container_name: mydash-audit-frontend
+    working_dir: /workspace/frontend
+    command: >
+      bash -lc "pnpm install --frozen-lockfile --store-dir /pnpm/store
+      && pnpm exec expo start --web --host lan --port 8081 --max-workers 1"
+    environment:
+      CI: "1"
+      EXPO_NO_TELEMETRY: "1"
+      EXPO_NO_DOTENV: "1"
+      BROWSER: none
+      CHOKIDAR_USEPOLLING: "1"
+      WATCHPACK_POLLING: "1"
+      PNPM_STORE_DIR: /pnpm/store
+      EXPO_PUBLIC_API_URL: http://localhost:3000/api
+    ports:
+      - "8091:8081"
+    depends_on:
+      backend:
+        condition: service_started
+
+  backend-check:
+    <<: *node-service
+    profiles: ["tools"]
+    working_dir: /workspace/backend
+    command: >
+      bash -lc "pnpm install --frozen-lockfile --store-dir /pnpm/store
+      && pnpm typecheck
+      && pnpm test"
+    environment:
+      CI: "1"
+      PNPM_STORE_DIR: /pnpm/store
+      NODE_ENV: test
+      DATABASE_URL: postgresql://mydash:mydash@postgres:5432/mydash_audit
+      JWT_SECRET: test-secret-key-for-testing
+      JWT_EXPIRES_IN: 3600
+
+  frontend-check:
+    <<: *node-service
+    profiles: ["tools"]
+    working_dir: /workspace/frontend
+    command: >
+      bash -lc "pnpm install --frozen-lockfile --store-dir /pnpm/store
+      && pnpm lint
+      && pnpm test"
+    environment:
+      CI: "1"
+      EXPO_NO_TELEMETRY: "1"
+      EXPO_NO_DOTENV: "1"
+      PNPM_STORE_DIR: /pnpm/store
+      EXPO_PUBLIC_API_URL: http://localhost:3000/api
+
+  audit-shell:
+    <<: *node-service
+    profiles: ["tools"]
+    working_dir: /workspace
+    command: bash
+    environment:
+      CI: "1"
+      EXPO_NO_TELEMETRY: "1"
+      EXPO_NO_DOTENV: "1"
+      PNPM_STORE_DIR: /pnpm/store
+      BACKEND_API_URL: http://backend:3000/api
+      FRONTEND_URL: http://frontend:8081
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  postgres_audit_data:
+  backend_node_modules:
+  frontend_node_modules:
+  pnpm_store:

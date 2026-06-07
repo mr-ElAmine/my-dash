@@ -1,5 +1,5 @@
 import { View, Text, ScrollView } from "react-native";
-import { Button, Spinner, Select, Separator } from "heroui-native";
+import { Button, Spinner, Select } from "heroui-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { useForm, Controller } from "react-hook-form";
@@ -8,6 +8,8 @@ import { z } from "zod";
 import { useCompanies } from "../../../hooks/use-companies";
 import { useCreateQuote } from "../../../hooks/use-quotes";
 import { useToastMsg } from "../../../hooks/use-toast-msg";
+import { NoOrgScreen } from "../../../components/shared/no-org-screen";
+import { useOrganizationStore } from "../../../stores/organization.store";
 import { Field } from "../../../components/shared/form/field";
 import { SectionDivider } from "../../../components/shared/form/section-divider";
 import { DatePickerField } from "../../../components/shared/form/date-picker-field";
@@ -22,6 +24,7 @@ type QuoteForm = z.infer<typeof quoteSchema>;
 
 export default function CreateQuoteScreen() {
   const router = useRouter();
+  const hasOrg = !!useOrganizationStore((s) => s.currentOrganizationId);
   const { data: companies, isLoading: companiesLoading } = useCompanies();
   const createQuote = useCreateQuote();
   const toast = useToastMsg();
@@ -46,6 +49,8 @@ export default function CreateQuoteScreen() {
     },
     mode: "onChange",
   });
+
+  if (!hasOrg) return <NoOrgScreen />;
 
   const selectedCompanyId = watch("companyId");
 
@@ -163,7 +168,7 @@ export default function CreateQuoteScreen() {
                         color="#94a3b8"
                       />
                       <Text className="text-xs text-muted">
-                        Aucune entreprise. Creez-en une d'abord.
+                        {"Aucune entreprise. Creez-en une d'abord."}
                       </Text>
                     </View>
                   )}

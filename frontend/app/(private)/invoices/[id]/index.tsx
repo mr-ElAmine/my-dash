@@ -14,6 +14,8 @@ import {
 } from "../../../../hooks/use-payments";
 import { useCompany } from "../../../../hooks/use-companies";
 import { SectionDivider } from "../../../../components/shared/form/section-divider";
+import { NoOrgScreen } from "../../../../components/shared/no-org-screen";
+import { useOrganizationStore } from "../../../../stores/organization.store";
 import type { InvoiceStatus } from "../../../../types/invoice";
 import type { PaymentMethod } from "../../../../types/payment";
 import { useToastMsg } from "../../../../hooks/use-toast-msg";
@@ -67,6 +69,7 @@ function InfoRow({ icon, label, value }: {
 export default function InvoiceDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const router = useRouter();
+  const hasOrg = !!useOrganizationStore((s) => s.currentOrganizationId);
   const { data, isLoading } = useInvoice(id);
   const companyId = data?.invoice.companyId ?? "";
   const { data: company } = useCompany(companyId);
@@ -78,6 +81,8 @@ export default function InvoiceDetailScreen() {
   const [pendingAction, setPendingAction] = useState<"send" | "cancel" | null>(null);
 
   const loading = sendInvoice.isPending || cancelInvoice.isPending;
+
+  if (!hasOrg) return <NoOrgScreen />;
 
   if (isLoading || !data) {
     return (
@@ -98,7 +103,7 @@ export default function InvoiceDetailScreen() {
     billingCountry: company.billingCountry,
     contactEmail: null as string | null,
     contactPhone: null as string | null,
-  } : null);
+  } : null) as Record<string, unknown> | null;
   const issuer = invoice.issuerSnapshot as (typeof invoice.issuerSnapshot & {
     name?: string; legalName?: string; siren?: string; siret?: string; vatNumber?: string;
     billingStreet?: string; billingCity?: string; billingZipCode?: string; billingCountry?: string;
@@ -146,7 +151,7 @@ export default function InvoiceDetailScreen() {
             <View style={{ flex: 1, gap: 4 }}>
               <Text className="text-2xl font-bold text-foreground">{invoice.invoiceNumber}</Text>
               <Text className="text-sm text-muted">
-                {client?.name ?? "Client inconnu"}
+                {(client?.name as string) ?? "Client inconnu"}
               </Text>
             </View>
             <Chip size="sm" variant="soft" color={statusColor[invoice.status]}>
@@ -228,25 +233,25 @@ export default function InvoiceDetailScreen() {
           <Card>
             <Card.Body className="p-0 px-4">
               <InfoRow icon="business-outline" label="Nom" value={(client?.name as string) ?? "Client inconnu"} />
-              {(client?.billingStreet as string) && (
-                <InfoRow icon="home-outline" label="Rue" value={client.billingStreet as string} />
-              )}
-              {(client?.billingZipCode || client?.billingCity) && (
+              {(client?.billingStreet as string) ? (
+                <InfoRow icon="home-outline" label="Rue" value={client?.billingStreet as string} />
+              ) : null}
+              {(client?.billingZipCode || client?.billingCity) ? (
                 <InfoRow
                   icon="map-outline"
                   label="Ville"
                   value={joinAddr(client?.billingZipCode as string | null, client?.billingCity as string | null)}
                 />
-              )}
-              {(client?.billingCountry as string) && (
-                <InfoRow icon="globe-outline" label="Pays" value={client.billingCountry as string} />
-              )}
-              {(client?.contactEmail as string) && (
-                <InfoRow icon="mail-outline" label="Email" value={client.contactEmail as string} />
-              )}
-              {(client?.contactPhone as string) && (
-                <InfoRow icon="call-outline" label="Telephone" value={client.contactPhone as string} />
-              )}
+              ) : null}
+              {(client?.billingCountry as string) ? (
+                <InfoRow icon="globe-outline" label="Pays" value={client?.billingCountry as string} />
+              ) : null}
+              {(client?.contactEmail as string) ? (
+                <InfoRow icon="mail-outline" label="Email" value={client?.contactEmail as string} />
+              ) : null}
+              {(client?.contactPhone as string) ? (
+                <InfoRow icon="call-outline" label="Telephone" value={client?.contactPhone as string} />
+              ) : null}
             </Card.Body>
           </Card>
 

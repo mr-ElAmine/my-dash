@@ -43,10 +43,13 @@ async function pushSchema() {
       user_id TEXT NOT NULL REFERENCES users(id),
       role TEXT NOT NULL,
       status TEXT NOT NULL DEFAULT 'active',
+      removed_at TIMESTAMP,
+      removed_by TEXT,
       joined_at TIMESTAMP NOT NULL DEFAULT NOW(),
       created_at TIMESTAMP NOT NULL DEFAULT NOW(),
       updated_at TIMESTAMP NOT NULL DEFAULT NOW()
     )`,
+    `CREATE UNIQUE INDEX IF NOT EXISTS org_members_org_user_active_unique ON organization_members (organization_id, user_id)`,
     `CREATE TABLE IF NOT EXISTS organization_invites (
       id TEXT PRIMARY KEY,
       organization_id TEXT NOT NULL REFERENCES organizations(id),

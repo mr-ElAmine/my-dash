@@ -1,0 +1,16 @@
+FROM node:24-bookworm-slim
+
+ENV PNPM_HOME=/pnpm
+ENV PATH="${PNPM_HOME}:${PATH}"
+ENV COREPACK_ENABLE_DOWNLOAD_PROMPT=0
+
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends bash ca-certificates chromium curl git openssl \
+  && rm -rf /var/lib/apt/lists/* \
+  && corepack enable \
+  && corepack prepare pnpm@10.33.2 --activate \
+  && npm install -g playwright-core@1.57.0
+
+WORKDIR /workspace
+
+CMD ["bash"]

@@ -6,6 +6,8 @@ import type { Ionicons as IoniconTypes } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { useCompanies } from "../../../hooks/use-companies";
 import { CompanyCard } from "../../../components/shared/company-card";
+import { useOrganizationStore } from "../../../stores/organization.store";
+import { NoOrgScreen } from "../../../components/shared/no-org-screen";
 import type { Company } from "../../../types/company";
 
 type CompanyTab = "customer" | "prospect" | "archived";
@@ -49,6 +51,9 @@ export default function CompaniesScreen() {
 
   const list = byStatus(tab);
   const empty = emptyByTab[tab];
+  const hasOrg = !!useOrganizationStore((s) => s.currentOrganizationId);
+
+  if (!hasOrg) return <NoOrgScreen />;
 
   if (isLoading) {
     return (

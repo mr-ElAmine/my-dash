@@ -31,6 +31,44 @@ type Props = {
   style?: ViewStyle;
 };
 
+type AnimatedBarProps = {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  fill: string;
+  chartHeight: number;
+  bottomPadding: number;
+  animationProgress: { value: number };
+};
+
+function AnimatedBar({
+  x,
+  y,
+  width,
+  height,
+  fill,
+  chartHeight,
+  bottomPadding,
+  animationProgress,
+}: AnimatedBarProps) {
+  const animatedProps = useAnimatedProps(() => ({
+    height: animationProgress.value * height,
+    y: chartHeight - bottomPadding - animationProgress.value * height,
+  }));
+
+  return (
+    <AnimatedRect
+      x={x}
+      y={y}
+      width={width}
+      fill={fill}
+      rx={4}
+      animatedProps={animatedProps}
+    />
+  );
+}
+
 export const BarChart = ({ data, config = {}, style }: Props) => {
   const [containerWidth, setContainerWidth] = useState(300);
   const {
@@ -53,7 +91,7 @@ export const BarChart = ({ data, config = {}, style }: Props) => {
 
   useEffect(() => {
     animationProgress.value = animated ? withTiming(1, { duration }) : 1;
-  }, [data, animated, duration]);
+  }, [data, animated, duration, animationProgress]);
 
   if (!data.length) return null;
 
@@ -71,19 +109,17 @@ export const BarChart = ({ data, config = {}, style }: Props) => {
           const x = padding + index * (barWidth + barSpacing) + barSpacing / 2;
           const y = height - padding - barHeight;
 
-          const barAnimatedProps = useAnimatedProps(() => ({
-            height: animationProgress.value * barHeight,
-            y: height - padding - animationProgress.value * barHeight,
-          }));
-
           return (
             <G key={`bar-${index}`}>
-              <AnimatedRect
+              <AnimatedBar
                 x={x}
+                y={y}
                 width={barWidth}
                 fill={item.color || accentColor}
-                rx={4}
-                animatedProps={barAnimatedProps}
+                height={barHeight}
+                chartHeight={height}
+                bottomPadding={padding}
+                animationProgress={animationProgress}
               />
               {showLabels && (
                 <>

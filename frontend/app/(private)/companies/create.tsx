@@ -6,6 +6,8 @@ import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useCreateCompany } from "../../../hooks/use-companies";
+import { NoOrgScreen } from "../../../components/shared/no-org-screen";
+import { useOrganizationStore } from "../../../stores/organization.store";
 import { Field } from "../../../components/shared/form/field";
 import { SectionDivider } from "../../../components/shared/form/section-divider";
 
@@ -26,6 +28,7 @@ type CompanyForm = z.infer<typeof companySchema>;
 
 export default function CompanyCreateScreen() {
   const router = useRouter();
+  const hasOrg = !!useOrganizationStore((s) => s.currentOrganizationId);
   const createCompany = useCreateCompany();
 
   const {
@@ -48,6 +51,8 @@ export default function CompanyCreateScreen() {
     },
     mode: "onChange",
   });
+
+  if (!hasOrg) return <NoOrgScreen />;
 
   async function onSubmit(data: CompanyForm) {
     try {
