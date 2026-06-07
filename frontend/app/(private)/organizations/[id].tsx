@@ -7,8 +7,7 @@ import {
   Avatar,
 } from "heroui-native";
 import { Ionicons } from "@expo/vector-icons";
-import { useRouter } from "expo-router";
-import { useLocalSearchParams } from "expo-router";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import {
   useOrganization,
   useArchiveOrganization,
@@ -244,7 +243,7 @@ export default function OrganizationDetailScreen() {
                   <Card.Body>
                     <View className="flex-row items-center justify-between">
                       <View className="flex-row items-center gap-3 flex-1">
-                        <Avatar size="sm">
+                        <Avatar size="sm" alt={m.user ? `${m.user.firstName} ${m.user.lastName}` : "Utilisateur"}>
                           <Avatar.Fallback>{initials}</Avatar.Fallback>
                         </Avatar>
                         <View className="gap-0.5 flex-1">

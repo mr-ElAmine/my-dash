@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View } from "react-native";
 import { Button, Menu, Separator } from "heroui-native";
 import type { MenuKey } from "heroui-native";
 import { useRouter } from "expo-router";
@@ -22,52 +22,59 @@ export function AppHeader() {
 
   return (
     <View className="bg-background border-b border-border px-4 py-2.5 flex-row items-center justify-between">
-      {/* Org switcher */}
-      <Menu>
-        <Menu.Trigger asChild>
-          <Button variant="primary" size="sm">
-            <Ionicons name="business-outline" size={16} color="#fff" />
-            <Button.Label>{currentOrg?.name ?? "Organisation"}</Button.Label>
-            <Ionicons name="chevron-down" size={13} color="#ffff" />
-          </Button>
-        </Menu.Trigger>
+      {/* Org switcher — hidden if no org */}
+      {currentOrgId ? (
+        <Menu>
+          <Menu.Trigger asChild>
+            <Button variant="primary" size="sm">
+              <Ionicons name="business-outline" size={16} color="#fff" />
+              <Button.Label>{currentOrg?.name ?? "Organisation"}</Button.Label>
+              <Ionicons name="chevron-down" size={13} color="#ffff" />
+            </Button>
+          </Menu.Trigger>
 
-        <Menu.Portal>
-          <Menu.Overlay />
-          <Menu.Content
-            presentation="popover"
-            placement="bottom"
-            align="start"
-            width={240}
-          >
-            <Menu.Group
-              selectionMode="single"
-              selectedKeys={selectedKeys}
-              onSelectionChange={(keys) => {
-                const selected = Array.from(keys)[0];
-                if (selected) setOrganizationId(selected as string);
-              }}
+          <Menu.Portal>
+            <Menu.Overlay />
+            <Menu.Content
+              presentation="popover"
+              placement="bottom"
+              align="start"
+              width={240}
             >
-              {activeOrgs.map((org) => (
-                <Menu.Item id={org.id} key={org.id}>
-                  <Menu.ItemIndicator />
-                  <Menu.ItemTitle>{org.name}</Menu.ItemTitle>
-                </Menu.Item>
-              ))}
-            </Menu.Group>
+              <Menu.Group
+                selectionMode="single"
+                selectedKeys={selectedKeys}
+                onSelectionChange={(keys) => {
+                  const selected = Array.from(keys)[0];
+                  if (selected) setOrganizationId(selected as string);
+                }}
+              >
+                {activeOrgs.map((org) => (
+                  <Menu.Item id={org.id} key={org.id}>
+                    <Menu.ItemIndicator />
+                    <Menu.ItemTitle>{org.name}</Menu.ItemTitle>
+                  </Menu.Item>
+                ))}
+              </Menu.Group>
 
-            <Separator className="mx-2 my-2 opacity-75" />
+              <Separator className="mx-2 my-2 opacity-75" />
 
-            <Menu.Item
-              shouldCloseOnSelect
-              onPress={() => router.push("/organizations/create")}
-            >
-              <Ionicons name="add-circle-outline" size={16} color="#666" />
-              <Menu.ItemTitle>Créer une organisation</Menu.ItemTitle>
-            </Menu.Item>
-          </Menu.Content>
-        </Menu.Portal>
-      </Menu>
+              <Menu.Item
+                shouldCloseOnSelect
+                onPress={() => router.push("/organizations/create")}
+              >
+                <Ionicons name="add-circle-outline" size={16} color="#666" />
+                <Menu.ItemTitle>Créer une organisation</Menu.ItemTitle>
+              </Menu.Item>
+            </Menu.Content>
+          </Menu.Portal>
+        </Menu>
+      ) : (
+        <Button size="sm" variant="ghost" onPress={() => router.push("/organizations/create")}>
+          <Ionicons name="add-circle-outline" size={16} color="#3b82f6" />
+          <Button.Label>Créer une organisation</Button.Label>
+        </Button>
+      )}
 
       {/* Right actions */}
       <View className="flex-row items-center gap-2">

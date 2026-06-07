@@ -11,6 +11,8 @@ import {
 import { useContacts } from "../../../../hooks/use-contacts";
 import { ConfirmModal } from "../../../../components/shared/confirm-modal";
 import { SectionDivider } from "../../../../components/shared/form/section-divider";
+import { NoOrgScreen } from "../../../../components/shared/no-org-screen";
+import { useOrganizationStore } from "../../../../stores/organization.store";
 import { useToastMsg } from "../../../../hooks/use-toast-msg";
 import type { Contact } from "../../../../types/contact";
 
@@ -45,6 +47,7 @@ const statusLabel: Record<string, string> = {
 export default function CompanyDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const router = useRouter();
+  const hasOrg = !!useOrganizationStore((s) => s.currentOrganizationId);
   const { data: company, isLoading: companyLoading } = useCompany(id);
   const { data: contacts, isLoading: contactsLoading } = useContacts(id);
   const archiveCompany = useArchiveCompany();
@@ -56,6 +59,8 @@ export default function CompanyDetailScreen() {
     id: string;
     name: string;
   } | null>(null);
+
+  if (!hasOrg) return <NoOrgScreen />;
 
   if (companyLoading || !company) {
     return (

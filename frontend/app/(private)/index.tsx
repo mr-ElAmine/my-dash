@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { View, Text, ScrollView, ActivityIndicator } from "react-native";
 import { Card, Button } from "heroui-native";
 import { Ionicons } from "@expo/vector-icons";
@@ -6,12 +7,15 @@ import { useDashboardStats } from "../../hooks/use-dashboard";
 import { useQuotes } from "../../hooks/use-quotes";
 import { useInvoices } from "../../hooks/use-invoices";
 import { useCompanies } from "../../hooks/use-companies";
+import { useOrganizationStore } from "../../stores/organization.store";
+import { NoOrgScreen } from "../../components/shared/no-org-screen";
 import { QuoteCard } from "../../components/shared/quote-card";
 import { InvoiceCard } from "../../components/shared/invoice-card";
 import {
   AreaChart,
   DoughnutChart,
 } from "../../components/shared/charts";
+import { useObserve } from "expo-observe";
 
 const formatCents = (cents: number) =>
   new Intl.NumberFormat("fr-FR", { style: "currency", currency: "EUR" }).format(cents / 100);
@@ -29,9 +33,22 @@ export default function HomeScreen() {
   const { data: invoices, isLoading: invoicesLoading } = useInvoices();
   const { data: companies } = useCompanies();
 
+  const { markInteractive } = useObserve();
+
   const companyMap = new Map(companies?.map((c) => [c.id, c.name]));
 
-  const isLoading = statsLoading || quotesLoading || invoicesLoading;
+  const hasOrg = !!useOrganizationStore((s) => s.currentOrganizationId);
+  const isLoading = hasOrg && (statsLoading || quotesLoading || invoicesLoading);
+
+  useEffect(() => {
+    if (!isLoading && hasOrg) {
+      markInteractive();
+    }
+  }, [isLoading, hasOrg, markInteractive]);
+
+  if (!hasOrg) {
+    return <NoOrgScreen />;
+  }
 
   if (isLoading) {
     return (
@@ -85,7 +102,7 @@ export default function HomeScreen() {
         {/* Header */}
         <View className="gap-1">
           <Text className="text-2xl font-bold text-foreground">Tableau de bord</Text>
-          <Text className="text-sm text-muted">Vue d'ensemble de votre activite</Text>
+          <Text className="text-sm text-muted">{"Vue d'ensemble de votre activite"}</Text>
         </View>
 
         {/* KPIs */}

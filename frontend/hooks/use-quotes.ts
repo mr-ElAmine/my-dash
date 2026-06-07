@@ -97,6 +97,10 @@ export function useAcceptQuote() {
         refetchType: "all",
       });
       queryClient.invalidateQueries({
+        queryKey: ["invoices", organizationId],
+        refetchType: "all",
+      });
+      queryClient.invalidateQueries({
         queryKey: ["companies", organizationId],
         refetchType: "all",
       });

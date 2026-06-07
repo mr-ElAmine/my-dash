@@ -13,6 +13,8 @@ import {
 } from "../../../../hooks/use-quotes";
 import { useCompany } from "../../../../hooks/use-companies";
 import { SectionDivider } from "../../../../components/shared/form/section-divider";
+import { NoOrgScreen } from "../../../../components/shared/no-org-screen";
+import { useOrganizationStore } from "../../../../stores/organization.store";
 import type { QuoteStatus } from "../../../../types/quote";
 import { useToastMsg } from "../../../../hooks/use-toast-msg";
 
@@ -62,6 +64,7 @@ function InfoRow({ icon, label, value }: {
 export default function QuoteDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const router = useRouter();
+  const hasOrg = !!useOrganizationStore((s) => s.currentOrganizationId);
   const { data, isLoading } = useQuote(id);
   const companyId = data?.quote.companyId ?? "";
   const { data: company } = useCompany(companyId);
@@ -78,6 +81,8 @@ export default function QuoteDetailScreen() {
   const loading =
     sendQuote.isPending || acceptQuote.isPending ||
     refuseQuote.isPending || cancelQuote.isPending;
+
+  if (!hasOrg) return <NoOrgScreen />;
 
   if (isLoading || !data) {
     return (

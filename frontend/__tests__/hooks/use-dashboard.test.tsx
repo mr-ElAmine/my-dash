@@ -1,8 +1,11 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { renderHook, waitFor } from "@testing-library/react-native";
+import { renderHook } from "@testing-library/react-hooks";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import type { ReactNode } from "react";
-import type { DashboardStats } from "../../services/dashboard.service";
+import {
+  DashboardService,
+  type DashboardStats,
+} from "../../services/dashboard.service";
 import { useDashboardStats } from "../../hooks/use-dashboard";
 
 vi.mock("../../stores/organization.store", () => ({
@@ -39,16 +42,13 @@ describe("useDashboardStats", () => {
   });
 
   it("should return dashboard stats", async () => {
-    vi.spyOn(
-      await import("../../services/dashboard.service").then((m) => m.DashboardService.prototype),
-      "getStats",
-    ).mockResolvedValue(mockStats);
+    vi.spyOn(DashboardService.prototype, "getStats").mockResolvedValue(mockStats);
 
     const { result } = renderHook(() => useDashboardStats(), {
       wrapper: createWrapper(),
     });
 
-    await waitFor(() => expect(result.current.isLoading).toBe(false));
+    await vi.waitFor(() => expect(result.current.isLoading).toBe(false));
 
     expect(result.current.data).toEqual(mockStats);
     expect(result.current.data?.activeQuotesCount).toBe(5);

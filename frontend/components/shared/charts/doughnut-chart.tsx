@@ -1,7 +1,6 @@
 import { useThemeColor } from "heroui-native";
-import { Text, View } from "react-native";
 import { useEffect, useState } from "react";
-import { LayoutChangeEvent, ViewStyle } from "react-native";
+import { LayoutChangeEvent, Text, View, ViewStyle } from "react-native";
 import Animated, {
   useAnimatedProps,
   useSharedValue,
@@ -58,7 +57,7 @@ export const DoughnutChart = ({ data, config = {}, style }: Props) => {
 
   useEffect(() => {
     animationProgress.value = animated ? withTiming(1, { duration }) : 1;
-  }, [data, animated, duration]);
+  }, [data, animated, duration, animationProgress]);
 
   if (!data.length) return null;
 
